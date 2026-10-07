@@ -104,3 +104,12 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# MCP for Unity bridge — local tooling only. Installed per machine, never committed.
+# Install for yourself: Window > Package Manager > + > Add package from git URL
+#   https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity
+# NOTE: Unity also writes this package into Packages/packages-lock.json when it resolves.
+# That entry must NOT be committed (it breaks clones that lack the folder), so the lock
+# file is marked skip-worktree locally. To commit lock changes on purpose, first run:
+#   git update-index --no-skip-worktree Packages/packages-lock.json
+/Packages/com.coplaydev.unity-mcp/
