@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnterVolumeEffectFeature
   m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Volumes.EnterVolumeEffectFeature
   m_Active: 1
-  effectShader: {fileID: 4800000, guid: 0871498455944e844a59dd4934a56f25, type: 3}
+  effectShader: {fileID: -6465566751694194690, guid: 6d3ff917f2468a748923c8d94653a92c, type: 3}
   shaderPassIndex: 0
   injectionPoint: 600
 --- !u!114 &11400000

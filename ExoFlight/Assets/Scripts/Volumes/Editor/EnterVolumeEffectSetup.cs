@@ -69,7 +69,6 @@ namespace ExoFlight.Volumes.EditorTools
             {
                 var component = profile.Add<EnterVolumeEffectVolume>(true);
                 component.intensity.value = 1f;
-                component.waveStrength.value = 0.03f;
                 EditorUtility.SetDirty(profile);
                 AssetDatabase.SaveAssets();
             }
