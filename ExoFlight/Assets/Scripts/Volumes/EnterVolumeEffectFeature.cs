@@ -13,7 +13,7 @@ namespace ExoFlight.Volumes
         public const string DefaultShaderName = "Hidden/ExoFlight/EnterVolumeEffect";
 
         [Header("Shader")]
-        [Tooltip("Пусто — берётся Hidden/ExoFlight/EnterVolumeEffect")]
+        [Tooltip("Твой шейдер или Shader Graph. Пусто — берётся Hidden/ExoFlight/EnterVolumeEffect")]
         [SerializeField] Shader effectShader;
         [Tooltip("Номер прохода в шейдере")]
         [SerializeField] int shaderPassIndex;
@@ -60,9 +60,6 @@ namespace ExoFlight.Volumes
         sealed class EnterVolumeEffectPass : ScriptableRenderPass
         {
             static readonly int IntensityId = Shader.PropertyToID("_Intensity");
-            static readonly int TintColorId = Shader.PropertyToID("_TintColor");
-            static readonly int WaveStrengthId = Shader.PropertyToID("_WaveStrength");
-            static readonly int WaveFrequencyId = Shader.PropertyToID("_WaveFrequency");
 
             Material material;
             int shaderPassIndex;
@@ -88,9 +85,6 @@ namespace ExoFlight.Volumes
                     return;
 
                 material.SetFloat(IntensityId, volume.intensity.value);
-                material.SetColor(TintColorId, volume.tint.value);
-                material.SetFloat(WaveStrengthId, volume.waveStrength.value);
-                material.SetFloat(WaveFrequencyId, volume.waveFrequency.value);
 
                 TextureHandle source = resourceData.activeColorTexture;
 
