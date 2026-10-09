@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ExoFlight.Triggers;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,6 +27,7 @@ namespace ExoFlight
         Vector3 savedHeadPosition;
         Quaternion savedHeadRotation;
         Vector3 spawnPosition;
+        PlayerCheckpoint checkpoint;
         bool savedTrackingEnabled;
         bool desktopMode;
         float pitch;
@@ -44,6 +46,7 @@ namespace ExoFlight
 
             headTracking = origin.Camera.GetComponent<TrackedPoseDriver>();
             spawnPosition = transform.position;
+            checkpoint = GetComponent<PlayerCheckpoint>();
         }
 
         void Update()
@@ -53,12 +56,10 @@ namespace ExoFlight
             SetDesktopMode(!xrRunning);
 
             // Recover if the player leaves the test platform, in either input mode.
-            if (transform.position.y < spawnPosition.y - 20f)
+            float respawnHeight = checkpoint != null ? checkpoint.Position.y : spawnPosition.y;
+            if (transform.position.y < respawnHeight - 20f)
             {
-                bool wasEnabled = character.enabled;
-                character.enabled = false;
-                transform.position = spawnPosition;
-                character.enabled = wasEnabled;
+                Respawn();
             }
 
             if (!desktopMode)
@@ -66,6 +67,9 @@ namespace ExoFlight
 
             var keyboard = Keyboard.current;
             var mouse = Mouse.current;
+            if (Application.isFocused && Cursor.lockState == CursorLockMode.Locked
+                && keyboard != null && keyboard.rKey.wasPressedThisFrame)
+                Respawn();
             bool lockedThisFrame = false;
             if (keyboard != null && keyboard.escapeKey.wasPressedThisFrame)
                 ReleaseCursor();
@@ -117,6 +121,20 @@ namespace ExoFlight
                     headTracking.enabled = savedTrackingEnabled;
                 ReleaseCursor();
             }
+        }
+
+        void Respawn()
+        {
+            if (checkpoint != null)
+                checkpoint.Respawn();
+            else
+            {
+                bool wasEnabled = character.enabled;
+                character.enabled = false;
+                transform.position = spawnPosition;
+                character.enabled = wasEnabled;
+            }
+            pitch = 0f;
         }
 
         public Vector2 ReadValue()
