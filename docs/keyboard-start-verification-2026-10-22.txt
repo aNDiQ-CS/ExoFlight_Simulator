@@ -1,0 +1,48 @@
+Unity 6000.4.9f1 | 2026-10-22T16:08:00.0472017Z
+PASS Prefab has exactly four rotor assemblies matching force application points
+PASS X quad has opposite positions and alternating spin directions
+PASS Disarmed drone gives Mars free-fall acceleration
+PASS Calculated hover throttle balances weight without hidden altitude assist
+PASS Four rotor forces sum to mg in level hover
+PASS Collective throttle above quad hover demand produces climb
+PASS Disarm spins down all rotors
+PASS Positive pitch lowers the nose
+PASS Forward acceleration comes from tilted rotor thrust
+PASS Positive roll banks right
+PASS Positive yaw turns right using rotor reaction torque
+PASS Acro neutral holds tilted attitude rather than leveling
+PASS Angle neutral recovers level attitude
+PASS Acro rate controller stops rotation when sticks recenter
+PASS Released controls retain translational momentum
+PASS 100 Hz and 200 Hz physics agree within tolerances
+MEASURE free rotation: momentum error 0,958%, energy error 1,154% over 1 s at 100 Hz
+PASS Torque-free asymmetric body conserves angular momentum within 2%
+PASS Torque-free body conserves rotation energy within 2%
+PASS Armed idle spins rotors without lifting a level drone
+PASS Airmode retains pitch authority at zero stick throttle
+PASS Disabling Airmode prevents collective boost at low throttle
+PASS Combined full-stick demand saturates without exceeding motor limits
+PASS Rate controller recovers after sustained actuator saturation
+MEASURE density: thrust 6,581248 -> 3,290625, hover 0,711150 -> 1,438174, rate (0.00, 0.00, 0.00)
+PASS Lower atmospheric density reduces thrust and raises hover demand
+PASS Rotors produce no aerodynamic thrust in vacuum
+PASS Wind accelerates an unpowered body downwind
+PASS Body drag is zero when travelling with the air mass
+PASS Drone lands on a solid collider without falling through it
+PASS Armed drone takes off again after landing
+PASS Gas stays in place; the other three axes spring to center
+PASS Virtual sticks behave identically at 30 and 120 FPS
+PASS Independent axes are not normalized on diagonal input
+PASS Space arms at zero throttle
+PASS Actual W/D/Up/Right keyboard events map to the four channels
+PASS Actual key release retains gas and centers pitch
+PASS Arming is rejected with a raised throttle
+PASS F switches flight mode
+PASS Opposite keys reverse pitch/yaw/roll
+PASS Losing focus disarms and clears retained keyboard input
+PASS Space arms immediately after raised keyboard throttle and clears old gas
+PASS Holding Space does not repeatedly toggle motors
+PASS Ten Space on/off cycles work even when W was held before arming
+PASS R restores checkpoint and clears velocity, motor state and sticks
+PASS Trigger capsule uses the drone body without a competing child Rigidbody
+ALL PASSED

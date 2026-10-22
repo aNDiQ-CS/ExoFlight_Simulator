@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace ExoFlight.Triggers
 {
-    /// <summary>A separate trigger body; the CharacterController still handles solid collisions.</summary>
+    /// <summary>Capsule sensor for a walking rig or a dynamic drone Rigidbody.</summary>
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(CapsuleCollider), typeof(Rigidbody))]
+    [RequireComponent(typeof(CapsuleCollider))]
     public sealed class PlayerTriggerSensor : MonoBehaviour
     {
         public PlayerCheckpoint Player { get; private set; }
@@ -16,9 +16,7 @@ namespace ExoFlight.Triggers
             Player = GetComponentInParent<PlayerCheckpoint>();
             capsule = GetComponent<CapsuleCollider>();
             capsule.isTrigger = true;
-            var body = GetComponent<Rigidbody>();
-            body.isKinematic = true;
-            body.useGravity = false;
+            EnsurePhysicsBody();
             character = GetComponentInParent<CharacterController>();
             if (Player == null)
                 Debug.LogError("Player Trigger Sensor needs PlayerCheckpoint on its player root.", this);
@@ -38,9 +36,20 @@ namespace ExoFlight.Triggers
         void Reset()
         {
             GetComponent<CapsuleCollider>().isTrigger = true;
-            var body = GetComponent<Rigidbody>();
+            EnsurePhysicsBody();
+        }
+
+        void EnsurePhysicsBody()
+        {
+            // A drone's sensor is a compound trigger on its parent Rigidbody.
+            // A walking rig keeps its existing independent kinematic sensor.
+            var body = GetComponentInParent<Rigidbody>();
+            if (body != null && body.gameObject != gameObject)
+                return;
+            if (body == null) body = gameObject.AddComponent<Rigidbody>();
             body.isKinematic = true;
             body.useGravity = false;
         }
+
     }
 }
