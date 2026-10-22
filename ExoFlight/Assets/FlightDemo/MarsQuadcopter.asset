@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39af6237fd0cf154da08eb4e5f3b2b80, type: 3}
+  m_Name: MarsQuadcopter
+  m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Flight.DroneFlightProfile
+  mass: 2.5
+  centerOfMass: {x: 0, y: 0, z: 0}
+  principalInertia: {x: 0.65, y: 1.1, z: 0.65}
+  armLength: 0.75
+  propellerDiameter: 0.75
+  maximumRpm: 4800
+  idleRpm: 600
+  rotorInertia: 0.0006
+  thrustCoefficient: 0.1
+  torqueCoefficient: 0.008
+  spinUpTime: 0.065
+  spinDownTime: 0.045
+  dragArea: {x: 0.35, y: 0.7, z: 0.35}
+  rotationalDrag: 0.04
+  airMode: 1
+  maximumRates: {x: 160, y: 100, z: 160}
+  expo: 0.35
+  maximumTilt: 40
+  angleGain: 4
+  rateP: 8
+  rateI: 1.5
+  yawRateGain: 0.5
+  integralLimit: 2

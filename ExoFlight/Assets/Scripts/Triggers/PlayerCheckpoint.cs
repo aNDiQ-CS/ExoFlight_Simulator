@@ -7,6 +7,7 @@ namespace ExoFlight.Triggers
     {
         public Vector3 Position { get; private set; }
         public Quaternion Rotation { get; private set; }
+        public event System.Action Respawned;
 
         void Awake() => Save(transform);
 
@@ -42,6 +43,7 @@ namespace ExoFlight.Triggers
             if (restoreController)
                 character.enabled = true;
             Physics.SyncTransforms();
+            Respawned?.Invoke();
         }
     }
 }
