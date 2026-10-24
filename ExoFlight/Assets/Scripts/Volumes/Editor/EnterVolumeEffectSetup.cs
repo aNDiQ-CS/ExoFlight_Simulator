@@ -10,7 +10,7 @@ namespace ExoFlight.Volumes.EditorTools
     {
         const string MenuRoot = "Tools/ExoFlight/Enter Volume Effect/";
         const string ProfileFolder = "Assets/Volumes";
-        const string ProfilePath = ProfileFolder + "/EnterVolumeEffect Profile.asset";
+        const string ProfilePath = ProfileFolder + "/VP_StaticGlitch.asset";
 
         [MenuItem(MenuRoot + "0. Собрать всё (feature + profile + volume)", priority = 0)]
         public static void SetupAll()
@@ -80,7 +80,7 @@ namespace ExoFlight.Volumes.EditorTools
         [MenuItem(MenuRoot + "3. Создать Volume в сцене", priority = 22)]
         public static void CreateVolumeInScene()
         {
-            var go = new GameObject("Volume - Enter Effect");
+            var go = new GameObject("Glitch Volume Zone");
             var volume = go.AddComponent<Volume>();
 
             var collider = go.AddComponent<BoxCollider>();

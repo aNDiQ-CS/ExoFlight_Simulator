@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 595263098}
   - component: {fileID: 595263097}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Glitch Volume Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
