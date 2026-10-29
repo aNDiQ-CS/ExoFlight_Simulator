@@ -9,5 +9,7 @@ namespace ExoFlight.Flight
         [Min(0f)] public float airDensity = .016f;
         [Tooltip("World-space wind velocity, m/s. Shared by body aerodynamics.")]
         public Vector3 windVelocity;
+        [Tooltip("Wind field. When empty, the constant windVelocity is used.")]
+        public WindProfile windProfile;
     }
 }

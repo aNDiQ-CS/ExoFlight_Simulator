@@ -11,6 +11,11 @@ namespace ExoFlight.Flight
         public FlightEnvironment environment;
         public DroneFlightMode mode = DroneFlightMode.Acro;
         public Transform[] rotorVisuals = new Transform[MotorCount];
+        [Tooltip("Apply body drag at the four rotor points: a gust gradient across the frame becomes a moment.")]
+        public bool windAtRotors;
+
+        [Header("Wind telemetry")]
+        [SerializeField] Vector3 sampledWind;
 
         public Rigidbody Body { get; private set; }
         public FlightControlInput Input { get; private set; }
@@ -34,6 +39,7 @@ namespace ExoFlight.Flight
         readonly float[] motorThrust = new float[MotorCount];
         readonly float[] corrections = new float[MotorCount];
         Vector3 integral;
+        float windTime;
         PlayerCheckpoint checkpoint;
 
         void Awake()
@@ -91,6 +97,12 @@ namespace ExoFlight.Flight
             integral = Vector3.zero;
         }
 
+        public Vector3 SampledWind => sampledWind;
+
+        public Vector3 WindAt(Vector3 worldPoint) => environment.windProfile != null
+            ? WindField.Sample(environment.windProfile, worldPoint, windTime)
+            : environment.windVelocity;
+
         public float GetMotorRpm(int index) => rpm[index];
         public float GetMotorThrust(int index) => motorThrust[index];
 
@@ -99,6 +111,8 @@ namespace ExoFlight.Flight
             Armed = false;
             Input = default;
             integral = Vector3.zero;
+            windTime = 0f;
+            sampledWind = Vector3.zero;
             TotalThrust = 0f;
             MotorsSaturated = false;
             RotorAngularMomentum = Vector3.zero;
@@ -112,6 +126,7 @@ namespace ExoFlight.Flight
         public void StepPhysics(float dt)
         {
             if (profile == null || environment == null || Body == null || dt <= 0f) return;
+            windTime += dt;
             Body.AddForce(environment.gravity * Body.mass, ForceMode.Force);
             ApplyAerodynamics();
 
@@ -218,16 +233,36 @@ namespace ExoFlight.Flight
 
         void ApplyAerodynamics()
         {
-            Vector3 velocity = Quaternion.Inverse(Body.rotation) * (Body.linearVelocity - environment.windVelocity);
-            Vector3 force = new Vector3(
-                -velocity.x * Mathf.Abs(velocity.x) * profile.dragArea.x,
-                -velocity.y * Mathf.Abs(velocity.y) * profile.dragArea.y,
-                -velocity.z * Mathf.Abs(velocity.z) * profile.dragArea.z) * (.5f * environment.airDensity);
-            Body.AddRelativeForce(force, ForceMode.Force);
+            sampledWind = WindAt(Body.position);
+            if (windAtRotors)
+            {
+                Vector3 area = profile.dragArea / MotorCount;
+                for (int i = 0; i < MotorCount; i++)
+                {
+                    Vector3 point = Body.position + Body.rotation * profile.RotorPosition(i);
+                    Vector3 local = Quaternion.Inverse(Body.rotation) * (Body.GetPointVelocity(point) - WindAt(point));
+                    Vector3 force = new Vector3(
+                        -local.x * Mathf.Abs(local.x) * area.x,
+                        -local.y * Mathf.Abs(local.y) * area.y,
+                        -local.z * Mathf.Abs(local.z) * area.z) * (.5f * environment.airDensity);
+                    Body.AddForceAtPosition(Body.rotation * force, point, ForceMode.Force);
+                }
+            }
+            else
+            {
+                Vector3 velocity = Quaternion.Inverse(Body.rotation) * (Body.linearVelocity - sampledWind);
+                Vector3 force = new Vector3(
+                    -velocity.x * Mathf.Abs(velocity.x) * profile.dragArea.x,
+                    -velocity.y * Mathf.Abs(velocity.y) * profile.dragArea.y,
+                    -velocity.z * Mathf.Abs(velocity.z) * profile.dragArea.z) * (.5f * environment.airDensity);
+                Body.AddRelativeForce(force, ForceMode.Force);
+            }
+            // Rotor-point drag damps rotation through omega x r already; do not count it twice.
+            float rotationalDrag = windAtRotors ? 0f : profile.rotationalDrag;
             Vector3 omega = Quaternion.Inverse(Body.rotation) * Body.angularVelocity;
             Body.AddRelativeTorque(new Vector3(-omega.x * Mathf.Abs(omega.x),
                 -omega.y * Mathf.Abs(omega.y), -omega.z * Mathf.Abs(omega.z))
-                * (environment.airDensity * profile.rotationalDrag), ForceMode.Force);
+                * (environment.airDensity * rotationalDrag), ForceMode.Force);
         }
 
         void Update()
