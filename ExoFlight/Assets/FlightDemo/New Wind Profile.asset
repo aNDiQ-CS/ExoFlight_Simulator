@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1626566e8372043bb6162b88222f5e, type: 3}
   m_Name: New Wind Profile
   m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Flight.WindProfile
-  baseVelocity: {x: 0, y: 0, z: 0}
+  baseVelocity: {x: 0, y: 0, z: 25}
   wanderSpeed: 0
   wanderPeriod: 40
-  gustSpeed: 0
+  gustSpeed: 8
   gustScale: 30
   advectionSpeed: 0
   octaves: 2

@@ -15,3 +15,4 @@ MonoBehaviour:
   gravity: {x: 0, y: -3.71, z: 0}
   airDensity: 0.016
   windVelocity: {x: 0, y: 0, z: 0}
+  windProfile: {fileID: 11400000, guid: 31429cc1319d5a940970a9b7028d1f78, type: 2}
