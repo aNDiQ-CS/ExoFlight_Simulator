@@ -1,0 +1,14 @@
+Real scene Update/FixedUpdate | Unity 6000.4.9f1 | 2026-10-31T17:53:04.4307468Z
+PASS P starts the demo and arms without Space or W
+PASS Holding P does not toggle the assist repeatedly
+PASS Manual sticks cannot fight the active test pilot
+PASS Real dwell and trigger callbacks attach the cube during assisted flight
+PASS Real delivery dwell releases the physical cube
+PASS Actual autonomous scene flight finishes with the cube landed on the delivery pad
+PASS Drone and cargo remain dynamic throughout the demonstration
+PASS Assist camera shows the drone and load from outside
+MEASURE full demonstration duration: 24,4 s
+PASS Leaving assist restores manual mode, retained throttle and FPV camera
+PASS Starting another demonstration resets the mission and cargo
+PASS Checkpoint reset cancels the assist and returns manual control
+ALL PASSED

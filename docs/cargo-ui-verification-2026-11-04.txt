@@ -1,0 +1,28 @@
+Cargo UI actual Update/FixedUpdate | Unity 6000.4.9f1 | 2026-11-04T14:17:59.2029017Z
+PASS Old text labels are removed from the new scene
+PASS No H/V key prompts in UI
+PASS Both destination cards use actual world-space canvases
+PASS Context UI is assigned to the player camera
+PASS World labels are raised above the hover volumes
+PASS Number key selects UI mode 1
+PASS Number key selects UI mode 2
+PASS Number key selects UI mode 3
+PASS Number key selects UI mode 4
+PASS Static world UI retains its orientation as the camera moves
+PASS Billboard faces the camera from an oblique viewing position
+PASS Returning from billboard restores the original fixed orientation
+PASS Camera notification is hidden outside mission approach areas
+PASS Screen effect is clear before interaction
+PASS World progress bar follows the real continuous pickup dwell
+PASS Camera UI appears on approach and replaces world cards
+PASS Screen edges light up during actual pickup dwell without a persistent panel
+PASS Rendered screen pixels actually receive the cyan edge tint
+PASS Physical pickup triggers the confirmation and screen flash
+PASS UI demo still attaches a physical payload with flight mass
+PASS Event notice expires during transit outside the next zone
+PASS Release notification follows physical cargo detachment
+PASS Delivery success is shown only after cargo has landed
+PASS Completed event panel and screen tint disappear after their durations
+PASS All expected mission/UI phases were observed
+PASS Reset clears both mission and stale UI feedback
+ALL PASSED

@@ -42,9 +42,9 @@ namespace ExoFlight.Flight
         static float Advance(float value, float target, float dt, float speed, float returnSpeed)
             => Mathf.MoveTowards(value, target, (Mathf.Approximately(target, 0f) ? returnSpeed : speed) * dt);
 
-        public void Reset()
+        public void Reset(float throttle = 0f)
         {
-            Throttle = 0f;
+            Throttle = Mathf.Clamp01(throttle);
             Axes = Vector3.zero;
         }
     }

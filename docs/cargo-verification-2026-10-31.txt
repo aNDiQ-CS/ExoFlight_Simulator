@@ -1,0 +1,107 @@
+Cargo mission verification — 2026-10-31
+Unity 6000.4.9f1. Real PhysX in isolated Play Mode scenes. Manual keyboard flight of the mission was not part of this run.
+
+Unity 6000.4.9f1 | 2026-10-31T17:39:03.2832429Z
+PASS Visiting delivery before pickup cannot skip the sequence
+PASS Disarmed drone cannot pick up cargo
+PASS Pickup requires a continuous dwell, not trigger entry
+PASS Leaving pickup clears the partial dwell
+PASS Fast fly-through does not count as hovering
+PASS Excessive tilt blocks pickup
+PASS Spinning in place blocks pickup
+PASS Three seconds over the cube attach exactly the assigned cargo once
+PASS Attachment preserves world pose and both dynamic bodies
+PASS Payload mass is counted once; drone Rigidbody mass is not inflated
+PASS Half-kilogram load increases hover throttle with unchanged motors
+MEASURE hover empty=71,12%, loaded=85,66%; total mass=3,00 kg
+PASS Pickup cannot repeat or attach a second copy
+PASS Attached bodies free-fall together at Mars gravity without double gravity
+PASS Rigid attachment keeps the relative offset during physical simulation
+PASS Loaded hover balances the actual weight of both bodies in PhysX
+PASS Empty-drone hover throttle cannot support the loaded drone
+PASS Known 3 N force accelerates the 3 kg assembly by F/m
+PASS Cargo below the drone increases rotational inertia for the same applied torque
+MEASURE roll rate after 1 Nm for 0.01 s: empty=0,01538, loaded=0,00885 rad/s
+PASS Released cargo can be attached again before delivery
+PASS Release preserves momentum and immediately removes payload metadata
+PASS Released cargo falls under Mars gravity, not Earth gravity
+PASS Overweight cargo is allowed but telemetry reports insufficient lift
+PASS Overweight drone descends at full throttle; no hidden lift multiplier
+PASS An off-centre grab shifts the assembly centre of mass
+MEASURE off-centre: rate=0,0000, tilt=0,000, COM=(0.06, -0.18, 0.00), saturated=False
+PASS Mixer compensates a modest off-centre load without changing motor limits
+PASS Free cargo responds to the same atmospheric wind as the drone
+PASS Disabling the carrier releases cargo and clears mass metadata
+PASS Mission can restart after an interrupted transport
+PASS Delivery also requires its own continuous dwell
+PASS Leaving delivery cancels its countdown without dropping cargo
+PASS Delivery dwell releases once and waits for actual landing
+PASS Releasing in the air does not complete the mission prematurely
+PASS Physical landing completes the mission and invokes walker deployment hook
+PASS Completed mission does not repeat or pick up delivered cargo
+PASS Player checkpoint reset restarts the mission and restores cargo state
+PASS Respawn while carrying removes the joint and returns cargo home
+ALL PASSED
+
+Unity 6000.4.9f1 | 2026-10-31T17:32:43.6511269Z
+PASS Prefab has exactly four rotor assemblies matching force application points
+PASS X quad has opposite positions and alternating spin directions
+PASS Disarmed drone gives Mars free-fall acceleration
+PASS Calculated hover throttle balances weight without hidden altitude assist
+PASS Four rotor forces sum to mg in level hover
+PASS Collective throttle above quad hover demand produces climb
+PASS Disarm spins down all rotors
+PASS Positive pitch lowers the nose
+PASS Forward acceleration comes from tilted rotor thrust
+PASS Positive roll banks right
+PASS Positive yaw turns right using rotor reaction torque
+PASS Acro neutral holds tilted attitude rather than leveling
+PASS Angle neutral recovers level attitude
+PASS Acro rate controller stops rotation when sticks recenter
+PASS Released controls retain translational momentum
+PASS 100 Hz and 200 Hz physics agree within tolerances
+MEASURE free rotation: momentum error 0,958%, energy error 1,154% over 1 s at 100 Hz
+PASS Torque-free asymmetric body conserves angular momentum within 2%
+PASS Torque-free body conserves rotation energy within 2%
+PASS Armed idle spins rotors without lifting a level drone
+PASS Airmode retains pitch authority at zero stick throttle
+PASS Disabling Airmode prevents collective boost at low throttle
+PASS Combined full-stick demand saturates without exceeding motor limits
+PASS Rate controller recovers after sustained actuator saturation
+MEASURE density: thrust 6,581248 -> 3,290625, hover 0,711150 -> 1,438174, rate (0.00, 0.00, 0.00)
+PASS Lower atmospheric density reduces thrust and raises hover demand
+PASS Rotors produce no aerodynamic thrust in vacuum
+PASS Wind accelerates an unpowered body downwind
+PASS Body drag is zero when travelling with the air mass
+PASS Drone lands on a solid collider without falling through it
+PASS Armed drone takes off again after landing
+PASS Gas stays in place; the other three axes spring to center
+PASS Virtual sticks behave identically at 30 and 120 FPS
+PASS Independent axes are not normalized on diagonal input
+PASS Space arms at zero throttle
+PASS Actual W/D/Up/Right keyboard events map to the four channels
+PASS Actual key release retains gas and centers pitch
+PASS Arming is rejected with a raised throttle
+PASS F switches flight mode
+PASS Opposite keys reverse pitch/yaw/roll
+PASS Losing focus disarms and clears retained keyboard input
+PASS Space arms immediately after raised keyboard throttle and clears old gas
+PASS Holding Space does not repeatedly toggle motors
+PASS Ten Space on/off cycles work even when W was held before arming
+PASS R restores checkpoint and clears velocity, motor state and sticks
+PASS Trigger capsule uses the drone body without a competing child Rigidbody
+ALL PASSED
+
+Unity 6000.4.9f1 | 2026-10-31T17:32:43.8218558Z
+MEASURE 20 m/s side wind for 2 s: drift 0,875 m, speed 0,858 m/s
+PASS W9 a level body drifts downwind
+MEASURE travelling with the air: speed 20,0000 m/s
+PASS W10 drag vanishes when the body travels with the air mass
+MEASURE fall after 0.5 s: calm -1,854 m/s, 15 m/s updraft -1,576 m/s
+PASS W11 an updraft slows the fall because the top face has the largest area
+MEASURE rotation after 1 s in gusts: centre drag 0,0000 rad/s, rotor points 0,0932 rad/s
+PASS W12 a gust gradient across the four rotor points creates a moment
+MEASURE hover thrust: calm 9,2750 N, 30 m/s wind 9,2750 N
+PASS W13 wind does not change rotor thrust: the model boundary is deliberate
+RESULT 5 checks passed
+

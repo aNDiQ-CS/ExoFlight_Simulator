@@ -242,6 +242,7 @@ namespace ExoFlight.Editor
             EditorGUILayout.LabelField("Live telemetry", EditorStyles.boldLabel);
             EditorGUILayout.LabelField("Armed", drone.Armed.ToString());
             EditorGUILayout.LabelField("Throttle", drone.Input.Throttle.ToString("P1"));
+            EditorGUILayout.LabelField("Payload / total mass", $"{drone.PayloadMass:F2} / {drone.FlightMass:F2} kg");
             EditorGUILayout.LabelField("Hover throttle (still air)", drone.HoverThrottle.ToString("P1"));
             EditorGUILayout.LabelField("Speed", drone.Body.linearVelocity.magnitude.ToString("F2") + " m/s");
             EditorGUILayout.LabelField("Total thrust", drone.TotalThrust.ToString("F2") + " N");

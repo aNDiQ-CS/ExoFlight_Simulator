@@ -18,6 +18,8 @@ namespace ExoFlight.Flight
         DroneFlightController drone;
         PlayerCheckpoint checkpoint;
         public float Throttle => sticks.Throttle;
+        public bool ExternalControlActive { get; set; }
+        public bool CameraControlledExternally { get; set; }
 
         void Awake()
         {
@@ -72,6 +74,12 @@ namespace ExoFlight.Flight
                 if (checkpoint != null) checkpoint.Respawn();
                 return;
             }
+            if (ExternalControlActive)
+            {
+                // An assist owns the sticks, but emergency disarm and reset still work.
+                if (keyboard.spaceKey.wasPressedThisFrame) Release();
+                return;
+            }
             if (keyboard.fKey.wasPressedThisFrame)
             {
                 drone.SetMode(drone.mode == DroneFlightMode.Acro ? DroneFlightMode.Angle : DroneFlightMode.Acro);
@@ -103,7 +111,7 @@ namespace ExoFlight.Flight
 
         void LateUpdate()
         {
-            if (fpvCamera == null) return;
+            if (fpvCamera == null || CameraControlledExternally || ExternalControlActive) return;
             fpvCamera.transform.localRotation = Quaternion.Euler(-cameraTilt, 0f, 0f);
             fpvCamera.fieldOfView = fieldOfView;
         }
@@ -112,6 +120,13 @@ namespace ExoFlight.Flight
         {
             sticks.Reset();
             if (drone != null) drone.SetInput(default);
+        }
+
+        public void ResumeManualControl(float throttle)
+        {
+            ExternalControlActive = false;
+            sticks.Reset(throttle);
+            if (drone != null) drone.SetInput(new FlightControlInput(throttle, 0f, 0f, 0f));
         }
 
         void Release()
