@@ -1835,7 +1835,8 @@ GameObject:
   - component: {fileID: 6917009907272863578}
   - component: {fileID: 4488578801755469962}
   - component: {fileID: 3320753327539520649}
-  - component: {fileID: 4684997906600995716}
+  - component: {fileID: 151530528767034819}
+  - component: {fileID: 565731900935740707}
   m_Layer: 0
   m_Name: PlayerDrone
   m_TagString: Untagged
@@ -1954,7 +1955,7 @@ MonoBehaviour:
   - {fileID: 7892806106123392891}
   - {fileID: 1018290722364538483}
   - {fileID: 2496895311437834522}
---- !u!114 &4684997906600995716
+--- !u!114 &151530528767034819
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1963,13 +1964,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 8887362662860248736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6471a7db950248489400a72b4d8d176, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ab60a7a2409d6e4795debe4e55c960a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Flight.KeyboardDroneInput
-  throttleChangePerSecond: 0.25
-  stickDeflectionPerSecond: 2.5
-  stickReturnPerSecond: 6
-  fpvCamera: {fileID: 6240831965846735989}
+  m_EditorClassIdentifier: Assembly-CSharp::DroneJoystickInput
+  deviceNameFilter: 
+  debugLogRawValues: 0
+  debugLogInterval: 3
+  throttlePath: rightStick/x
+  yawPath: rightStick/y
+  pitchPath: leftStick/y
+  rollPath: leftStick/x
+  auxPaths: []
+  invertThrottle: 0
+  invertYaw: 0
+  invertPitch: 0
+  invertRoll: 0
+  deadzone: 0.03
+--- !u!114 &565731900935740707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887362662860248736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f553691c3e6c03841abc1e44278778b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Flight.JoystickDroneInput
+  joystick: {fileID: 0}
+  armChannel: 0
+  modeChannel: 1
+  resetChannel: 2
+  switchThreshold: 0.5
+  armThrottleLimit: 0.05
+  fpvCamera: {fileID: 0}
   cameraTilt: 10
   fieldOfView: 85
 --- !u!1 &8905096199113905767
