@@ -1,4 +1,11 @@
-# Четыре варианта UI перевозки
+# Архив: четыре варианта UI перевозки
+
+**Текущий вариант — бортовой терминал на дроне.** Инструкция:
+[CARGO_ONBOARD_DISPLAY.md](CARGO_ONBOARD_DISPLAY.md).
+Описанные ниже четыре режима сохранены в выключенной группе
+`Archived - previous UI variants (disabled)`. По умолчанию цифры 1–4 их больше не включают.
+Для отдельного сравнения выключить `Player Drone > Cargo Onboard Display` и включить
+архивную группу. Дальше приведено описание прежней демонстрации.
 
 Открыть `ExoFlight/Assets/Scenes/CargoUIDemo.unity` или
 `Tools > ExoFlight > Open Cargo UI Demo`.

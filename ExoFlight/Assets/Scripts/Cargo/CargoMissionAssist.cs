@@ -11,6 +11,7 @@ namespace ExoFlight.Cargo
     public sealed class CargoMissionAssist : MonoBehaviour
     {
         public CargoDeliveryMission mission;
+        public bool useThirdPersonForDemo = true;
         [Min(.5f)] public float cruiseHeightAboveZones = 1.5f;
         [Min(.2f)] public float maximumSpeed = 2f;
         [Min(.5f)] public float positionGain = 1.5f;
@@ -93,7 +94,7 @@ namespace ExoFlight.Cargo
             if (cameraView != null)
             {
                 originalThirdPerson = cameraView.ThirdPerson;
-                if (demonstration) cameraView.SetThirdPerson(true);
+                if (demonstration && useThirdPersonForDemo) cameraView.SetThirdPerson(true);
             }
             drone.SetInput(default);
             drone.SetArmed(true);

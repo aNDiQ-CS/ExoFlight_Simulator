@@ -26,7 +26,7 @@ namespace ExoFlight.Editor
             if (AssetDatabase.LoadAssetAtPath<SceneAsset>(ScenePath) != null)
             {
                 EditorSceneManager.OpenScene(ScenePath);
-                if (Object.FindAnyObjectByType<CargoUiDemo>() != null) return;
+                if (Object.FindAnyObjectByType<CargoUiDemo>(FindObjectsInactive.Include) != null) return;
             }
             else
             {

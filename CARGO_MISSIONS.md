@@ -1,7 +1,8 @@
 # Перевозка груза
 
-Отдельная карта с четырьмя вариантами интерфейса: **CargoUIDemo**.
-Запуск и переключение вариантов описаны в [CARGO_UI_DEMO.md](CARGO_UI_DEMO.md).
+Отдельная карта с бортовым дисплеем задания: **CargoUIDemo**.
+Запуск без VR-очков описан в [CARGO_ONBOARD_DISPLAY.md](CARGO_ONBOARD_DISPLAY.md).
+Четыре прежних варианта UI сохранены там в отключённой архивной группе.
 
 Открыть `ExoFlight/Assets/Scenes/CargoMissionTest.unity` либо меню
 `Tools > ExoFlight > Open Cargo Mission Demo`. Сцена создаётся один раз;

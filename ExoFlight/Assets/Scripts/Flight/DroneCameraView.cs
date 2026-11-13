@@ -12,6 +12,10 @@ namespace ExoFlight.Flight
         [Range(40f, 100f)] public float thirdPersonFov = 65f;
         [SerializeField] bool thirdPerson;
         public bool ThirdPerson => thirdPerson;
+        [Tooltip("Hold the right mouse button to preview looking around without a headset.")]
+        public bool allowDesktopLook;
+        [Min(.01f)] public float lookSensitivity = .12f;
+        public Vector2 PreviewLook { get; private set; }
         KeyboardDroneInput input;
         Camera view;
         Vector3 fpvPosition;
@@ -27,6 +31,19 @@ namespace ExoFlight.Flight
         void Update()
         {
             if (Application.isFocused && Keyboard.current != null) ReadKeyboard(Keyboard.current);
+            if (Application.isFocused && allowDesktopLook && !thirdPerson && !UnityEngine.XR.XRSettings.isDeviceActive)
+                ReadMouseLook(Mouse.current, Time.unscaledDeltaTime);
+            else PreviewLook = Vector2.zero;
+        }
+        public void ReadMouseLook(Mouse mouse, float dt)
+        {
+            if (mouse != null && mouse.rightButton.isPressed)
+            {
+                Vector2 delta = mouse.delta.ReadValue() * lookSensitivity;
+                PreviewLook = new Vector2(Mathf.Clamp(PreviewLook.x + delta.x, -70f, 70f),
+                    Mathf.Clamp(PreviewLook.y - delta.y, -45f, 45f));
+            }
+            else PreviewLook = Vector2.MoveTowards(PreviewLook, Vector2.zero, 150f * dt);
         }
         public void ReadKeyboard(Keyboard keyboard)
         {
@@ -44,8 +61,10 @@ namespace ExoFlight.Flight
             if (view == null) return;
             if (!thirdPerson)
             {
+                // A tracked headset owns its pose. Desktop preview must not overwrite it.
+                if (UnityEngine.XR.XRSettings.isDeviceActive) return;
                 view.transform.localPosition = fpvPosition;
-                view.transform.localRotation = Quaternion.Euler(-input.cameraTilt, 0f, 0f);
+                view.transform.localRotation = Quaternion.Euler(-input.cameraTilt + PreviewLook.y, PreviewLook.x, 0f);
                 view.fieldOfView = input.fieldOfView;
                 return;
             }

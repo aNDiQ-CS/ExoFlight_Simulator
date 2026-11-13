@@ -1,0 +1,26 @@
+Onboard display | real scene Update/FixedUpdate | Unity 6000.4.9f1 | 2026-11-13T00:14:29.6720357Z
+PASS Whole terminal, including hardware, is hidden before the task
+PASS All four previous UI modes are retained but inactive
+PASS No active screen-space UI or screen-edge effect remains
+PASS Terminal is parented to the drone body, not the camera
+PASS Cosmetic display adds no collision or extra cargo physics
+PASS Scene and assisted preview use first person without a headset
+PASS Visiting delivery before pickup does not show an unrelated mission terminal
+PASS Entering the pickup volume accepts the task and reveals the terminal
+PASS An accepted task stays visible after leaving the pickup volume
+PASS Reset hides hardware and clears task acceptance
+PASS Starting P demo preserves first-person view
+PASS Actual pickup dwell drives the terminal status and progress
+PASS Countdown text generates visible glyphs without being clipped by its text rectangle
+PASS Right mouse drag changes the desktop viewing direction
+PASS Looking around leaves the display fixed to the body instead of following the gaze
+PASS Releasing right mouse returns the preview view to centre
+PASS Physical payload is attached and the display stays active
+PASS Outside both zones, the active task shows delivery distance
+PASS Terminal remains until the released load has actually landed
+PASS After release the terminal shows landing status, not a new pickup countdown
+PASS The assisted run completes actual physical delivery
+PASS Completion removes the entire display immediately, with no lingering toast or housing
+PASS Pickup, transit, release and completion were all observed
+PASS Restart returns to a clean first-person view
+ALL PASSED
