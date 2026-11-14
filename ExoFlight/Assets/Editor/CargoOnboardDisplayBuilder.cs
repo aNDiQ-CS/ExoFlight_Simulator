@@ -151,8 +151,8 @@ namespace ExoFlight.Editor
             panel.SetParent(display.transform, false);
             Vector3 offset = new Vector3(.55f, -.68f, 1.2f);
             panel.localPosition = camera.transform.localPosition + offset;
-            // Author a level card for the neutral FPV view; do not follow the live camera at runtime.
-            panel.localRotation = camera.transform.localRotation;
+            // Match the accepted scene's fixed spatial orientation; never follow the live camera.
+            panel.localRotation = Quaternion.LookRotation(offset.normalized, Vector3.up);
             var screen = Object.Instantiate(display.displayCanvas.gameObject, panel, false);
             screen.name = "Task card - World Space";
             screen.SetActive(true);
@@ -182,11 +182,11 @@ namespace ExoFlight.Editor
             Place(display.title.rectTransform, new Vector2(570f, 60f), new Vector2(-87f, 32f));
             display.title.fontSize = 42;
             Place(display.instruction.rectTransform, new Vector2(570f, 40f), new Vector2(-87f, -18f));
-            display.instruction.fontSize = 28;
+            display.instruction.fontSize = 24;
             Place(display.metric.rectTransform, new Vector2(116f, 64f), new Vector2(312f, 32f));
             display.metric.fontSize = 46;
             Place(display.metricUnit.rectTransform, new Vector2(116f, 34f), new Vector2(312f, -18f));
-            display.metricUnit.fontSize = 22;
+            display.metricUnit.fontSize = 18;
             display.statusLight = screen.transform.Find("Status lamp").GetComponent<Image>();
             Place(display.statusLight.rectTransform, new Vector2(3f, 180f), new Vector2(-398.5f, 0f));
             var track = screen.transform.Find("Hold progress").GetComponent<RectTransform>();
