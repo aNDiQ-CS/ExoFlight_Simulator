@@ -1,0 +1,5 @@
+Perseverance rover model and textures
+Credit: NASA/JPL-Caltech
+Source: https://science.nasa.gov/resource/mars-perseverance-rover-3d-model/
+Usage guidelines: https://www.nasa.gov/nasa-brand-center/images-and-media/
+Converted from the official glTF to a static Unity mesh and URP materials.
