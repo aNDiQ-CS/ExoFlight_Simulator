@@ -1838,6 +1838,8 @@ GameObject:
   - component: {fileID: 151530528767034819}
   - component: {fileID: 565731900935740707}
   - component: {fileID: 1901203175909499648}
+  - component: {fileID: 1683112378755104262}
+  - component: {fileID: 1683112378755104263}
   m_Layer: 0
   m_Name: PlayerDrone
   m_TagString: Untagged
@@ -2109,3 +2111,41 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1683112378755104262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887362662860248736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6471a7db950248489400a72b4d8d176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Flight.KeyboardDroneInput
+  throttleChangePerSecond: 0.25
+  stickDeflectionPerSecond: 2.5
+  stickReturnPerSecond: 6
+  fpvCamera: {fileID: 6240831965846735989}
+  cameraTilt: 10
+  fieldOfView: 85
+--- !u!114 &1683112378755104263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887362662860248736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a91c7d3e5b64f2c8d17a03b6e59f412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Flight.DroneInputRouter
+  drone: {fileID: 3320753327539520649}
+  keyboard: {fileID: 1683112378755104262}
+  joystickReader: {fileID: 151530528767034819}
+  joystickFlight: {fileID: 565731900935740707}
+  preferJoystickWhenPresent: 1
+  toggleKeyName: F1
+  lockCursorForKeyboard: 1
+  logSwitches: 1
