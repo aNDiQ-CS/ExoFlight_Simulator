@@ -22,6 +22,12 @@ namespace ExoFlight.Flight
         public bool Armed { get; private set; }
         public float TotalThrust { get; private set; }
         public bool MotorsSaturated { get; private set; }
+        public float PayloadMass { get; private set; }
+        Vector3 payloadCenterOfMass;
+        public float FlightMass => (Body != null ? Body.mass : profile != null ? profile.mass : 0f) + PayloadMass;
+        public Vector3 FlightCenterOfMass => PayloadMass > 0f
+            ? (Body.centerOfMass * Body.mass + payloadCenterOfMass * PayloadMass) / FlightMass
+            : profile.centerOfMass;
         public float HoverThrottle
         {
             get
@@ -30,7 +36,7 @@ namespace ExoFlight.Flight
                 float maximum = profile.ThrustAtRpm(profile.maximumRpm, environment.airDensity);
                 float idle = profile.ThrustAtRpm(Mathf.Min(profile.idleRpm, profile.maximumRpm), environment.airDensity);
                 // Values above 1 intentionally indicate insufficient thrust to hover.
-                return (profile.mass * environment.gravity.magnitude / MotorCount - idle) / Mathf.Max(.0001f, maximum - idle);
+                return (FlightMass * environment.gravity.magnitude / MotorCount - idle) / Mathf.Max(.0001f, maximum - idle);
             }
         }
         public Vector3 RotorAngularMomentum { get; private set; }
@@ -81,6 +87,13 @@ namespace ExoFlight.Flight
 
         public void SetInput(FlightControlInput value) =>
             Input = new FlightControlInput(value.Throttle, value.Pitch, value.Yaw, value.Roll);
+
+        /// <summary>Telemetry/mixer metadata only. The payload's own body supplies its mass, inertia and gravity.</summary>
+        public void SetPayload(float mass, Vector3 localCenterOfMass)
+        {
+            PayloadMass = Mathf.Max(0f, mass);
+            payloadCenterOfMass = localCenterOfMass;
+        }
 
         public void SetArmed(bool value)
         {
@@ -154,7 +167,7 @@ namespace ExoFlight.Flight
                 sumZ2 += p.z * p.z;
             }
             // Offset COM shifts the collective thrust moment. Feed-forward cancels it.
-            torque -= Vector3.Cross(-profile.centerOfMass, Vector3.up * (collective * MotorCount));
+            torque -= Vector3.Cross(-FlightCenterOfMass, Vector3.up * (collective * MotorCount));
             float low = 0f, high = 0f;
             for (int i = 0; i < MotorCount; i++)
             {

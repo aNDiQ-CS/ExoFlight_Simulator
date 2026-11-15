@@ -1,0 +1,118 @@
+Direct cargo dock, 6 m pads, 1.2 m cube, 1.5 s dwell, V camera and H hover verification — 2026-10-31
+
+Unity 6000.4.9f1 | 2026-10-31T18:11:17.0694615Z
+PASS Visiting delivery before pickup cannot skip the sequence
+PASS Disarmed drone cannot pick up cargo
+PASS Pickup requires a continuous dwell, not trigger entry
+PASS Leaving pickup clears the partial dwell
+PASS Fast fly-through does not count as hovering
+PASS Excessive tilt blocks pickup
+PASS Spinning in place blocks pickup
+PASS Cargo is not captured before the 1.5-second dwell has elapsed
+PASS A 1.5-second dwell attaches exactly the assigned cargo once
+PASS Cargo docks directly against the drone without a cable; both bodies remain dynamic
+PASS Payload mass is counted once; drone Rigidbody mass is not inflated
+PASS Half-kilogram load increases hover throttle with unchanged motors
+MEASURE hover empty=71,12%, loaded=85,66%; total mass=3,00 kg
+PASS Pickup cannot repeat or attach a second copy
+PASS Attached bodies free-fall together at Mars gravity without double gravity
+PASS Rigid attachment keeps the relative offset during physical simulation
+PASS Loaded hover balances the actual weight of both bodies in PhysX
+PASS Empty-drone hover throttle cannot support the loaded drone
+PASS Known 3 N force accelerates the 3 kg assembly by F/m
+PASS Cargo below the drone increases rotational inertia for the same applied torque
+MEASURE roll rate after 1 Nm for 0.01 s: empty=0,01538, loaded=0,00977 rad/s
+PASS Released cargo can be attached again before delivery
+PASS Release preserves momentum and immediately removes payload metadata
+PASS Released cargo falls under Mars gravity, not Earth gravity
+PASS Overweight cargo is allowed but telemetry reports insufficient lift
+PASS Overweight drone descends at full throttle; no hidden lift multiplier
+PASS A pickup two metres off-centre is accepted and docks the load centrally
+MEASURE docked: rate=0,0000, tilt=0,000, COM=(0.00, -0.13, 0.00), saturated=False
+PASS Directly mounted cargo stays stable with the original motor limits
+PASS Free cargo responds to the same atmospheric wind as the drone
+PASS Disabling the carrier releases cargo and clears mass metadata
+PASS Mission can restart after an interrupted transport
+PASS Delivery also requires its own continuous dwell
+PASS Leaving delivery cancels its countdown without dropping cargo
+PASS Delivery dwell releases once and waits for actual landing
+PASS Releasing in the air does not complete the mission prematurely
+PASS Physical landing completes the mission and invokes walker deployment hook
+PASS Completed mission does not repeat or pick up delivered cargo
+PASS Player checkpoint reset restarts the mission and restores cargo state
+PASS Respawn while carrying removes the joint and returns cargo home
+ALL PASSED
+
+Real scene Update/FixedUpdate | Unity 6000.4.9f1 | 2026-10-31T18:08:46.0012548Z
+PASS V enables third-person view independently of any flight assist
+PASS Holding V does not repeatedly switch cameras
+PASS A second V restores the FPV camera during manual play
+PASS H enables position hold without starting a mission route
+PASS Space immediately disarms and cancels position hold
+PASS P starts the demo and arms without Space or W
+PASS Holding P does not toggle the assist repeatedly
+PASS Manual sticks cannot fight the active test pilot
+PASS Real dwell and trigger callbacks attach the cube during assisted flight
+PASS Real delivery dwell releases the physical cube
+PASS Actual autonomous scene flight finishes with the cube landed on the delivery pad
+PASS Drone and cargo remain dynamic throughout the demonstration
+PASS Assist camera shows the drone and load from outside
+MEASURE full demonstration duration: 24,7 s
+PASS Leaving assist restores manual mode, retained throttle and FPV camera
+PASS Starting another demonstration resets the mission and cargo
+PASS Checkpoint reset cancels the assist and returns manual control
+PASS H brakes the moving drone and holds position in the regular physics loop
+PASS Manual hover two metres from the cube completes pickup in the enlarged area
+PASS Large cube stays directly docked under the drone with no line or rope
+PASS Leaving H preserves the camera mode chosen by the player
+ALL PASSED
+
+Unity 6000.4.9f1 | 2026-10-31T18:08:44.7832267Z
+PASS Prefab has exactly four rotor assemblies matching force application points
+PASS X quad has opposite positions and alternating spin directions
+PASS Disarmed drone gives Mars free-fall acceleration
+PASS Calculated hover throttle balances weight without hidden altitude assist
+PASS Four rotor forces sum to mg in level hover
+PASS Collective throttle above quad hover demand produces climb
+PASS Disarm spins down all rotors
+PASS Positive pitch lowers the nose
+PASS Forward acceleration comes from tilted rotor thrust
+PASS Positive roll banks right
+PASS Positive yaw turns right using rotor reaction torque
+PASS Acro neutral holds tilted attitude rather than leveling
+PASS Angle neutral recovers level attitude
+PASS Acro rate controller stops rotation when sticks recenter
+PASS Released controls retain translational momentum
+PASS 100 Hz and 200 Hz physics agree within tolerances
+MEASURE free rotation: momentum error 0,958%, energy error 1,154% over 1 s at 100 Hz
+PASS Torque-free asymmetric body conserves angular momentum within 2%
+PASS Torque-free body conserves rotation energy within 2%
+PASS Armed idle spins rotors without lifting a level drone
+PASS Airmode retains pitch authority at zero stick throttle
+PASS Disabling Airmode prevents collective boost at low throttle
+PASS Combined full-stick demand saturates without exceeding motor limits
+PASS Rate controller recovers after sustained actuator saturation
+MEASURE density: thrust 6,581248 -> 3,290625, hover 0,711150 -> 1,438174, rate (0.00, 0.00, 0.00)
+PASS Lower atmospheric density reduces thrust and raises hover demand
+PASS Rotors produce no aerodynamic thrust in vacuum
+PASS Wind accelerates an unpowered body downwind
+PASS Body drag is zero when travelling with the air mass
+PASS Drone lands on a solid collider without falling through it
+PASS Armed drone takes off again after landing
+PASS Gas stays in place; the other three axes spring to center
+PASS Virtual sticks behave identically at 30 and 120 FPS
+PASS Independent axes are not normalized on diagonal input
+PASS Space arms at zero throttle
+PASS Actual W/D/Up/Right keyboard events map to the four channels
+PASS Actual key release retains gas and centers pitch
+PASS Arming is rejected with a raised throttle
+PASS F switches flight mode
+PASS Opposite keys reverse pitch/yaw/roll
+PASS Losing focus disarms and clears retained keyboard input
+PASS Space arms immediately after raised keyboard throttle and clears old gas
+PASS Holding Space does not repeatedly toggle motors
+PASS Ten Space on/off cycles work even when W was held before arming
+PASS R restores checkpoint and clears velocity, motor state and sticks
+PASS Trigger capsule uses the drone body without a competing child Rigidbody
+ALL PASSED
+

@@ -38,6 +38,10 @@ namespace ExoFlight.Editor
                 root.GetComponentInChildren<AudioListener>().enabled = false;
                 profile = Object.Instantiate(drone.profile);
                 environment = Object.Instantiate(drone.environment);
+                // These baseline checks prescribe still air or their own constant wind.
+                // A user's assigned gust profile must not override those test conditions.
+                environment.windProfile = null;
+                environment.windVelocity = Vector3.zero;
                 drone.profile = profile;
                 drone.environment = environment;
                 drone.ConfigureBody();
