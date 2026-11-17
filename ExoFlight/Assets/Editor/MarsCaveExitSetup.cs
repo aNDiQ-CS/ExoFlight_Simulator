@@ -154,8 +154,12 @@ namespace ExoFlight.EditorTools
             for (int z = 0; z < hn; z++) for (int x = 0; x < hn; x++)
             {
                 Vector2 delta = new Vector2((x + .5f) * data.size.x / hn, (z + .5f) * data.size.z / hn) - mouth;
-                float along = Vector2.Dot(delta, forward), across = Mathf.Abs(Vector2.Dot(delta, right));
-                if (across < 29f && along > -22f && along < 31f) holes[z, x] = false;
+                // Organic rim instead of a straight-edged patch: a noisy ellipse, longer up the passage than across it.
+                float wobble = (Mathf.PerlinNoise(x * .11f, z * .11f) - .5f) * 7f;
+                float radius = 24f + wobble;
+                float reach = Mathf.Sqrt(Mathf.Pow(Vector2.Dot(delta, right) / radius, 2f)
+                    + Mathf.Pow(Vector2.Dot(delta, forward) / (radius + 4f), 2f));
+                if (reach < 1f) holes[z, x] = false;
             }
             data.SetHoles(0, 0, holes);
         }
@@ -301,8 +305,9 @@ namespace ExoFlight.EditorTools
                 float rockVariation=Mathf.SmoothStep(0f,1f,Mathf.InverseLerp(-19f,-8f,z));
                 float warp=(Mathf.PerlinNoise(x*.19f+17f,z*.15f+35f)-.5f)*.65f*rockVariation;
                 float cavity=OpeningDistance(new Vector2(x,p.y-centerY))+warp;
-                // A small overlap covers terrain tessellation error at the cut's perimeter.
-                float ground=terrain.SampleHeight(p)+terrain.transform.position.y+.3f;
+                // Sits just under the terrain: the ground stays terrain (one material across the seam),
+                // and only the walls inside the mouth are rock.
+                float ground=terrain.SampleHeight(p)+terrain.transform.position.y-.45f;
                 return Mathf.Max(p.y-ground,-cavity);
             };
             Func<Vector3,Vector3> gradient = p => new Vector3(
