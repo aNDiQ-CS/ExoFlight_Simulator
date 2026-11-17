@@ -25,7 +25,7 @@ MonoBehaviour:
       \u0441\u0442\u043E \u043F\u0440\u043E\u0446\u0435\u043D\u0442\u043E\u0432."
     demo: 1
     estimatedSeconds: 4.3
-    audio: {fileID: 8300000, guid: 2b34cff9ba37f6a4382b5882a2864d1b, type: 3}
+    audio: {fileID: 8300000, guid: 144e1514b9f242ef874a887c87b38495, type: 3}
   - id: S0-02
     stage: "0. \u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430"
     condition: "\u041F\u0435\u0440\u0435\u0434 \u043F\u0435\u0440\u0432\u044B\u043C
@@ -38,7 +38,7 @@ MonoBehaviour:
       \u0441\u0440\u0430\u0437\u0443 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u044F\u0442."
     demo: 1
     estimatedSeconds: 3.5
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: a30f56490cc84af49692eae9f244fc37, type: 3}
   - id: S0-03
     stage: "0. \u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430"
     condition: "\u0411\u0440\u0438\u0444\u0438\u043D\u0433, \u043F\u043E\u0441\u043B\u0435
@@ -55,7 +55,7 @@ MonoBehaviour:
       \u043F\u043E\u0441\u0430\u0434\u043A\u0438."
     demo: 1
     estimatedSeconds: 10.4
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: a197835ed3074515bbe13309f4d696d4, type: 3}
   - id: S0-04
     stage: "0. \u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430"
     condition: "\u041E\u0431\u0440\u0430\u0442\u043D\u044B\u0439 \u043E\u0442\u0441\u0447\u0451\u0442"
@@ -65,7 +65,7 @@ MonoBehaviour:
       \u0434\u0432\u0430\u2026 \u043E\u0434\u0438\u043D\u2026"
     demo: 1
     estimatedSeconds: 2.2
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6c75795be3ae4119a85ee884d8a9ae75, type: 3}
   - id: S0-05
     stage: "0. \u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430"
     condition: "\u041F\u043E\u0441\u043B\u0435 \u043E\u0442\u0441\u0447\u0451\u0442\u0430"
@@ -75,7 +75,7 @@ MonoBehaviour:
       \u0423\u0434\u0430\u0447\u0438."
     demo: 1
     estimatedSeconds: 1.3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 661c4fffda194c4481623dc4e14537b7, type: 3}
   - id: S1-01
     stage: "1. \u0421\u0442\u0430\u0440\u0442"
     condition: "\u0427\u0435\u0440\u0435\u0437 2 \u0441 \u043F\u043E\u0441\u043B\u0435
@@ -90,7 +90,7 @@ MonoBehaviour:
       \u043F\u043B\u0430\u0432\u043D\u043E."
     demo: 1
     estimatedSeconds: 6.1
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 4fafe2dc346149cfbe489c787e31f3bc, type: 3}
   - id: S1-02
     stage: "1. \u0421\u0442\u0430\u0440\u0442"
     condition: "\u0418\u0433\u0440\u043E\u043A \u043D\u0435 \u0432\u0437\u043B\u0435\u0442\u0430\u0435\u0442
@@ -101,7 +101,7 @@ MonoBehaviour:
       \u2014 \u043D\u0430\u0431\u043E\u0440 \u0432\u044B\u0441\u043E\u0442\u044B."
     demo: 1
     estimatedSeconds: 2.2
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 2f3ce9ca92b24b20a517fccf6ce019f5, type: 3}
   - id: S1-03
     stage: "1. \u0421\u0442\u0430\u0440\u0442"
     condition: "\u0418\u0433\u0440\u043E\u043A \u0432\u0438\u0441\u0438\u0442 \u043D\u0430
@@ -113,7 +113,7 @@ MonoBehaviour:
       \u2014 \u0442\u0443\u0434\u0430 \u0438 \u043F\u043E\u043B\u0435\u0442\u0438\u0442\u0435."
     demo: 1
     estimatedSeconds: 3.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 0205590eb0d54044a326f7334b49cffc, type: 3}
   - id: S1-04
     stage: "1. \u0421\u0442\u0430\u0440\u0442"
     condition: "\u0418\u0433\u0440\u043E\u043A \u043D\u0435 \u043F\u043E\u0432\u043E\u0440\u0430\u0447\u0438\u0432\u0430\u043B
@@ -125,7 +125,7 @@ MonoBehaviour:
       \u043D\u0430 \u043C\u0435\u0441\u0442\u0435."
     demo: 0
     estimatedSeconds: 3.5
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 8dfc466b3bcb43cab24c7ffb2f47fd7d, type: 3}
   - id: S1-05
     stage: "1. \u0421\u0442\u0430\u0440\u0442"
     condition: "\u0417\u0430\u0432\u0438\u0441\u0430\u043D\u0438\u0435 \u0441\u0442\u0430\u0431\u0438\u043B\u044C\u043D\u043E
@@ -136,7 +136,7 @@ MonoBehaviour:
       \u0425\u043E\u0440\u043E\u0448\u043E \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0442\u0441\u044F."
     demo: 0
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 8aef67187225496b81065e1bb4e7774f, type: 3}
   - id: S1-06
     stage: "1. \u0421\u0442\u0430\u0440\u0442"
     condition: "\u041F\u043E\u044F\u0432\u0438\u043B\u0441\u044F \u043C\u0430\u0440\u043A\u0435\u0440
@@ -148,7 +148,7 @@ MonoBehaviour:
       \u043A\u0443\u0440\u0441 \u043D\u0430 \u043D\u0435\u0433\u043E."
     demo: 1
     estimatedSeconds: 3.5
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 36a8dff561a842b5af1162d168432765, type: 3}
   - id: S1-07
     stage: "1. \u0421\u0442\u0430\u0440\u0442"
     condition: "\u0411\u044B\u0441\u0442\u0440\u043E\u0435 \u0441\u043D\u0438\u0436\u0435\u043D\u0438\u0435
@@ -160,7 +160,7 @@ MonoBehaviour:
       \u0433\u0430\u0437."
     demo: 1
     estimatedSeconds: 2.2
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: c8eb2b33314c40d388628118b6bee9da, type: 3}
   - id: S1-08
     stage: "1. \u0421\u0442\u0430\u0440\u0442"
     condition: "\u0418\u0433\u0440\u043E\u043A \u0443\u0448\u0451\u043B \u043E\u0442
@@ -171,7 +171,7 @@ MonoBehaviour:
       \u041C\u0430\u0440\u0441\u043E\u0445\u043E\u0434 \u043D\u0430 \u0432\u043E\u0441\u0442\u043E\u043A\u0435."
     demo: 0
     estimatedSeconds: 3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: c8fa6b5012a544458dfc9b87271abcd3, type: 3}
   - id: S2-01
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u0412\u0445\u043E\u0434 \u0432 \u0437\u043E\u043D\u0443 \u044D\u0442\u0430\u043F\u0430"
@@ -184,7 +184,7 @@ MonoBehaviour:
       \u0440\u0430\u0441\u0442\u0451\u0442."
     demo: 1
     estimatedSeconds: 3.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 93941dcb2e314f69813ca74c723afb45, type: 3}
   - id: S2-02
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u041F\u043E\u0441\u043B\u0435 \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u0439
@@ -196,7 +196,7 @@ MonoBehaviour:
       \u043A\u0430\u043D\u044C\u043E\u043D\u0443."
     demo: 1
     estimatedSeconds: 3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 9011ca4d32e04a109df0e1b875de4284, type: 3}
   - id: S2-03
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u041F\u0435\u0440\u0432\u044B\u0439 \u043F\u043E\u0440\u044B\u0432
@@ -207,7 +207,7 @@ MonoBehaviour:
       \u0414\u0435\u0440\u0436\u0438\u0442\u0435 \u043A\u0443\u0440\u0441."
     demo: 1
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 92b257fbf634480daf6117d1ae71f259, type: 3}
   - id: S2-04
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u0414\u043E \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0430
@@ -220,7 +220,7 @@ MonoBehaviour:
       \u043D\u0438\u043C."
     demo: 1
     estimatedSeconds: 3.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 33b7f593ba23411989ef8426050bc1b2, type: 3}
   - id: S2-05
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u041D\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u0435: \u0434\u0440\u043E\u043D
@@ -230,7 +230,7 @@ MonoBehaviour:
     text: "\u0427\u0443\u0442\u044C \u043B\u0435\u0432\u0435\u0435."
     demo: 1
     estimatedSeconds: 0.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 28f2f895e5164bbd8e34f804ab4bb612, type: 3}
   - id: S2-06
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u041D\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u0435: \u0434\u0440\u043E\u043D
@@ -240,7 +240,7 @@ MonoBehaviour:
     text: "\u0427\u0443\u0442\u044C \u043F\u0440\u0430\u0432\u0435\u0435."
     demo: 1
     estimatedSeconds: 0.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 348dcbfc66da43e398598c4621a13258, type: 3}
   - id: S2-07
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u041D\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u0435: \u0434\u0440\u043E\u043D
@@ -250,7 +250,7 @@ MonoBehaviour:
     text: "\u0427\u0443\u0442\u044C \u0432\u043F\u0435\u0440\u0451\u0434."
     demo: 1
     estimatedSeconds: 0.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 37cd7e3345934fec807ef7ea7f5be130, type: 3}
   - id: S2-08
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u041D\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u0435: \u0434\u0440\u043E\u043D
@@ -260,7 +260,7 @@ MonoBehaviour:
     text: "\u0427\u0443\u0442\u044C \u043D\u0430\u0437\u0430\u0434."
     demo: 1
     estimatedSeconds: 0.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 4faa154e223547cb89238eaf296c7592, type: 3}
   - id: S2-09
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u041D\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u0435: \u0434\u0440\u043E\u043D
@@ -270,7 +270,7 @@ MonoBehaviour:
     text: "\u041D\u0438\u0436\u0435."
     demo: 1
     estimatedSeconds: 0.4
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: e5b80ff8c3794774a361bbdd5b60be9c, type: 3}
   - id: S2-10
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u041D\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u0435: \u0434\u0440\u043E\u043D
@@ -280,7 +280,7 @@ MonoBehaviour:
     text: "\u0414\u0435\u0440\u0436\u0438\u0442\u0435\u2026 \u0414\u0435\u0440\u0436\u0438\u0442\u0435\u2026"
     demo: 1
     estimatedSeconds: 0.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 053d873e195b4295b0ba3ff5973cb714, type: 3}
   - id: S2-11
     stage: "2. \u041A \u043C\u0430\u0440\u0441\u043E\u0445\u043E\u0434\u0443"
     condition: "\u0414\u043E \u0431\u0443\u0440\u0438 \u043E\u0441\u0442\u0430\u043B\u0430\u0441\u044C
@@ -291,7 +291,7 @@ MonoBehaviour:
       \u041D\u0430\u0434\u043E \u0442\u043E\u0440\u043E\u043F\u0438\u0442\u044C\u0441\u044F."
     demo: 1
     estimatedSeconds: 2.2
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 4478f1122b3b43cb914c3af92b87f408, type: 3}
   - id: S3-01
     stage: "3. \u041F\u043E\u0434\u0431\u043E\u0440 \u0433\u0440\u0443\u0437\u0430"
     condition: "\u0417\u0430\u0445\u0432\u0430\u0442 \u0433\u0440\u0443\u0437\u0430"
@@ -303,7 +303,7 @@ MonoBehaviour:
       \u043A\u0438\u043B\u043E\u0433\u0440\u0430\u043C\u043C\u0430."
     demo: 1
     estimatedSeconds: 3.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: d4e1444783574becbcba16fd434551ac, type: 3}
   - id: S3-02
     stage: "3. \u041F\u043E\u0434\u0431\u043E\u0440 \u0433\u0440\u0443\u0437\u0430"
     condition: "\u0427\u0435\u0440\u0435\u0437 2 \u0441 \u043F\u043E\u0441\u043B\u0435
@@ -316,7 +316,7 @@ MonoBehaviour:
       \u0432\u044B\u0441\u043E\u0442\u0443 \u043F\u043B\u0430\u0432\u043D\u043E."
     demo: 1
     estimatedSeconds: 3.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 1a043c787f3a40c7a8d13a8c90cf45a9, type: 3}
   - id: S3-03
     stage: "3. \u041F\u043E\u0434\u0431\u043E\u0440 \u0433\u0440\u0443\u0437\u0430"
     condition: "\u041F\u043E\u0441\u043B\u0435 \u0440\u0435\u043F\u043B\u0438\u043A
@@ -327,7 +327,7 @@ MonoBehaviour:
       \u0443\u0445\u043E\u0434\u0438\u043C \u043A \u043A\u0430\u043D\u044C\u043E\u043D\u0443."
     demo: 1
     estimatedSeconds: 2.6
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 81ab188d88c1455293dd3ea3dfc9200a, type: 3}
   - id: S3-04
     stage: "3. \u041F\u043E\u0434\u0431\u043E\u0440 \u0433\u0440\u0443\u0437\u0430"
     condition: "\u0411\u0443\u0440\u044F \u043D\u0430\u043A\u0440\u044B\u043B\u0430,
@@ -340,7 +340,7 @@ MonoBehaviour:
       \u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044E."
     demo: 1
     estimatedSeconds: 4.3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 36e562db76d046b0be1d81090591ee4d, type: 3}
   - id: S3-05
     stage: "3. \u041F\u043E\u0434\u0431\u043E\u0440 \u0433\u0440\u0443\u0437\u0430"
     condition: "\u0421\u0438\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0440\u044B\u0432
@@ -351,7 +351,7 @@ MonoBehaviour:
       \u0441\u043F\u0440\u0430\u0432\u0430!"
     demo: 1
     estimatedSeconds: 1.3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 9bf845c55aad4873a01f0e5e5810cf4a, type: 3}
   - id: S3-06
     stage: "3. \u041F\u043E\u0434\u0431\u043E\u0440 \u0433\u0440\u0443\u0437\u0430"
     condition: "\u0421\u0438\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0440\u044B\u0432
@@ -362,7 +362,7 @@ MonoBehaviour:
       \u0441\u043B\u0435\u0432\u0430!"
     demo: 1
     estimatedSeconds: 1.3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 73e093741f9f4ca69270e3e8276759dd, type: 3}
   - id: S3-07
     stage: "3. \u041F\u043E\u0434\u0431\u043E\u0440 \u0433\u0440\u0443\u0437\u0430"
     condition: "\u0413\u0440\u0443\u0437 \u0440\u0430\u0441\u043A\u0430\u0447\u0438\u0432\u0430\u0435\u0442\u0441\u044F"
@@ -372,7 +372,7 @@ MonoBehaviour:
       \u041D\u0435 \u0434\u0451\u0440\u0433\u0430\u0439\u0442\u0435 \u0441\u0442\u0438\u043A\u0438."
     demo: 0
     estimatedSeconds: 2.2
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6a787409e90c4627afbfd95d96f1dec5, type: 3}
   - id: S3-08
     stage: "3. \u041F\u043E\u0434\u0431\u043E\u0440 \u0433\u0440\u0443\u0437\u0430"
     condition: "30 \u0441 \u0432 \u0431\u0443\u0440\u0435 \u0431\u0435\u0437 \u0434\u0440\u0443\u0433\u0438\u0445
@@ -383,7 +383,7 @@ MonoBehaviour:
       \u0441\u043E\u0432\u0441\u0435\u043C \u043D\u0435\u043C\u043D\u043E\u0433\u043E."
     demo: 0
     estimatedSeconds: 2.2
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 252942700973419895a87e18d7067409, type: 3}
   - id: S3-09
     stage: "3. \u041F\u043E\u0434\u0431\u043E\u0440 \u0433\u0440\u0443\u0437\u0430"
     condition: "\u0413\u0440\u0443\u0437 \u0441\u043E\u0440\u0432\u0430\u043B\u0441\u044F"
@@ -393,7 +393,7 @@ MonoBehaviour:
       \u0438 \u043F\u043E\u0434\u0431\u0435\u0440\u0438\u0442\u0435 \u0435\u0433\u043E."
     demo: 1
     estimatedSeconds: 2.6
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: b5d357bc419047949e17b4f2712db46a, type: 3}
   - id: S4-01
     stage: "4. \u041A\u0430\u043D\u044C\u043E\u043D"
     condition: "\u041F\u043E\u0434\u043B\u0451\u0442 \u043A \u043A\u0430\u043D\u044C\u043E\u043D\u0443"
@@ -402,7 +402,7 @@ MonoBehaviour:
     text: "\u041D\u044B\u0440\u044F\u0435\u043C \u0432 \u043A\u0430\u043D\u044C\u043E\u043D!"
     demo: 1
     estimatedSeconds: 1.3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: e9344c1e245542da8aaa9325a4b75155, type: 3}
   - id: S4-02
     stage: "4. \u041A\u0430\u043D\u044C\u043E\u043D"
     condition: "\u0412\u0445\u043E\u0434 \u0432 \u043A\u0430\u043D\u044C\u043E\u043D"
@@ -413,7 +413,7 @@ MonoBehaviour:
       \u0442\u044F\u0433\u0430 \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u0432\u044B\u0440\u043E\u0441\u043B\u0430."
     demo: 1
     estimatedSeconds: 3.5
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: fd0d3f2a518c43199c416da9b7edd0a6, type: 3}
   - id: S4-03
     stage: "4. \u041A\u0430\u043D\u044C\u043E\u043D"
     condition: "\u0427\u0435\u0440\u0435\u0437 10 \u0441 \u0432 \u043A\u0430\u043D\u044C\u043E\u043D\u0435"
@@ -425,7 +425,7 @@ MonoBehaviour:
       \u0437\u0430\u0440\u044F\u0434."
     demo: 1
     estimatedSeconds: 3.5
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 2cd9fa8f063f42d58410dd9ab54c3ca6, type: 3}
   - id: S4-04
     stage: "4. \u041A\u0430\u043D\u044C\u043E\u043D"
     condition: "\u0421\u0435\u0440\u0435\u0434\u0438\u043D\u0430 \u043A\u0430\u043D\u044C\u043E\u043D\u0430"
@@ -437,7 +437,7 @@ MonoBehaviour:
       \u0443\u043A\u0440\u044B\u0442\u0438\u0435."
     demo: 1
     estimatedSeconds: 3.5
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 33652c79b4004461a5980b78f61316cb, type: 3}
   - id: S4-05
     stage: "4. \u041A\u0430\u043D\u044C\u043E\u043D"
     condition: "\u041F\u043E\u0441\u043B\u0435 \u0440\u0435\u043F\u043B\u0438\u043A\u0438
@@ -449,7 +449,7 @@ MonoBehaviour:
       \u0443\u043A\u0440\u044B\u0442\u0438\u0435."
     demo: 1
     estimatedSeconds: 2.6
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: bbabecbc21bd4dd88d0d8a32ce0f6b03, type: 3}
   - id: S4-06
     stage: "4. \u041A\u0430\u043D\u044C\u043E\u043D"
     condition: "\u0414\u0440\u043E\u043D \u0431\u043B\u0438\u0437\u043A\u043E \u043A
@@ -459,7 +459,7 @@ MonoBehaviour:
     text: "\u0421\u0442\u0435\u043D\u0430 \u0431\u043B\u0438\u0437\u043A\u043E!"
     demo: 1
     estimatedSeconds: 0.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 81b56d9b1dad4be78932157b3db426f0, type: 3}
   - id: S4-07
     stage: "4. \u041A\u0430\u043D\u044C\u043E\u043D"
     condition: "\u0414\u0440\u043E\u043D \u0431\u043B\u0438\u0437\u043A\u043E \u043A
@@ -469,7 +469,7 @@ MonoBehaviour:
     text: "\u041E\u0441\u0442\u043E\u0440\u043E\u0436\u043D\u043E, \u0441\u043A\u0430\u043B\u0430!"
     demo: 0
     estimatedSeconds: 0.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: f3b45dc0a6f64b1ead3ba6fa1ff38751, type: 3}
   - id: S4-08
     stage: "4. \u041A\u0430\u043D\u044C\u043E\u043D"
     condition: "\u0418\u0433\u0440\u043E\u043A \u0437\u0430\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044F
@@ -480,7 +480,7 @@ MonoBehaviour:
       \u041D\u0435 \u0437\u0430\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0439\u0442\u0435\u0441\u044C."
     demo: 0
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 3fb11422ae734eac907c314cb5961deb, type: 3}
   - id: S5-01
     stage: "5. \u041F\u0435\u0449\u0435\u0440\u0430"
     condition: "\u0412\u0445\u043E\u0434 \u0432 \u043F\u0435\u0449\u0435\u0440\u0443"
@@ -490,7 +490,7 @@ MonoBehaviour:
       \u0412\u043A\u043B\u044E\u0447\u0430\u044E \u0444\u0430\u0440\u044B."
     demo: 1
     estimatedSeconds: 2.6
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: c6a2362bf416438ea8569e6d28c36f27, type: 3}
   - id: S5-02
     stage: "5. \u041F\u0435\u0449\u0435\u0440\u0430"
     condition: "\u0427\u0435\u0440\u0435\u0437 5 \u0441 \u0432 \u043F\u0435\u0449\u0435\u0440\u0435"
@@ -501,7 +501,7 @@ MonoBehaviour:
       \u043C\u0435\u0442\u0440\u043E\u0432\u2026"
     demo: 1
     estimatedSeconds: 2.6
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: ae0c7332e776440782f98117d7a7af16, type: 3}
   - id: S5-03
     stage: "5. \u041F\u0435\u0449\u0435\u0440\u0430"
     condition: "\u0422\u043E\u043D\u043D\u0435\u043B\u044C \u0441\u0443\u0436\u0430\u0435\u0442\u0441\u044F"
@@ -511,7 +511,7 @@ MonoBehaviour:
       \u0421\u043D\u0438\u0437\u044C\u0442\u0435 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C."
     demo: 1
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: c66a4430e1714a8ab5082ba48b5971e9, type: 3}
   - id: S5-04
     stage: "5. \u041F\u0435\u0449\u0435\u0440\u0430"
     condition: "\u0421\u0435\u0440\u0435\u0434\u0438\u043D\u0430 \u043F\u0435\u0449\u0435\u0440\u044B"
@@ -523,7 +523,7 @@ MonoBehaviour:
       \u0442\u043E\u043D\u043D\u0435\u043B\u044F."
     demo: 0
     estimatedSeconds: 3.5
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 7bf724520d4c4962a03bcadc4305a2f1, type: 3}
   - id: S5-05
     stage: "5. \u041F\u0435\u0449\u0435\u0440\u0430"
     condition: "\u041F\u0435\u0440\u0435\u0434 \u0440\u0430\u0437\u0432\u0438\u043B\u043A\u043E\u0439"
@@ -534,7 +534,7 @@ MonoBehaviour:
       \u043F\u0440\u0430\u0432\u044B\u0439 \u043F\u0440\u043E\u0445\u043E\u0434."
     demo: 0
     estimatedSeconds: 3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 72a5447c329249acac13a2913507ea6f, type: 3}
   - id: S5-06
     stage: "5. \u041F\u0435\u0449\u0435\u0440\u0430"
     condition: "\u0412\u0438\u0434\u0435\u043D \u0432\u044B\u0445\u043E\u0434"
@@ -544,7 +544,7 @@ MonoBehaviour:
       \u043F\u0440\u044F\u043C\u043E \u043F\u043E \u043A\u0443\u0440\u0441\u0443."
     demo: 1
     estimatedSeconds: 2.6
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 0c1cea50a5e5460bbc2ce4ef88414bb3, type: 3}
   - id: S6-01
     stage: "6. \u0424\u0438\u043D\u0438\u0448"
     condition: "\u0412\u044B\u0445\u043E\u0434 \u0438\u0437 \u043F\u0435\u0449\u0435\u0440\u044B"
@@ -554,7 +554,7 @@ MonoBehaviour:
       \u0411\u0443\u0440\u044F \u043F\u043E\u0437\u0430\u0434\u0438."
     demo: 1
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 82ea2c2695644c6daa74da681176b8d5, type: 3}
   - id: S6-02
     stage: "6. \u0424\u0438\u043D\u0438\u0448"
     condition: "\u041F\u043E\u0441\u043B\u0435 \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F
@@ -566,7 +566,7 @@ MonoBehaviour:
       \u043F\u0440\u044F\u043C\u043E \u043F\u043E \u043A\u0443\u0440\u0441\u0443."
     demo: 1
     estimatedSeconds: 3.5
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 5f3684035b4b482b8350e217c89fae4e, type: 3}
   - id: S6-03
     stage: "6. \u0424\u0438\u043D\u0438\u0448"
     condition: "\u0412\u044B\u0441\u043E\u0442\u0430 10 \u043C \u043D\u0430\u0434
@@ -577,7 +577,7 @@ MonoBehaviour:
       \u043C\u0435\u0442\u0440\u043E\u0432."
     demo: 1
     estimatedSeconds: 1.3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 459e6d05ce5b4a05b85c45f40a593cb0, type: 3}
   - id: S6-04
     stage: "6. \u0424\u0438\u043D\u0438\u0448"
     condition: "\u0412\u044B\u0441\u043E\u0442\u0430 5 \u043C"
@@ -586,7 +586,7 @@ MonoBehaviour:
     text: "\u041F\u044F\u0442\u044C."
     demo: 1
     estimatedSeconds: 0.4
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6cdad2fd01304542a60f3eae3bde78a4, type: 3}
   - id: S6-05
     stage: "6. \u0424\u0438\u043D\u0438\u0448"
     condition: "\u0412\u044B\u0441\u043E\u0442\u0430 2 \u043C"
@@ -595,7 +595,7 @@ MonoBehaviour:
     text: "\u0414\u0432\u0430."
     demo: 1
     estimatedSeconds: 0.4
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: be2b4c066a7a424882649ec1223032af, type: 3}
   - id: S6-06
     stage: "6. \u0424\u0438\u043D\u0438\u0448"
     condition: "\u041A\u0430\u0441\u0430\u043D\u0438\u0435"
@@ -604,7 +604,7 @@ MonoBehaviour:
     text: "\u041A\u0430\u0441\u0430\u043D\u0438\u0435."
     demo: 1
     estimatedSeconds: 0.4
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 55b0a049df3d45c0a34ffac8f23d9ef3, type: 3}
   - id: S6-07
     stage: "6. \u0424\u0438\u043D\u0438\u0448"
     condition: "\u041F\u043E\u0441\u043B\u0435 \u043A\u0430\u0441\u0430\u043D\u0438\u044F"
@@ -614,7 +614,7 @@ MonoBehaviour:
       \u0414\u0432\u0438\u0433\u0430\u0442\u0435\u043B\u0438 \u0432\u044B\u043A\u043B\u044E\u0447\u0435\u043D\u044B."
     demo: 1
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 212d9d94534c4ff28698a9f1a3655ad7, type: 3}
   - id: S6-08
     stage: "6. \u0424\u0438\u043D\u0438\u0448"
     condition: "\u041C\u0438\u0441\u0441\u0438\u044F \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430"
@@ -625,7 +625,7 @@ MonoBehaviour:
       \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440."
     demo: 1
     estimatedSeconds: 2.6
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 61aa6dff9cdd4968948d4a6c4332d698, type: 3}
   - id: S6-09
     stage: "6. \u0424\u0438\u043D\u0438\u0448"
     condition: "\u041D\u043E\u0432\u044B\u0439 \u0440\u0435\u043A\u043E\u0440\u0434
@@ -638,7 +638,7 @@ MonoBehaviour:
       \u0431\u0430\u0437\u044B."
     demo: 0
     estimatedSeconds: 3.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 65ae62f948bc4873a8f3b673d3c4db8f, type: 3}
   - id: EV-01
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u0417\u0430\u0440\u044F\u0434 30 %"
@@ -648,7 +648,7 @@ MonoBehaviour:
       \u043F\u0440\u043E\u0446\u0435\u043D\u0442\u043E\u0432."
     demo: 1
     estimatedSeconds: 1.3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 5907bab98e5e4cbd8dabeb826f2fc9c0, type: 3}
   - id: EV-02
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u0417\u0430\u0440\u044F\u0434 15 %"
@@ -659,7 +659,7 @@ MonoBehaviour:
       \u043A\u0440\u0430\u0442\u0447\u0430\u0439\u0448\u0438\u0439 \u043F\u0443\u0442\u044C."
     demo: 1
     estimatedSeconds: 2.6
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 2e1fa8e678ea4890948a697a97c273a9, type: 3}
   - id: EV-03
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u0417\u0430\u0440\u044F\u0434 5 %"
@@ -669,7 +669,7 @@ MonoBehaviour:
       \u041D\u0435\u043C\u0435\u0434\u043B\u0435\u043D\u043D\u043E \u043D\u0430 \u043F\u043E\u0441\u0430\u0434\u043A\u0443."
     demo: 1
     estimatedSeconds: 2.2
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 8182317e8a484d5e87e0c7b719c1a82b, type: 3}
   - id: EV-04
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u0423\u0434\u0430\u0440 \u0431\u0435\u0437 \u043F\u043E\u0432\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u0439"
@@ -679,7 +679,7 @@ MonoBehaviour:
       \u041F\u043E\u0432\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u0439 \u043D\u0435\u0442."
     demo: 0
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 79e12b8ecf1248178e1f5140b4c85a56, type: 3}
   - id: EV-05
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u041F\u043E\u0432\u0440\u0435\u0436\u0434\u0451\u043D \u0432\u0438\u043D\u0442"
@@ -689,7 +689,7 @@ MonoBehaviour:
       \u0422\u044F\u0433\u0430 \u0441\u043D\u0438\u0436\u0435\u043D\u0430."
     demo: 0
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 176495299ace47259722f14c2a36be84, type: 3}
   - id: EV-06
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u041A\u0440\u0443\u0448\u0435\u043D\u0438\u0435"
@@ -698,7 +698,7 @@ MonoBehaviour:
     text: "\u0410\u043F\u043F\u0430\u0440\u0430\u0442 \u043F\u043E\u0442\u0435\u0440\u044F\u043D."
     demo: 1
     estimatedSeconds: 0.9
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 5a71db17855e4062bb634ede2c77dfaf, type: 3}
   - id: EV-07
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u041F\u043E\u0441\u043B\u0435 \u043A\u0440\u0443\u0448\u0435\u043D\u0438\u044F,
@@ -712,7 +712,7 @@ MonoBehaviour:
       \u043F\u043E\u0445\u043E\u0436\u0438\u0445 \u0440\u0435\u043F\u043B\u0438\u043A"
     demo: 1
     estimatedSeconds: 4.8
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: d74cb414ee2e424b93dea84cffa570c5, type: 3}
   - id: EV-08
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u041F\u0435\u0440\u0435\u0437\u0430\u043F\u0443\u0441\u043A \u0441
@@ -724,7 +724,7 @@ MonoBehaviour:
       \u043C\u0430\u0440\u0448\u0440\u0443\u0442\u0430."
     demo: 1
     estimatedSeconds: 2.2
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: de8628a183a043b386bea3f283e3682a, type: 3}
   - id: EV-09
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u0412\u0440\u0435\u043C\u044F \u0432\u044B\u0448\u043B\u043E"
@@ -735,7 +735,7 @@ MonoBehaviour:
       \u0435\u0449\u0451 \u0440\u0430\u0437."
     demo: 1
     estimatedSeconds: 3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: fe67a72c3dd04233834a335e2ac429d6, type: 3}
   - id: EV-10
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u0421\u043B\u0438\u0448\u043A\u043E\u043C \u0431\u043E\u043B\u044C\u0448\u043E\u0439
@@ -746,7 +746,7 @@ MonoBehaviour:
       \u0412\u044B\u0440\u0430\u0432\u043D\u0438\u0432\u0430\u044E."
     demo: 0
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 0013084fc7eb4e939c928b0fc6fbdb05, type: 3}
   - id: EV-11
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u041F\u043E\u0442\u043E\u043B\u043E\u043A \u0432\u044B\u0441\u043E\u0442\u044B"
@@ -757,7 +757,7 @@ MonoBehaviour:
       \u0441\u0438\u043B\u044C\u043D\u044B\u0439 \u0432\u0435\u0442\u0435\u0440."
     demo: 0
     estimatedSeconds: 3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 10721383c98d4d9da7e1e7fac773f24b, type: 3}
   - id: EV-12
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u0418\u0433\u0440\u043E\u043A \u043B\u0435\u0442\u0438\u0442 \u043E\u0442
@@ -768,7 +768,7 @@ MonoBehaviour:
       \u043E\u0442 \u0446\u0435\u043B\u0438."
     demo: 0
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 3ce0acfdd24240d9a75f105e638c3b19, type: 3}
   - id: EV-13
     stage: "\u041B\u044E\u0431\u043E\u0439 \u044D\u0442\u0430\u043F"
     condition: "\u041C\u0438\u0441\u0441\u0438\u044F \u043F\u0440\u043E\u0432\u0430\u043B\u0435\u043D\u0430"
@@ -777,7 +777,7 @@ MonoBehaviour:
     text: "\u041C\u0438\u0441\u0441\u0438\u044F \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430."
     demo: 1
     estimatedSeconds: 1.3
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: b2041a9c91464f68be51f120995b0500, type: 3}
   - id: AR-01
     stage: "\u0410\u0440\u0435\u043D\u0430"
     condition: "\u0417\u0430 30 \u0441 \u0434\u043E \u043A\u043E\u043D\u0446\u0430
@@ -788,7 +788,7 @@ MonoBehaviour:
       \u0417\u0430\u0445\u043E\u0434\u0438\u0442\u0435 \u043D\u0430 \u043F\u043E\u0441\u0430\u0434\u043A\u0443."
     demo: 1
     estimatedSeconds: 2.6
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: aa239d3096dd46c0b4882c19e6c8b248, type: 3}
   - id: AR-02
     stage: "\u0410\u0440\u0435\u043D\u0430"
     condition: "\u042D\u043A\u0440\u0430\u043D \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u043E\u0432"
@@ -798,4 +798,4 @@ MonoBehaviour:
       \u044D\u043A\u0440\u0430\u043D\u0435."
     demo: 0
     estimatedSeconds: 1.7
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 363de0f3a21c42ba85db1ba47d7671e6, type: 3}

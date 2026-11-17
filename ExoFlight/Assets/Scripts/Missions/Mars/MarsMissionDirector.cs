@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ExoFlight.Missions.Mars
 {
-    public enum MarsMissionStage { Briefing, Outbound, Approach, Carrying, CanyonApproach, Canyon, Cave, CaveReturn, Landing, Completed, Failed }
+    public enum MarsMissionStage { Briefing, Outbound, Approach, Carrying, CanyonApproach, Canyon, Cave, CaveExit, Landing, Completed, Failed }
 
     /// <summary>Route progression is driven by the player's sensor and the actual cargo lifecycle.</summary>
     public sealed class MarsMissionDirector : MonoBehaviour
@@ -176,7 +176,7 @@ namespace ExoFlight.Missions.Mars
             if (Stage == MarsMissionStage.Canyon && stageTime >= 10f) voice.Say("S4-03");
             if (Stage == MarsMissionStage.Canyon && stageTime >= 20f) voice.Hint("S4-08", 35f);
             if (Stage == MarsMissionStage.Cave && stageTime >= 5f) voice.Say("S5-02");
-            if (Stage == MarsMissionStage.CaveReturn) voice.Say("S5-04");
+            if (Stage == MarsMissionStage.CaveExit) voice.Say("S5-04");
 
             if (Stage == MarsMissionStage.Landing)
             {
@@ -230,7 +230,7 @@ namespace ExoFlight.Missions.Mars
                 if (awayTime > 10f) voice.Hint("EV-12", 25f);
                 if (awayTime > 20f && Stage == MarsMissionStage.Outbound) voice.Hint("S1-08", 45f);
             }
-            if (Stage == MarsMissionStage.Canyon || Stage == MarsMissionStage.Cave || Stage == MarsMissionStage.CaveReturn)
+            if (Stage == MarsMissionStage.Canyon || Stage == MarsMissionStage.Cave || Stage == MarsMissionStage.CaveExit)
             {
                 foreach (var hit in Physics.RaycastAll(drone.Body.position, drone.transform.forward, 5f, ~0, QueryTriggerInteraction.Ignore))
                     if (hit.rigidbody != drone.Body && hit.rigidbody != cargoMission.cargo.Body)
@@ -247,7 +247,7 @@ namespace ExoFlight.Missions.Mars
 
         void UpdateWeather(float dt)
         {
-            bool shelter = Stage == MarsMissionStage.Cave || Stage == MarsMissionStage.CaveReturn;
+            bool shelter = Stage == MarsMissionStage.Cave || Stage == MarsMissionStage.CaveExit;
             bool canyon = Stage == MarsMissionStage.Canyon;
             float speed = shelter ? .3f : canyon ? 2f : stormActive ? 9f + 3f * Mathf.Sin(stormTime * .7f) : 1f;
             runtimeEnvironment.windVelocity = Vector3.Lerp(runtimeEnvironment.windVelocity, new Vector3(speed, 0f, -speed * .2f), 1f - Mathf.Exp(-dt));
@@ -260,9 +260,8 @@ namespace ExoFlight.Missions.Mars
         {
             if (display != null)
             {
-                display.routeTarget = NextTarget;
-                display.routeInstruction = Stage == MarsMissionStage.CaveReturn ? "Вернитесь через вход в пещеру"
-                    : Stage == MarsMissionStage.Cave ? "Следуйте по тоннелю к залу"
+                display.routeInstruction = Stage == MarsMissionStage.CaveExit ? "Продолжайте к выходу из пещеры"
+                    : Stage == MarsMissionStage.Cave ? "Следуйте по тоннелю"
                     : Stage == MarsMissionStage.Canyon || Stage == MarsMissionStage.CanyonApproach ? "Следуйте по каньону к пещере"
                     : Stage == MarsMissionStage.Landing ? "Следуйте к площадке доставки" : "Следуйте к каньону";
             }

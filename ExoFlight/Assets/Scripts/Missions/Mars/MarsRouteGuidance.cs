@@ -143,7 +143,7 @@ namespace ExoFlight.Missions.Mars
             if (direction.sqrMagnitude < .01f) direction = Vector3.forward;
             Vector3 up = Mathf.Abs(Vector3.Dot(direction.normalized, Vector3.up)) > .95f ? Vector3.forward : Vector3.up;
             marker.root.SetPositionAndRotation(point, Quaternion.LookRotation(direction.normalized, up));
-            float radius = mission.Stage == MarsMissionStage.Cave || mission.Stage == MarsMissionStage.CaveReturn ? 3.3f : 4f;
+            float radius = mission.Stage == MarsMissionStage.Cave || mission.Stage == MarsMissionStage.CaveExit ? 3.3f : 4f;
             if (marker.ring != null) marker.ring.gameObject.SetActive(false);
             if (marker.label != null) marker.label.gameObject.SetActive(false);
             if (marker.artwork == null || marker.accents == null) return;

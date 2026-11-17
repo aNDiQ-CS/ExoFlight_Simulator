@@ -8,7 +8,6 @@ namespace ExoFlight.Cargo.UI
     public sealed class CargoOnboardDisplay : MonoBehaviour
     {
         public CargoDeliveryMission mission;
-        public Transform routeTarget;
         public string routeInstruction;
         public Transform assembly;
         public Canvas displayCanvas;
@@ -23,6 +22,9 @@ namespace ExoFlight.Cargo.UI
         [SerializeField] bool taskEngaged;
         public bool TaskEngaged => taskEngaged;
         public bool Visible => assembly != null && assembly.gameObject.activeInHierarchy;
+        // Straight-line distance to the cargo touchdown mark, independent of story checkpoints.
+        public float DeliveryDistanceMeters => mission != null && mission.carrier != null && mission.deliveryZone != null
+            ? Vector3.Distance(mission.carrier.transform.position, mission.deliveryZone.transform.position) : 0f;
         Vector3 deployedPosition;
         float deployment;
 
@@ -116,8 +118,7 @@ namespace ExoFlight.Cargo.UI
             else if (landing) { metric.text = "03"; metricUnit.text = "ПОСАДКА"; progress = 1f; }
             else
             {
-                Vector3 delta = (routeTarget != null ? routeTarget.position : mission.deliveryZone.Volume.bounds.center) - mission.carrier.transform.position;
-                metric.text = Vector3.ProjectOnPlane(delta, Vector3.up).magnitude.ToString("F0");
+                metric.text = DeliveryDistanceMeters.ToString("F0");
                 metricUnit.text = "МЕТРОВ";
             }
             phaseNumber.text = $"0{step + 1} / 03";

@@ -19,16 +19,25 @@ namespace ExoFlight.EditorTools
         static int collisions;
         static MarsFlightContactProbe probe;
         static string peakTiltLocation;
+        static string reportPath;
+        static float originalVolume, peakDistanceError;
         public static bool Running { get; private set; }
         public static string Result { get; private set; } = "Not run";
         [MenuItem("Tools/ExoFlight/Test Motor Autopilot (Play Mode)")]
-        public static void Run()
+        public static void Run() => Begin("mars-autopilot-verification-");
+        [MenuItem("Tools/ExoFlight/Test Through Cave Mission (Play Mode)")]
+        public static void RunCaveExit() => Begin("mars-through-cave-flight-");
+        static void Begin(string prefix)
         {
             if (!Application.isPlaying || Running) throw new InvalidOperationException("Enter Play Mode first.");
             pilot = Object.FindFirstObjectByType<DroneMissionAutopilot>();
             if (pilot == null) throw new InvalidOperationException("Open the Mars presentation scene.");
             log.Clear(); lastStatus = null; peakSpeed = peakTilt = loadedThrottle = emptyThrottle = 0f;
             collisions = 0;
+            peakDistanceError = 0f;
+            originalVolume = AudioListener.volume;
+            AudioListener.volume = 0f;
+            reportPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/" + prefix + DateTime.Now.ToString("yyyy-MM-dd") + ".txt"));
             peakTiltLocation = "";
             probe = pilot.gameObject.AddComponent<MarsFlightContactProbe>();
             began = lastProgress = Time.time;
@@ -53,6 +62,17 @@ namespace ExoFlight.EditorTools
                 lastStatus = pilot.Status; lastProgress = Time.time;
                 log.Add($"{Time.time - began:F1}s | {pilot.Status} | gate {mission.NextZoneIndex}/9 | {drone.Body.position} | {drone.Body.linearVelocity.magnitude:F2} m/s");
             }
+            // Real AudioClips keep their real duration at accelerated simulation speed.
+            if (mission.voice.IsBusy) lastProgress = Time.time;
+            var display = mission.display;
+            if (mission.cargoMission.State == ExoFlight.Cargo.CargoMissionState.Transporting
+                && display.Visible && display.metricUnit.text == "МЕТРОВ" && !display.InZone(mission.cargoMission.deliveryZone)
+                && float.TryParse(display.metric.text, out float shown))
+            {
+                float expected = Vector3.Distance(drone.Body.position, mission.cargoMission.deliveryZone.transform.position);
+                peakDistanceError = Mathf.Max(peakDistanceError, Mathf.Abs(shown - expected));
+                if (peakDistanceError > 2f) { End("FAIL: UI distance is not to the delivery pad"); return; }
+            }
             if (drone.Body.isKinematic || drone.GetComponent<ExoFlight.Cargo.CargoMissionAssist>().enabled)
             { End("FAIL: physical control ownership"); return; }
             if (mission.MissionComplete && !mission.voice.IsBusy)
@@ -66,11 +86,14 @@ namespace ExoFlight.EditorTools
             Running = false;
             EditorApplication.update -= Watch;
             if (probe != null) { collisions = probe.impacts; Object.Destroy(probe); }
+            if (result == "PASS" && collisions > 0) result = "FAIL: route impacts";
             Time.timeScale = 1f;
+            AudioListener.volume = originalVolume;
             Result = result + $"\nMotor-input autopilot, no route teleports or servo forces. Simulation {Time.time - began:F1}s."
                 + $"\nPeak speed {peakSpeed:F2} m/s, peak tilt {peakTilt:F2} deg ({peakTiltLocation}). Peak throttle empty {emptyThrottle:F3}, loaded {loadedThrottle:F3}. Impacts above 0.7 m/s: {collisions}."
+                + $"\nMaximum displayed delivery-distance error: {peakDistanceError:F2} m (rounded UI, sampled between frames)."
                 + "\n" + string.Join("\n", log);
-            File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/mars-autopilot-verification-" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt")), Result);
+            File.WriteAllText(reportPath, Result);
             if (pilot != null) pilot.Stop(true);
             Debug.Log("[Mars autopilot test] " + result);
         }

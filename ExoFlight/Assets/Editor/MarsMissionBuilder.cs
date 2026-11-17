@@ -143,8 +143,8 @@ namespace ExoFlight.EditorTools
                 Zone(3, "S4 - shelter recommendation", mapRoute[61] + Vector3.up * 2f, new Vector3(22f, 24f, 12f), MarsMissionStage.Canyon, true, new[]{"S4-04", "S4-05"}, zonesParent, director),
                 Zone(4, "S5 - enter lava tube", mapRoute[65] + Vector3.up * 2f, new Vector3(23f, 24f, 16f), MarsMissionStage.Cave, true, new[]{"S5-01"}, zonesParent, director),
                 Zone(5, "S5 - narrow tunnel", mapRoute[68] + Vector3.up * 2f, new Vector3(24f, 23f, 18f), MarsMissionStage.Cave, true, new[]{"S5-03"}, zonesParent, director),
-                Zone(6, "S5 - chamber turnaround", mapRoute[73] + Vector3.up * 2f, new Vector3(30f, 22f, 18f), MarsMissionStage.CaveReturn, true, new string[0], zonesParent, director),
-                Zone(7, "S5 - light on return", mapRoute[66] + Vector3.up * 2f, new Vector3(24f, 22f, 16f), MarsMissionStage.CaveReturn, true, new[]{"S5-06"}, zonesParent, director),
+                Zone(6, "S5 - chamber turnaround", mapRoute[73] + Vector3.up * 2f, new Vector3(30f, 22f, 18f), MarsMissionStage.CaveExit, true, new string[0], zonesParent, director),
+                Zone(7, "S5 - light on return", mapRoute[66] + Vector3.up * 2f, new Vector3(24f, 22f, 16f), MarsMissionStage.CaveExit, true, new[]{"S5-06"}, zonesParent, director),
                 Zone(8, "S6 - exit to landing area", mapRoute[62] + Vector3.up * 2f, new Vector3(24f, 24f, 12f), MarsMissionStage.Landing, true, new[]{"S6-01", "S6-02"}, zonesParent, director)
             };
 
@@ -166,7 +166,7 @@ namespace ExoFlight.EditorTools
             director.navigationBeacon = MakeBeacon(root.transform);
 
             EditorSceneManager.MarkSceneDirty(scene);
-            MarsPresentationSetup.Install();
+            MarsCaveExitSetup.Install();
             EditorSceneManager.SaveScene(scene);
             AssetDatabase.SaveAssets();
             Selection.activeGameObject = root;

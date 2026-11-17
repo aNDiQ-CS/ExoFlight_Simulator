@@ -1,0 +1,37 @@
+PASS
+PASS The mission has its own terrain asset; the source Mars map is preserved.
+PASS Delivery lies beyond the new cave exit.
+PASS Drone landing remains separate from the rover touchdown position.
+PASS Forward cave route segment 22 does not return toward the entrance.
+PASS 2.5 m clearance on segment 22: 
+PASS Forward cave route segment 23 does not return toward the entrance.
+PASS 2.5 m clearance on segment 23: 
+PASS Forward cave route segment 24 does not return toward the entrance.
+PASS 2.5 m clearance on segment 24: 
+PASS Forward cave route segment 25 does not return toward the entrance.
+PASS 2.5 m clearance on segment 25: 
+PASS Forward cave route segment 26 does not return toward the entrance.
+PASS 2.5 m clearance on segment 26: 
+PASS Forward cave route segment 27 does not return toward the entrance.
+PASS 2.5 m clearance on segment 27: 
+PASS Forward cave route segment 28 does not return toward the entrance.
+PASS 2.5 m clearance on segment 28: 
+PASS Forward cave route segment 29 does not return toward the entrance.
+PASS 2.5 m clearance on segment 29: 
+PASS Forward cave route segment 30 does not return toward the entrance.
+PASS 2.5 m clearance on segment 30: 
+PASS Forward cave route segment 31 does not return toward the entrance.
+PASS 2.5 m clearance on segment 31: 
+PASS Story gate 1 is on the ordered forward route.
+PASS Story gate 2 is on the ordered forward route.
+PASS Story gate 3 is on the ordered forward route.
+PASS Story gate 4 is on the ordered forward route.
+PASS Story gate 5 is on the ordered forward route.
+PASS Story gate 6 is on the ordered forward route.
+PASS Story gate 7 is on the ordered forward route.
+PASS Story gate 8 is on the ordered forward route.
+PASS Distance is 50 m for a 30 m horizontal / 40 m vertical offset.
+PASS Moving a story checkpoint does not change delivery distance.
+PASS Distance directly above the pad includes altitude, rather than showing zero.
+PASS Touchdown reference lies on the actual deck collider.
+PASS Deck is set into a graded terrain apron.

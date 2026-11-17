@@ -148,7 +148,7 @@ namespace ExoFlight.Missions.Mars
                 var path = carrying ? loaded : outbound;
                 Target = path[Waypoint].position;
                 bool last = Waypoint == path.Length - 1;
-                bool cave = mission.Stage == MarsMissionStage.Cave || mission.Stage == MarsMissionStage.CaveReturn;
+                bool cave = mission.Stage == MarsMissionStage.Cave || mission.Stage == MarsMissionStage.CaveExit;
                 float speed = cave ? caveSpeed : cruiseSpeed;
                 float distance = Vector3.Distance(drone.Body.position, Target);
                 // Gates wait for preceding speech and actual trigger acceptance. Do not skip them.
@@ -164,7 +164,7 @@ namespace ExoFlight.Missions.Mars
                 Vector3 flat = Vector3.ProjectOnPlane(delta, Vector3.up);
                 bool vertical = flat.magnitude < 1.5f;
                 if (!vertical && !last) facing = flat.normalized;
-                // Slow before sharp bends; rotate at the cave turnaround while holding position.
+                // Slow before sharp bends to align with the next tunnel segment.
                 float yawError = Vector3.SignedAngle(Vector3.ProjectOnPlane(drone.Body.rotation * Vector3.forward,
                     Vector3.up), facing, Vector3.up);
                 speed *= Mathf.Lerp(.10f, 1f, Mathf.InverseLerp(85f, 15f, Mathf.Abs(yawError)));

@@ -1,0 +1,1784 @@
+[
+  {
+    "file": "17 33_ - 1-й дубль.flac",
+    "take": 1,
+    "duration": 4.916375,
+    "transcript": "Бортовой ИИ на связи. Бля, нет.",
+    "sha256": "8c74309c14505c1d0b7517a79d68d5d93c0945ec3382d31b6d5768cdf1e47375",
+    "selected_for": []
+  },
+  {
+    "file": "17 34_ - 2-й дубль.flac",
+    "take": 2,
+    "duration": 6.580375,
+    "transcript": "Пу-пу-пу. Бортовой ИИ на связи.",
+    "sha256": "1ef4bf17898d756fa5e1f68256a0f43c2a2b095a0dae2d1c1b279c3abfd5516f",
+    "selected_for": []
+  },
+  {
+    "file": "17 34_ - 3-й дубль.flac",
+    "take": 3,
+    "duration": 6.068375,
+    "transcript": "Ага. Бортовой ИИ на связи. Системы в норме, заряд 100%.",
+    "sha256": "883af93fa5e13163260a3d90a1aafa534fcbdd6b97e3c07a7e8c55ebf706f561",
+    "selected_for": []
+  },
+  {
+    "file": "17 34_ - 4-й дубль.flac",
+    "take": 4,
+    "duration": 5.3216875,
+    "transcript": "",
+    "sha256": "af3bcf7492e57d6cd87bc26f27e31325a133a179308657dfc35023726d96ece6",
+    "selected_for": []
+  },
+  {
+    "file": "17 35_ - 5-й дубль.flac",
+    "take": 5,
+    "duration": 6.6016875,
+    "transcript": "Давай. Бортовой ИИ на связи. Системы в норме. Заряд 100%.",
+    "sha256": "d3f39b046cc09e62278562d2bda791e0a4eb4c9adf96f2b896b14abeceaca468",
+    "selected_for": []
+  },
+  {
+    "file": "17 35_ - 6-й дубль.flac",
+    "take": 6,
+    "duration": 6.9216875,
+    "transcript": "Бортовой ИИ на связи. Системы в норме. Заряд 100%.",
+    "sha256": "9d911a6720481dcf3d5dc8a4f73602b929aea88561d8bc9f3a2ab913ad549bda",
+    "selected_for": [
+      "S0-01"
+    ]
+  },
+  {
+    "file": "17 35_ - 7-й дубль.flac",
+    "take": 7,
+    "duration": 2.783,
+    "transcript": "Если закружится голова,",
+    "sha256": "2bfb17da644b57f5f80423b47f89dabbf6f5fb0f7051a5e4663cfdb03b6cb5f2",
+    "selected_for": []
+  },
+  {
+    "file": "17 35_ - 8-й дубль.flac",
+    "take": 8,
+    "duration": 3.2096875,
+    "transcript": "Да. Если закружится голова,",
+    "sha256": "4daf14ee443d1779f10c169ef3d40e986bd9325b696cb91002951692051d9cde",
+    "selected_for": []
+  },
+  {
+    "file": "17 36_ - 9-й дубль.flac",
+    "take": 9,
+    "duration": 3.871,
+    "transcript": "Если закружится голова, скажите опера...",
+    "sha256": "dbe8be8e57acc77a1d204a3d45cd5035f715158dd5bd1d72eedfb7254f3f159a",
+    "selected_for": []
+  },
+  {
+    "file": "17 36_ - 10-й дубль.flac",
+    "take": 10,
+    "duration": 5.4496875,
+    "transcript": "Если закружится голова, скажите оператору, полет сразу остановят.",
+    "sha256": "a81ec34c9c9008e3da9a1170a2c67b8c2a9c8d0cd134e1868b7649a8bdc099a6",
+    "selected_for": []
+  },
+  {
+    "file": "17 36_ - 11-й дубль.flac",
+    "take": 11,
+    "duration": 5.748375,
+    "transcript": "Если закружится голова, скажите оператору. Полет сразу остановят.",
+    "sha256": "7373c41799036efc9d4c53645deb1005d4d285a8f34d1f4644ca106e61cf020a",
+    "selected_for": [
+      "S0-02"
+    ]
+  },
+  {
+    "file": "17 36_ - 12-й дубль.flac",
+    "take": 12,
+    "duration": 5.1936875,
+    "transcript": "Взлет через три, два, а, пауза.",
+    "sha256": "8e2e8a4b2ff7381748b8eb42d5f803be86ece54e0b049bb90a5905e293d92d91",
+    "selected_for": []
+  },
+  {
+    "file": "17 37_ - 13-й дубль.flac",
+    "take": 13,
+    "duration": 4.6816875,
+    "transcript": "Взлет через 3, 2, 1.",
+    "sha256": "1c251b86795dd8e65e304507db269b9e855617850587f1ecf87e80ab99d755bb",
+    "selected_for": []
+  },
+  {
+    "file": "17 37_ - 14-й дубль.flac",
+    "take": 14,
+    "duration": 2.399,
+    "transcript": "Взлет через 3.",
+    "sha256": "1db30d1fb547bf492134a702396e03b78f4c00c5f88ff52e48f028b5b3f63bc1",
+    "selected_for": []
+  },
+  {
+    "file": "17 37_ - 15-й дубль.flac",
+    "take": 15,
+    "duration": 6.3456875,
+    "transcript": "Взлет через 3, 2, 1.",
+    "sha256": "27b8b1351695e54e1d8d3ec33a66beb1d0861ab136278c1e0f94fad69811af9d",
+    "selected_for": []
+  },
+  {
+    "file": "17 37_ - 16-й дубль.flac",
+    "take": 16,
+    "duration": 5.748375,
+    "transcript": "Взлет через 3, 2, 1.",
+    "sha256": "6a698be67dd705d848c69ba5ef88bf3143ac12f4c06c1d94284e9b7e684c8da1",
+    "selected_for": []
+  },
+  {
+    "file": "17 37_ - 17-й дубль.flac",
+    "take": 17,
+    "duration": 5.791,
+    "transcript": "Взлет через 3, 2, 1.",
+    "sha256": "1bc404a3107aa238c44f26a9ed298b8e33f3aaf0ca1a9ebfc9ba578db2923eae",
+    "selected_for": [
+      "S0-04"
+    ]
+  },
+  {
+    "file": "17 38_ - 18-й дубль.flac",
+    "take": 18,
+    "duration": 7.0496875,
+    "transcript": "гравитация здесь 38 процентов земной но воздух почти не держит блять",
+    "sha256": "827824fd96cd48d4c70d50e9df4a990df8d04c6d660417dfc4c6924c67b16b29",
+    "selected_for": []
+  },
+  {
+    "file": "17 38_ - 19-й дубль.flac",
+    "take": 19,
+    "duration": 8.436375,
+    "transcript": "Гравитация здесь 38% земной, но воздух почти не держит. Газ добавляйте плавно.",
+    "sha256": "e4bac0dd26190cdc22beed2d4b9e79ec1b7b90bb081e41f175fec26de6dd977c",
+    "selected_for": [
+      "S1-01"
+    ]
+  },
+  {
+    "file": "17 38_ - 20-й дубль.flac",
+    "take": 20,
+    "duration": 3.743,
+    "transcript": "Газ добавляйте плавно.",
+    "sha256": "4e47772ab269e33e387d14a3650d71eeb8beda4c1740ea3c2750406e05c7fcff",
+    "selected_for": []
+  },
+  {
+    "file": "17 39_ - 21-й дубль.flac",
+    "take": 21,
+    "duration": 4.468375,
+    "transcript": "Левый стик вверх, набор высоты.",
+    "sha256": "953fc5bfb2aef2b253d7ce4e9a587f21b36573343008bb4fe408153d4d2cd5c0",
+    "selected_for": [
+      "S1-02"
+    ]
+  },
+  {
+    "file": "17 39_ - 22-й дубль.flac",
+    "take": 22,
+    "duration": 7.199,
+    "transcript": "Правый стик наклоняет дрон. Куда наклоните, туда и полетите.",
+    "sha256": "b2699c988d9738654d8b81f0ec8905b12a1ca9c8b247e273cdf372fb6c7059ea",
+    "selected_for": [
+      "S1-03"
+    ]
+  },
+  {
+    "file": "17 40_ - 23-й дубль.flac",
+    "take": 23,
+    "duration": 4.4256875,
+    "transcript": "Левый стик влево и вправо, разворот на месте.",
+    "sha256": "26e61dc65841d62cbcf9fcb31985781a27a3c9b22d6665dc4c688c58f25005f5",
+    "selected_for": [
+      "S1-04"
+    ]
+  },
+  {
+    "file": "17 40_ - 24-й дубль.flac",
+    "take": 24,
+    "duration": 4.8736875,
+    "transcript": "Зависание стабильное. Хорошо получается.",
+    "sha256": "dec2521bb9e766983e7056d26583ac316b865e1d6387a6adf893247bc5c478e8",
+    "selected_for": []
+  },
+  {
+    "file": "17 40_ - 25-й дубль.flac",
+    "take": 25,
+    "duration": 4.191,
+    "transcript": "Зависание стабильное, хорошо получается.",
+    "sha256": "8aa3b07a73348ccccd2ec6b3d032071de2ecc2df788de294774769b8260187f7",
+    "selected_for": []
+  },
+  {
+    "file": "17 40_ - 26-й дубль.flac",
+    "take": 26,
+    "duration": 3.679,
+    "transcript": "Зависание стабильное. Хорошо получается.",
+    "sha256": "4477787aa9a9545921dc7b5c186bc526d886f738f7efa751bfcde6359b5a8273",
+    "selected_for": []
+  },
+  {
+    "file": "17 40_ - 27-й дубль.flac",
+    "take": 27,
+    "duration": 4.319,
+    "transcript": "Зависание стабильное, хорошо получается.",
+    "sha256": "90cd08096798f29ae8dcecd8a0d4a4a97c8d38de60e2597c13936c5c43cfca49",
+    "selected_for": [
+      "S1-05"
+    ]
+  },
+  {
+    "file": "17 41_ - 28-й дубль.flac",
+    "take": 28,
+    "duration": 5.023,
+    "transcript": "Снижайтесь слишком быстро. Добавьте газ.",
+    "sha256": "091d18804d93be98bef3ef7c1479227781b997ee1c160027b82557b106e93ee2",
+    "selected_for": []
+  },
+  {
+    "file": "17 41_ - 29-й дубль.flac",
+    "take": 29,
+    "duration": 5.108375,
+    "transcript": "Снижайтесь слишком быстро. Добавьте газ.",
+    "sha256": "ff30d48895f0b59b6355d4e48406214a024984dd786457a769f4ba8385059b62",
+    "selected_for": []
+  },
+  {
+    "file": "17 41_ - 30-й дубль.flac",
+    "take": 30,
+    "duration": 4.468375,
+    "transcript": "Снижаетесь слишком быстро. Добавьте газ.",
+    "sha256": "f06b1b919741fb0da968213b12f4d35ac2150954763dea714b95a4b22a3ca215",
+    "selected_for": [
+      "S1-07"
+    ]
+  },
+  {
+    "file": "17 41_ - 31-й дубль.flac",
+    "take": 31,
+    "duration": 1.631,
+    "transcript": "Как?",
+    "sha256": "b799a3cea40994f460a5817f7e86fc7ce8f2fe05d6a6dbd9b6e7c09d9fe0136e",
+    "selected_for": []
+  },
+  {
+    "file": "17 42_ - 32-й дубль.flac",
+    "take": 32,
+    "duration": 3.188375,
+    "transcript": "Вы уходите в сторону.",
+    "sha256": "e093a3b69989fa7151bf16ed1d758e959b96acc8b5428309aaee72f6c8223757",
+    "selected_for": []
+  },
+  {
+    "file": "17 42_ - 33-й дубль.flac",
+    "take": 33,
+    "duration": 1.716375,
+    "transcript": "Вы уходите в сторону.",
+    "sha256": "e435cab7c65994fad5d3a9b3b1da6f6754d0b9c627c43052c39d4b52a0d108cb",
+    "selected_for": []
+  },
+  {
+    "file": "17 42_ - 34-й дубль.flac",
+    "take": 34,
+    "duration": 9.8656875,
+    "transcript": "Вы уходите в сторону. Марсоход на востоке.",
+    "sha256": "c87c3bbd653617d8a14709f480071c409597a7ac619c484e5863723241133332",
+    "selected_for": [
+      "S1-08"
+    ]
+  },
+  {
+    "file": "17 42_ - 35-й дубль.flac",
+    "take": 35,
+    "duration": 6.431,
+    "transcript": "Фиксирую фронт пылевой бури на северо-западе. Скорость ветра растет.",
+    "sha256": "b37794d34c67ad680d649f5c35c4c2e05ebda53f5b33e7aa547aecc0416c9953",
+    "selected_for": []
+  },
+  {
+    "file": "17 42_ - 36-й дубль.flac",
+    "take": 36,
+    "duration": 5.8976875,
+    "transcript": "Фиксирую фронт пылевой бури на северо-западе. Скорость ветра растет.",
+    "sha256": "608b533e5f5bb95e912458e9f50a3925df066b8f9ad6a4d19d3e3b1c6feef874",
+    "selected_for": [
+      "S2-01"
+    ]
+  },
+  {
+    "file": "17 43_ - 37-й дубль.flac",
+    "take": 37,
+    "duration": 3.828375,
+    "transcript": "Боковой порыв. Держите курс.",
+    "sha256": "a5544539e461de257ce1ba8bcc6c25e3a5543d57900c453f51e63bc76b6a8f12",
+    "selected_for": [
+      "S2-03"
+    ]
+  },
+  {
+    "file": "17 43_ - 38-й дубль.flac",
+    "take": 38,
+    "duration": 3.8496875,
+    "transcript": "Марсоход в 50 метрах.",
+    "sha256": "58dec4eef6ffc220c93f211d02aa8da248ced98b57ea4cecf6f92b3e4d7a8fb0",
+    "selected_for": []
+  },
+  {
+    "file": "17 43_ - 39-й дубль.flac",
+    "take": 39,
+    "duration": 5.6416875,
+    "transcript": "Марсоход в 50 метрах. Снижайтесь и зависните над ним.",
+    "sha256": "55674dd829786cdb7a505626db081c5cb5a0d34828e4a06c45e4dca5239bb775",
+    "selected_for": []
+  },
+  {
+    "file": "17 43_ - 40-й дубль.flac",
+    "take": 40,
+    "duration": 4.191,
+    "transcript": "Марсоход в 50 метрах. В 50.",
+    "sha256": "3807f715655c37c52587c908009313a4bf205fb976494f401a3382dc4a728c8d",
+    "selected_for": []
+  },
+  {
+    "file": "17 44_ - 41-й дубль.flac",
+    "take": 41,
+    "duration": 0.927,
+    "transcript": "Редуцируем.",
+    "sha256": "8c20ca7100e91cfbae348cd9f9ddb28987325cdf51e5f05a94805d069250b14a",
+    "selected_for": []
+  },
+  {
+    "file": "17 44_ - 42-й дубль.flac",
+    "take": 42,
+    "duration": 4.852375,
+    "transcript": "Марсоход в 50 метрах. Снижайтесь и зависните над ним.",
+    "sha256": "0a40650999fae7dc6353e6afd99469751c8e14e01011a5642b0b25b6e2bbde98",
+    "selected_for": []
+  },
+  {
+    "file": "17 44_ - 43-й дубль.flac",
+    "take": 43,
+    "duration": 5.983,
+    "transcript": "Марсоход в 50 метрах. Снижайтесь и зависните над ним.",
+    "sha256": "c186357ed9fb8c5e0e966feadff299e5fc76643d36ad4aeeca587c08f300ed28",
+    "selected_for": []
+  },
+  {
+    "file": "17 44_ - 44-й дубль.flac",
+    "take": 44,
+    "duration": 5.4496875,
+    "transcript": "Марсоход в 50 метрах. Снижайтесь и зависните над ним.",
+    "sha256": "3787408c8a3ca2cd8540fa84ad9b83987d9e94c89bc6ceb61eea1c5c00af9605",
+    "selected_for": []
+  },
+  {
+    "file": "17 44_ - 45-й дубль.flac",
+    "take": 45,
+    "duration": 6.0896875,
+    "transcript": "Марсоход в 50 метрах. Снижайтесь и зависните над ним.",
+    "sha256": "ae3c1b9e04380e0155835a8625b1e74942c6135b7af32dca11f4f677a8214d28",
+    "selected_for": [
+      "S2-04"
+    ]
+  },
+  {
+    "file": "17 45_ - 46-й дубль.flac",
+    "take": 46,
+    "duration": 2.868375,
+    "transcript": "Чуть левее.",
+    "sha256": "9c26d9972290204ed6b04de69d811d2f4ec50b10c8cb276255750f5647ebdad4",
+    "selected_for": []
+  },
+  {
+    "file": "17 45_ - 47-й дубль.flac",
+    "take": 47,
+    "duration": 2.356375,
+    "transcript": "Чуть левее.",
+    "sha256": "cb5e4c82b6c89f938d09ae473933d0d0bc87f6a53c9103c775545ea53e8b45e5",
+    "selected_for": [
+      "S2-05"
+    ]
+  },
+  {
+    "file": "17 45_ - 48-й дубль.flac",
+    "take": 48,
+    "duration": 6.836375,
+    "transcript": "Чуть правее. Чуть правее.",
+    "sha256": "5a9902e3b5cad1aaeb90d6d925a8732837feaf1aea6ef0a1143f14789f7f835d",
+    "selected_for": [
+      "S2-06"
+    ]
+  },
+  {
+    "file": "17 46_ - 49-й дубль.flac",
+    "take": 49,
+    "duration": 6.879,
+    "transcript": "Чуть вперед. Чуть вперед.",
+    "sha256": "1b8e2822b36bf05d1fb1ff7f7e1aff167065316e3ad9e0b379f4c142b9ca1e81",
+    "selected_for": [
+      "S2-07"
+    ]
+  },
+  {
+    "file": "17 46_ - 50-й дубль.flac",
+    "take": 50,
+    "duration": 5.812375,
+    "transcript": "Чуть назад. Чуть назад.",
+    "sha256": "11b6ed5ff074474163eea41a301c23039a3b5dd25bbd01ad5bc46172d627fe79",
+    "selected_for": [
+      "S2-08"
+    ]
+  },
+  {
+    "file": "17 46_ - 51-й дубль.flac",
+    "take": 51,
+    "duration": 4.575,
+    "transcript": "Ниже. Ниже.",
+    "sha256": "2211991f1d257b16c77a808392e9d4e051644185b80df3c00013b0578f43762d",
+    "selected_for": [
+      "S2-09"
+    ]
+  },
+  {
+    "file": "17 47_ - 52-й дубль.flac",
+    "take": 52,
+    "duration": 4.148375,
+    "transcript": "Держите. Держите.",
+    "sha256": "8228bec515ee6278d4e91a1870223938229701ccce5581891de758a7fa3f3049",
+    "selected_for": []
+  },
+  {
+    "file": "17 47_ - 53-й дубль.flac",
+    "take": 53,
+    "duration": 3.679,
+    "transcript": "Держите. Держите.",
+    "sha256": "8c1af341cf591e02e0b087e7945ae1770bbe1c30f292143b8eb75d9134e3636c",
+    "selected_for": [
+      "S2-10"
+    ]
+  },
+  {
+    "file": "17 47_ - 54-й дубль.flac",
+    "take": 54,
+    "duration": 6.516375,
+    "transcript": "Захват подтверждаю. Масса плюс 9,6 килограмма.",
+    "sha256": "d27f85f62981e4c243bdc3fa9c18d9f1f1987dec6465a6eec79e472800013fd5",
+    "selected_for": []
+  },
+  {
+    "file": "17 47_ - 55-й дубль.flac",
+    "take": 55,
+    "duration": 6.068375,
+    "transcript": "Захват подтверждаю. Масса плюс 10,6 килограмм.",
+    "sha256": "b072c787ee01f2c720fc139269645499ada7daf784e798f4ffd6abd202ae0153",
+    "selected_for": []
+  },
+  {
+    "file": "17 48_ - 56-й дубль.flac",
+    "take": 56,
+    "duration": 6.175,
+    "transcript": "Захват подтверждаю. Масса плюс 10,6 килограмма.",
+    "sha256": "d65be9aa2c5f9a120325112bceb8bf08ad3e7cf204c2df3f5338101b718c3f46",
+    "selected_for": []
+  },
+  {
+    "file": "17 48_ - 57-й дубль.flac",
+    "take": 57,
+    "duration": 6.4736875,
+    "transcript": "Захват подтверждаю. Масса плюс 10,6 килограмма.",
+    "sha256": "b9953f90dd9a7ee46fb3c34ee6ae7e73a0813361654837d93296398388c9d7d9",
+    "selected_for": [
+      "S3-01"
+    ]
+  },
+  {
+    "file": "17 48_ - 58-й дубль.flac",
+    "take": 58,
+    "duration": 3.1456875,
+    "transcript": "Расход энергии вырос в полт...",
+    "sha256": "1b1b1e73c0f305802e73ce35eef23703042d320ad9f773f3c76599266b059737",
+    "selected_for": []
+  },
+  {
+    "file": "17 48_ - 59-й дубль.flac",
+    "take": 59,
+    "duration": 5.407,
+    "transcript": "Расход энергии вырос в полтора раза. Набирайте высоту плавно.",
+    "sha256": "76c5a8869711338def8c9de0222c1a3fbb4329d8ca0189ac7d90c877269f2f2f",
+    "selected_for": []
+  },
+  {
+    "file": "17 48_ - 60-й дубль.flac",
+    "take": 60,
+    "duration": 5.3856875,
+    "transcript": "Расход энергии вырос в полтора раза. Набирайте высоту плавно.",
+    "sha256": "8d8f46f15830a5b4b0db24292043aa53427f3d13bc84f725a5a7fb2ee8cf0159",
+    "selected_for": [
+      "S3-02"
+    ]
+  },
+  {
+    "file": "17 49_ - 61-й дубль.flac",
+    "take": 61,
+    "duration": 5.535,
+    "transcript": "Видимость падает. Маяки базы не видно. Перехожу на инерциальн...",
+    "sha256": "3dbd0143f09ae30e585534150dcc7da8778b0d6229682c85b3f6179495a061d2",
+    "selected_for": []
+  },
+  {
+    "file": "17 49_ - 62-й дубль.flac",
+    "take": 62,
+    "duration": 1.0336875,
+    "transcript": "Вот тут ровно.",
+    "sha256": "8c740a2e7dfe06e8fb64a28023163a3c139d4a330f7eb6541e4380519852e965",
+    "selected_for": []
+  },
+  {
+    "file": "17 49_ - 63-й дубль.flac",
+    "take": 63,
+    "duration": 13.023,
+    "transcript": "Видимость падает. Маяки базы не видно. Перехожу на инерциальную навигацию. Видимость падает. Маяки базы не видно. Перехожу на инерциальную...",
+    "sha256": "3614240455bc098b4c1be73b91635d66c9b7c61b12922c9f199c63a7bcc0f44b",
+    "selected_for": []
+  },
+  {
+    "file": "17 49_ - 64-й дубль.flac",
+    "take": 64,
+    "duration": 5.300375,
+    "transcript": "Видимость падает, маяки базы не видно, перехожу на инерциальную наив... Блять!",
+    "sha256": "ba577d37f30b2d0f2a842743eea8e189005e7d938f1c4df1104600db7245f035",
+    "selected_for": []
+  },
+  {
+    "file": "17 50_ - 65-й дубль.flac",
+    "take": 65,
+    "duration": 3.999,
+    "transcript": "Видимость падает. Маяки базы не видно.",
+    "sha256": "910472efd0cc70d97353285c61e44d7c99301357e874564dc22e5fff031be3ed",
+    "selected_for": []
+  },
+  {
+    "file": "17 50_ - 66-й дубль.flac",
+    "take": 66,
+    "duration": 3.743,
+    "transcript": "Видимость падает. Маяки ба...",
+    "sha256": "41112a9838a76bf3a2496814247ca43d2ccc11e7f29213d0ceb09a38bc6dc90c",
+    "selected_for": []
+  },
+  {
+    "file": "17 50_ - 67-й дубль.flac",
+    "take": 67,
+    "duration": 5.5776875,
+    "transcript": "Видимость падает. Маяки базы не видно, перехожу на инерциальную навигацию.",
+    "sha256": "dcf8042bd61ad748be732915f5f64a4b15a96896e4e274b8bbd7f444e70a9f1b",
+    "selected_for": [
+      "S3-04"
+    ]
+  },
+  {
+    "file": "17 50_ - 68-й дубль.flac",
+    "take": 68,
+    "duration": 7.199,
+    "transcript": "Сильный порыв справа. Сильный порыв справа.",
+    "sha256": "48a92a88e85726dbcd2c60fc9ee30212501421d163c12e49618ee86faf2e00ad",
+    "selected_for": [
+      "S3-05"
+    ]
+  },
+  {
+    "file": "17 51_ - 69-й дубль.flac",
+    "take": 69,
+    "duration": 5.087,
+    "transcript": "Сильный порыв слева. Сильный порыв слева.",
+    "sha256": "fe054b0f84682d509daf892a9b074ec431ab2d2a9380820350613a59ffcb8bfa",
+    "selected_for": [
+      "S3-06"
+    ]
+  },
+  {
+    "file": "17 51_ - 70-й дубль.flac",
+    "take": 70,
+    "duration": 4.4896875,
+    "transcript": "Груз раскачивается. Не дёргайте стики.",
+    "sha256": "47a3f187d22f150d18821c557f6ad3b8010dab366d2d7d6a927934bc0c203408",
+    "selected_for": []
+  },
+  {
+    "file": "17 51_ - 71-й дубль.flac",
+    "take": 71,
+    "duration": 3.764375,
+    "transcript": "Груз раскачивается. Не дергайте стики.",
+    "sha256": "b6bff5337c2ad651b7fd0f6b2c51ab29674f60a379090a3ef0160226efb2fcc5",
+    "selected_for": [
+      "S3-07"
+    ]
+  },
+  {
+    "file": "17 52_ - 72-й дубль.flac",
+    "take": 72,
+    "duration": 5.556375,
+    "transcript": "Груз потерян. Вернитесь и подберите его.",
+    "sha256": "8a61722a8db4f8d9d2ffdea960cf16044d6e73f7adf1dc9db8c911cd4be671da",
+    "selected_for": []
+  },
+  {
+    "file": "17 52_ - 73-й дубль.flac",
+    "take": 73,
+    "duration": 3.8496875,
+    "transcript": "Груз потерян. Вернитесь и подберите его.",
+    "sha256": "c0dcd722f906329d4ef22365a1f74094c1323a522cccfb072f8586df1f358de0",
+    "selected_for": []
+  },
+  {
+    "file": "17 52_ - 74-й дубль.flac",
+    "take": 74,
+    "duration": 4.916375,
+    "transcript": "Груз потерян. Вернитесь и подберите его.",
+    "sha256": "749012642af77dafe311a4ba3436d6bccb54764f8370bf36f522675bdb3f25ec",
+    "selected_for": []
+  },
+  {
+    "file": "17 52_ - 75-й дубль.flac",
+    "take": 75,
+    "duration": 4.127,
+    "transcript": "Груз потерян. Вернитесь и подберите его.",
+    "sha256": "f544ef6a75a9a8761d29a3106020ce936f21e10d92743230a12a6e243943ed10",
+    "selected_for": [
+      "S3-09"
+    ]
+  },
+  {
+    "file": "17 53_ - 76-й дубль.flac",
+    "take": 76,
+    "duration": 5.8336875,
+    "transcript": "Ветер ослаб. Воздух здесь плотнее. Тяга немного выросла.",
+    "sha256": "c7a5f24de263310f9e10d919cbfcba69527af018eba2b590ad6de7bc71cebca4",
+    "selected_for": []
+  },
+  {
+    "file": "17 53_ - 77-й дубль.flac",
+    "take": 77,
+    "duration": 5.471,
+    "transcript": "Ветер ослаб. Воздух здесь плотнее, тяга немного выросла.",
+    "sha256": "d520b4de1a37d34e89e99cf464f1476a95414131582ac27926be74736ae850c8",
+    "selected_for": [
+      "S4-02"
+    ]
+  },
+  {
+    "file": "17 53_ - 78-й дубль.flac",
+    "take": 78,
+    "duration": 5.300375,
+    "transcript": "За бортом минус 80. Подогрев батареи забирает заряд.",
+    "sha256": "e79b3146df6add89c926eabdcfb0259f8d680dedcf49d1ea5bfcb729fdb581b4",
+    "selected_for": []
+  },
+  {
+    "file": "17 53_ - 79-й дубль.flac",
+    "take": 79,
+    "duration": 2.591,
+    "transcript": "За бортом плюс в... Ой, бля.",
+    "sha256": "a558f8e4110ce645d17eaaae94a06d17f0089c68a4e4f6a87fa543e9160771a1",
+    "selected_for": []
+  },
+  {
+    "file": "17 53_ - 80-й дубль.flac",
+    "take": 80,
+    "duration": 5.5136875,
+    "transcript": "Да. За бортом минус 80. Подогрев батареи забирает заряд.",
+    "sha256": "513de222ed4407c565b7900cd668f44ba4b44b4730ae1adde2557cc0387171c6",
+    "selected_for": []
+  },
+  {
+    "file": "17 54_ - 81-й дубль.flac",
+    "take": 81,
+    "duration": 5.876375,
+    "transcript": "За бортом минус 80. Подогрев батареи забирает заряд.",
+    "sha256": "969f89830452239686181cb4d62a67cf9a35946957d1e3796dd5c4fe42dbe26b",
+    "selected_for": [
+      "S4-03"
+    ]
+  },
+  {
+    "file": "17 54_ - 82-й дубль.flac",
+    "take": 82,
+    "duration": 5.5776875,
+    "transcript": "Радиационный фон растет. Вспышка на солнце. Рекомендую укрытие.",
+    "sha256": "f90660ba95f5eeb6745307a2d8ea69306f3310f4a537d1350bf39b707cc6704a",
+    "selected_for": []
+  },
+  {
+    "file": "17 54_ - 83-й дубль.flac",
+    "take": 83,
+    "duration": 5.8336875,
+    "transcript": "Радиационный фон растет. Вспышка на солнце. Рекомендую укрытие.",
+    "sha256": "9fd8b43401d2087bc58a056f056661eeeec86a429295dcc9dba91501f1ca52b2",
+    "selected_for": []
+  },
+  {
+    "file": "17 54_ - 84-й дубль.flac",
+    "take": 84,
+    "duration": 5.620375,
+    "transcript": "Радиационный фон растет. Вспышка на солнце. Рекомендую укрытие.",
+    "sha256": "0dbf7711cfe2bb02c7e8e9b0e3f7de3c2a282e776b3b737069cdb074763c9e4d",
+    "selected_for": [
+      "S4-04"
+    ]
+  },
+  {
+    "file": "17 55_ - 85-й дубль.flac",
+    "take": 85,
+    "duration": 6.367,
+    "transcript": "Стена близко. Стена близко.",
+    "sha256": "b545d21a8a1b124ace90e5dffdba31df282128b9059ec92b6dabd3d92e38af10",
+    "selected_for": [
+      "S4-06"
+    ]
+  },
+  {
+    "file": "17 56_ - 86-й дубль.flac",
+    "take": 86,
+    "duration": 6.4096875,
+    "transcript": "Осторожно, скала! Осторожно, скала!",
+    "sha256": "cfc1a76018263363dab2b1a1601e8ee40040a52b43e8bb2b95da13ff2eb2223d",
+    "selected_for": []
+  },
+  {
+    "file": "17 56_ - 87-й дубль.flac",
+    "take": 87,
+    "duration": 2.868375,
+    "transcript": "Осторожно, скала.",
+    "sha256": "7e2177065e603961ef3c913f67970ed1be9157ce1b02a9bacc34fd345ab413e7",
+    "selected_for": [
+      "S4-07"
+    ]
+  },
+  {
+    "file": "17 56_ - 88-й дубль.flac",
+    "take": 88,
+    "duration": 4.511,
+    "transcript": "Радиация растет. Не задерживайтесь.",
+    "sha256": "d221c90113b71c6b6380ed58e221196c442db07352f7895a9370a36686abd97e",
+    "selected_for": []
+  },
+  {
+    "file": "17 56_ - 89-й дубль.flac",
+    "take": 89,
+    "duration": 3.444375,
+    "transcript": "Радиация растет. Не задерживайтесь.",
+    "sha256": "c88056baf1d1fa668be90b57dd7b68de9ffe8a21d04e7d71b5cfc80d8c1d026c",
+    "selected_for": [
+      "S4-08"
+    ]
+  },
+  {
+    "file": "17 57_ - 90-й дубль.flac",
+    "take": 90,
+    "duration": 3.828375,
+    "transcript": "Связь с базой потеряна. Включаю фары.",
+    "sha256": "b0fe4010e9c21505917a21a325d74d5ed7bd4b381e83171c437b1d36e237c40c",
+    "selected_for": []
+  },
+  {
+    "file": "17 57_ - 91-й дубль.flac",
+    "take": 91,
+    "duration": 9.972375,
+    "transcript": "Связь с базой потеряна. Включаю фары.",
+    "sha256": "714b3a857d54ea30d37469da196e81cdc49a5d140f0af48ddf2bd80034490622",
+    "selected_for": []
+  },
+  {
+    "file": "17 57_ - 92-й дубль.flac",
+    "take": 92,
+    "duration": 1.4176875,
+    "transcript": "Включаю фары.",
+    "sha256": "04540e9aa9bbe31b918e14e53d443dbfa1b044ba1b0b86ef8b4438e3edd500d2",
+    "selected_for": []
+  },
+  {
+    "file": "17 57_ - 93-й дубль.flac",
+    "take": 93,
+    "duration": 4.767,
+    "transcript": "Связь с базой потеряна. Включаю фары.",
+    "sha256": "0b98dc8001dd5b39b018c2a9a015fec2a1e77f65b2fa87d9d98141585208552f",
+    "selected_for": [
+      "S5-01"
+    ]
+  },
+  {
+    "file": "17 58_ - 94-й дубль.flac",
+    "take": 94,
+    "duration": 4.255,
+    "transcript": "Тоннель сужается. Снести скорость.",
+    "sha256": "ad4cbbe9b40a75df781c6c9e33876f0e8db58e0dc376a43d7617638171d722a6",
+    "selected_for": []
+  },
+  {
+    "file": "17 58_ - 95-й дубль.flac",
+    "take": 95,
+    "duration": 4.724375,
+    "transcript": "Тоннель сужается. Снести скорость.",
+    "sha256": "884fecfe90f7e1fb14b9aca90d85bbad554b27acf289f323e8a340d017ff1a1d",
+    "selected_for": []
+  },
+  {
+    "file": "17 58_ - 96-й дубль.flac",
+    "take": 96,
+    "duration": 3.252375,
+    "transcript": "Тоннель сужается. Снести скорость.",
+    "sha256": "64e367712152b9c8b27e800206b6d419818d00d39c93df569ac4dc841f51b17d",
+    "selected_for": [
+      "S5-03"
+    ]
+  },
+  {
+    "file": "17 59_ - 97-й дубль.flac",
+    "take": 97,
+    "duration": 4.895,
+    "transcript": "Странно, датчики фиксируют поток воздуха из глубины тоннеля.",
+    "sha256": "8edafb4e70098398761ef18c2fcdc07df7e3057a061b3d24ac91fd8198d3cf80",
+    "selected_for": []
+  },
+  {
+    "file": "17 59_ - 98-й дубль.flac",
+    "take": 98,
+    "duration": 5.3856875,
+    "transcript": "Странно. Датчики фиксируют поток воздуха из глубины тоннеля.",
+    "sha256": "f0feb9fbb955452e5b05df60c812bece43465e0e00d62c6a8bb2efcd3c2db0ed",
+    "selected_for": []
+  },
+  {
+    "file": "17 59_ - 99-й дубль.flac",
+    "take": 99,
+    "duration": 5.471,
+    "transcript": "Странно. Датчики фиксируют поток воздуха из глубины тоннеля.",
+    "sha256": "f7c1e05c0ac232a177747276d919965555a867dc1ad8cd706fdd71233064d022",
+    "selected_for": [
+      "S5-04"
+    ]
+  },
+  {
+    "file": "17 59_ - 100-й дубль.flac",
+    "take": 100,
+    "duration": 5.599,
+    "transcript": "Впереди развилка. К выходу ведет правый проход.",
+    "sha256": "8a71dd372f38a47b9f9f8ef5c8c8a19c401746374fe220a4bdaab196d60bfd8f",
+    "selected_for": []
+  },
+  {
+    "file": "17 59_ - 101-й дубль.flac",
+    "take": 101,
+    "duration": 4.0416875,
+    "transcript": "Впереди развилка. К выходу ведет правый проход.",
+    "sha256": "16a11292a099fad4dd9d13f00730f6e039751644e0040471396e829cc1f78daa",
+    "selected_for": [
+      "S5-05"
+    ]
+  },
+  {
+    "file": "18 00_ - 102-й дубль.flac",
+    "take": 102,
+    "duration": 3.935,
+    "transcript": "Вижу свет. Выход прямо по курсу.",
+    "sha256": "f4aa61581037247aeddb40e678b49b526c8105e52033b23f0f13ea4fd3c3282a",
+    "selected_for": []
+  },
+  {
+    "file": "18 00_ - 103-й дубль.flac",
+    "take": 103,
+    "duration": 3.444375,
+    "transcript": "Вижу свет. Выход прямо по курсу.",
+    "sha256": "6c43317844649f750addc6f26349d9d2ebf7bd52073ad06e6410cbbbf5aa2c06",
+    "selected_for": [
+      "S5-06"
+    ]
+  },
+  {
+    "file": "18 00_ - 104-й дубль.flac",
+    "take": 104,
+    "duration": 4.191,
+    "transcript": "Связь восстановлена. Буря позади.",
+    "sha256": "a75e7288e2e30370024b6910beb7afd0af7bcaff90cb31e4874e626cb6bc3892",
+    "selected_for": []
+  },
+  {
+    "file": "18 00_ - 105-й дубль.flac",
+    "take": 105,
+    "duration": 3.9136875,
+    "transcript": "Связь восстановлена. Буря позади.",
+    "sha256": "87661eba035cb6b488d2203a01bccf18d49435e3b1a9beb60b3b55e0f4481d29",
+    "selected_for": [
+      "S6-01"
+    ]
+  },
+  {
+    "file": "18 01_ - 106-й дубль.flac",
+    "take": 106,
+    "duration": 8.884375,
+    "transcript": "Высота 10 метров. Высота 10 метров.",
+    "sha256": "3c81f199e3aaf118d2f077eff4d98f7a38c8f5e41dc9c8b4f1da40ea3342dbca",
+    "selected_for": [
+      "S6-03"
+    ]
+  },
+  {
+    "file": "18 01_ - 107-й дубль.flac",
+    "take": 107,
+    "duration": 4.4896875,
+    "transcript": "Пять. Пять.",
+    "sha256": "f640304417b4096a304eb977d47a729c90b63e33eb34e4a3e9647c9232162c3b",
+    "selected_for": [
+      "S6-04"
+    ]
+  },
+  {
+    "file": "18 02_ - 108-й дубль.flac",
+    "take": 108,
+    "duration": 4.020375,
+    "transcript": "1, 2, 2.",
+    "sha256": "ff1330cb050c882fa6479296aa05b6d2d91c6fb1297fcebc7a08cc0ccbad52b3",
+    "selected_for": [
+      "S6-05"
+    ]
+  },
+  {
+    "file": "18 02_ - 109-й дубль.flac",
+    "take": 109,
+    "duration": 4.319,
+    "transcript": "Касание. Касание.",
+    "sha256": "4c641ab3a79273f18e2e085899a991d32e074fe624bc4ea927ca39cc26cfc2f3",
+    "selected_for": [
+      "S6-06"
+    ]
+  },
+  {
+    "file": "18 03_ - 110-й дубль.flac",
+    "take": 110,
+    "duration": 11.551,
+    "transcript": "Груз отцеплен. Двигатели выключены.",
+    "sha256": "b7cdfdca1024a4f554b8d5a2cf2ed3f61d09c4a1ca758e70c4ea98e1e8509a66",
+    "selected_for": [
+      "S6-07"
+    ]
+  },
+  {
+    "file": "18 03_ - 111-й дубль.flac",
+    "take": 111,
+    "duration": 5.2576875,
+    "transcript": "Марсоход на месте. Отлично.",
+    "sha256": "fdb088b62ee2c2da3f2ceecef9593eaf4499711d4f9768949cf43a0a7ffd459f",
+    "selected_for": []
+  },
+  {
+    "file": "18 03_ - 112-й дубль.flac",
+    "take": 112,
+    "duration": 6.0256875,
+    "transcript": "Марсоход на месте. Отличная работа, оператор. ТЛЛ",
+    "sha256": "3308d4a11dfb4842a40e33aa1718c91bfad53223cf81d69fd27c1979eb1359ec",
+    "selected_for": []
+  },
+  {
+    "file": "18 03_ - 113-й дубль.flac",
+    "take": 113,
+    "duration": 9.0976875,
+    "transcript": "Марсоход на месте. Отличная работа, оператор.",
+    "sha256": "f7497447e68b28a7bcb86ac120823cc86e299d5d6095abb0fc8a7ac07e890618",
+    "selected_for": [
+      "S6-08"
+    ]
+  },
+  {
+    "file": "18 04_ - 114-й дубль.flac",
+    "take": 114,
+    "duration": 5.279,
+    "transcript": "Заряд 30%. Эх, сука.",
+    "sha256": "1a3a61fe57b597d608edf9631bc10f825b61646245df0a9f695ff58273971eb9",
+    "selected_for": []
+  },
+  {
+    "file": "18 04_ - 115-й дубль.flac",
+    "take": 115,
+    "duration": 6.367,
+    "transcript": "Заряд 30%. Заряд 30%.",
+    "sha256": "68237254880cdfa129511c8db999455d0ec53a53ea9597cd1d6b89bb0acbf9b1",
+    "selected_for": [
+      "EV-01"
+    ]
+  },
+  {
+    "file": "18 04_ - 116-й дубль.flac",
+    "take": 116,
+    "duration": 3.5296875,
+    "transcript": "Заряд 15%.",
+    "sha256": "762bd7c1943491e6a36fd4ce743d086010729fc99f0632765d664542e861540f",
+    "selected_for": []
+  },
+  {
+    "file": "18 05_ - 117-й дубль.flac",
+    "take": 117,
+    "duration": 2.100375,
+    "transcript": "Заряд пятна, бля.",
+    "sha256": "43350e40989cc50c6fdc0b9659ffd652712462a54e01fff3519fa14ba388c38e",
+    "selected_for": []
+  },
+  {
+    "file": "18 05_ - 118-й дубль.flac",
+    "take": 118,
+    "duration": 9.716375,
+    "transcript": "Заряд 15%. Выбирайте кратчайший путь.",
+    "sha256": "7701a3f5a13350ecf661e5052f94905c608e21133dcc1894fd5febfee62b8e89",
+    "selected_for": [
+      "EV-02"
+    ]
+  },
+  {
+    "file": "18 05_ - 119-й дубль.flac",
+    "take": 119,
+    "duration": 3.956375,
+    "transcript": "Критический заряд. Немедленно на посадку.",
+    "sha256": "3c8c2c25ca6a2dfcf30d8f647c63d9deffa90725504db2f73efcd1bafb50f987",
+    "selected_for": []
+  },
+  {
+    "file": "18 05_ - 120-й дубль.flac",
+    "take": 120,
+    "duration": 3.2096875,
+    "transcript": "Критический заряд. Выбирай, блять.",
+    "sha256": "a3413b7b7cd6a7ceaaa6fa8d37ed4a9ed35c2e50313baccc739648e1b7f262bf",
+    "selected_for": []
+  },
+  {
+    "file": "18 05_ - 121-й дубль.flac",
+    "take": 121,
+    "duration": 7.8816875,
+    "transcript": "Критический заряд. Немедленно на посадку.",
+    "sha256": "2b53e490b8cb30a75a1ce405653eedfbe903d193bcab4ed8bc645aa142a09f30",
+    "selected_for": [
+      "EV-03"
+    ]
+  },
+  {
+    "file": "18 06_ - 122-й дубль.flac",
+    "take": 122,
+    "duration": 5.087,
+    "transcript": "Удар корпусом. Повреждений нет. Блять.",
+    "sha256": "e6a1987edc89badb0d1686d67cd9a6697280dd99fceaaf6fbf22a06db55e164c",
+    "selected_for": []
+  },
+  {
+    "file": "18 06_ - 123-й дубль.flac",
+    "take": 123,
+    "duration": 6.836375,
+    "transcript": "Удар корпусом. Повреждений нет.",
+    "sha256": "98800cddb08f71a7064d69e9b53f94b1fb0f8f2bc956f565f478aaecb25077e6",
+    "selected_for": [
+      "EV-04"
+    ]
+  },
+  {
+    "file": "18 06_ - 124-й дубль.flac",
+    "take": 124,
+    "duration": 4.063,
+    "transcript": "Повреждение винта. Тяга снижена.",
+    "sha256": "29ec6482074894f543727e0d678ae93500ffbca97d048cdea77db3b17f173f83",
+    "selected_for": []
+  },
+  {
+    "file": "18 06_ - 125-й дубль.flac",
+    "take": 125,
+    "duration": 3.167,
+    "transcript": "Повреждение винта. Тяга снижена.",
+    "sha256": "8f7d386566225d97dfcf83d59cb06645c62d4334130023394c4ed385ba97834f",
+    "selected_for": []
+  },
+  {
+    "file": "18 07_ - 126-й дубль.flac",
+    "take": 126,
+    "duration": 7.732375,
+    "transcript": "Повреждение винта. Тяга снижена.",
+    "sha256": "fe205e919df4fe214acfccf3d9007167860a2a4315c73266ca86971c4a21f390",
+    "selected_for": [
+      "EV-05"
+    ]
+  },
+  {
+    "file": "18 07_ - 127-й дубль.flac",
+    "take": 127,
+    "duration": 3.956375,
+    "transcript": "Аппарат потерян.",
+    "sha256": "6370564bbe756d5dd67ff12daace73e1ed31e2f8ab51a3687eb50c0a894bda2d",
+    "selected_for": []
+  },
+  {
+    "file": "18 07_ - 128-й дубль.flac",
+    "take": 128,
+    "duration": 0.5856875,
+    "transcript": "Сухо-тихо.",
+    "sha256": "e1956a6a5d587efc653847be8328f7e0a58cb4b9b3c20a15a12192af26e7affc",
+    "selected_for": []
+  },
+  {
+    "file": "18 07_ - 129-й дубль.flac",
+    "take": 129,
+    "duration": 5.876375,
+    "transcript": "Аппарат потерян.",
+    "sha256": "680cf016a0aef77594fff49bf848b2e34aab9733a03310cb3a0f3f93f91335ef",
+    "selected_for": []
+  },
+  {
+    "file": "18 07_ - 130-й дубль.flac",
+    "take": 130,
+    "duration": 2.8896875,
+    "transcript": "Аппарат потерян.",
+    "sha256": "daa839b360d28c33e121d6c1cdfabdd85d9e601e68ccb7e5fbd35b5dfef7d701",
+    "selected_for": []
+  },
+  {
+    "file": "18 07_ - 131-й дубль.flac",
+    "take": 131,
+    "duration": 4.916375,
+    "transcript": "Мягкий аппарат потерян.",
+    "sha256": "3a39694c4bdba623afe795c4ee869ac84d137e69ed535ef5b1dd5504f4bdf522",
+    "selected_for": [
+      "EV-06"
+    ]
+  },
+  {
+    "file": "18 08_ - 132-й дубль.flac",
+    "take": 132,
+    "duration": 5.236375,
+    "transcript": "Восстановление с последней точки маршрута.",
+    "sha256": "a6dc36088009e846fdfe4d3ae74d3e35e4d03050c7e003e92b7af9beb9373617",
+    "selected_for": []
+  },
+  {
+    "file": "18 08_ - 133-й дубль.flac",
+    "take": 133,
+    "duration": 5.791,
+    "transcript": "Восстановление с последней точки маршрута.",
+    "sha256": "3653433487079b87d8206f06c911cd162c8bebed93584ab00fae31342cd2c279",
+    "selected_for": []
+  },
+  {
+    "file": "18 08_ - 134-й дубль.flac",
+    "take": 134,
+    "duration": 9.012375,
+    "transcript": "Восстановление с последней точки маршрута. Восстановление с последней точки маршрута.",
+    "sha256": "b664d45e1c6b5fa589d6dd9f82238278b211043bdc80447cc5edf3d5d734d5d1",
+    "selected_for": []
+  },
+  {
+    "file": "18 08_ - 135-й дубль.flac",
+    "take": 135,
+    "duration": 4.212375,
+    "transcript": "Восстановление с последней точки маршрута.",
+    "sha256": "dee51909273eaa06af13817446e140c90c7d5147d9a73d33c4bd79302e908e9c",
+    "selected_for": []
+  },
+  {
+    "file": "18 09_ - 136-й дубль.flac",
+    "take": 136,
+    "duration": 4.916375,
+    "transcript": "Восстановление с последней точки маршрута.",
+    "sha256": "d65aebe6e93f53668889f7069fec8413fb28b5399ec9c8359d0738ad9114fbc1",
+    "selected_for": [
+      "EV-08"
+    ]
+  },
+  {
+    "file": "18 09_ - 137-й дубль.flac",
+    "take": 137,
+    "duration": 8.756375,
+    "transcript": "Крен слишком большой Выравниваю Блять",
+    "sha256": "3ae57a7cef59b202d38b54f74e4234d75e15fbaf66f29c55eaf88d7ef26af542",
+    "selected_for": []
+  },
+  {
+    "file": "18 10_ - 138-й дубль.flac",
+    "take": 138,
+    "duration": 1.9296875,
+    "transcript": "Блин.",
+    "sha256": "925586809ccc56e663a45fce27ce46cc3cf7887302e645f0be74400694d81d77",
+    "selected_for": []
+  },
+  {
+    "file": "18 10_ - 139-й дубль.flac",
+    "take": 139,
+    "duration": 0.543,
+    "transcript": "Хрен сли...",
+    "sha256": "9faa2cad477b125b4353757177b66928a1a3344d16390116a539cdb3457d6e8a",
+    "selected_for": []
+  },
+  {
+    "file": "18 10_ - 140-й дубль.flac",
+    "take": 140,
+    "duration": 3.871,
+    "transcript": "Крен слишком большой. Выравниваю.",
+    "sha256": "ea1e746d88f419512a10ca784e1ceea6b5c0bfa90ce580670b979b32169f55dc",
+    "selected_for": [
+      "EV-10"
+    ]
+  },
+  {
+    "file": "18 10_ - 141-й дубль.flac",
+    "take": 141,
+    "duration": 4.1696875,
+    "transcript": "Хрен слишком большой. Отрезаю.",
+    "sha256": "837e8b06b9c75573b3cd15af4e91dec74d1afbbb116f9864dc3e1b3cb3d3941b",
+    "selected_for": []
+  },
+  {
+    "file": "18 10_ - 142-й дубль.flac",
+    "take": 142,
+    "duration": 4.383,
+    "transcript": "Хрен слишком большой. Отрезаю.",
+    "sha256": "fd093396b242251bed0866278a6b1beab33de9c8b55be5998b8db7e2c28ab707",
+    "selected_for": []
+  },
+  {
+    "file": "18 11_ - 143-й дубль.flac",
+    "take": 143,
+    "duration": 9.076375,
+    "transcript": "Выше подниматься нельзя, там слишком сильный ветер.",
+    "sha256": "6421bab6b58d8c9a215c8d53fc6fc39b235029382a3fba85ef7abc2e0a1c6217",
+    "selected_for": [
+      "EV-11"
+    ]
+  },
+  {
+    "file": "18 12_ - 144-й дубль.flac",
+    "take": 144,
+    "duration": 6.111,
+    "transcript": "Вы удаляетесь от цели.",
+    "sha256": "e788cfded11b6587fbc11a92f5b75f0e13d9488cf288eb0587fea14d76dc4d63",
+    "selected_for": []
+  },
+  {
+    "file": "18 12_ - 145-й дубль.flac",
+    "take": 145,
+    "duration": 2.6976875,
+    "transcript": "Вы удаляетесь от цели.",
+    "sha256": "06aca6cdc58b3709bddf728c3c48f383dcdb1fd5d0929bebeba50696005009e8",
+    "selected_for": [
+      "EV-12"
+    ]
+  },
+  {
+    "file": "18 12_ - 146-й дубль.flac",
+    "take": 146,
+    "duration": 5.663,
+    "transcript": "Миссия не выполнена. Тут сухо.",
+    "sha256": "82e6c50a172df25e5c8f19a8ff4c1026486774ccaa2affdd59c660f5d51ababc",
+    "selected_for": []
+  },
+  {
+    "file": "18 13_ - 147-й дубль.flac",
+    "take": 147,
+    "duration": 3.956375,
+    "transcript": "Миссия не выполнена.",
+    "sha256": "690a8689682edf074e57aecde248ae9092e9368b8bef04df78806f2b41c28a5f",
+    "selected_for": []
+  },
+  {
+    "file": "18 13_ - 148-й дубль.flac",
+    "take": 148,
+    "duration": 4.959,
+    "transcript": "Миссия не выполнена. Миссия не выполнена.",
+    "sha256": "62034e3fa55471a4bd671bd7d4d8cca19b8ceecaf861ef068a16c5826267017b",
+    "selected_for": [
+      "EV-13"
+    ]
+  },
+  {
+    "file": "18 13_ - 149-й дубль.flac",
+    "take": 149,
+    "duration": 9.1616875,
+    "transcript": "Время сессии заканчивается. Заходите на посадку.",
+    "sha256": "9dd37d57d0a182d3cc3e5460d4a29f5fe4918f5eb1821290cb895aa5f35e98e1",
+    "selected_for": [
+      "AR-01"
+    ]
+  },
+  {
+    "file": "18 13_ - 150-й дубль.flac",
+    "take": 150,
+    "duration": 6.2176875,
+    "transcript": "Итоги полета на экране.",
+    "sha256": "dafd3e1bb55f2dc70044f1dd5eb3a3717d0394d6198bd9189341874f91b52a1e",
+    "selected_for": [
+      "AR-02"
+    ]
+  },
+  {
+    "file": "18 14_ - 151-й дубль.flac",
+    "take": 151,
+    "duration": 27.0816875,
+    "transcript": "Вы продолжаете удаляться от цели. Вы не перестаёте удаляться от цели. Возможно, вам стоит вернуться к цели. Правда, вам обязательно нужно вернуться к цели прямо сейчас. Это уже не смешно. Капитан, вам нужно вернуться к цели. Возвращайтесь, пожалуйста... Блядь, не...",
+    "sha256": "64a210ec1f14cd940d26c79d093e187d7faa7805833c1fb458dc2d44714aa9bf",
+    "selected_for": []
+  },
+  {
+    "file": "18 15_ - 152-й дубль.flac",
+    "take": 152,
+    "duration": 9.567,
+    "transcript": "Пожалуйста, возвращайтесь к цели. Прямо сейчас. От этого зависит судьба всего этого...",
+    "sha256": "309c30b59fdab2e7920eac032b4d003930abd9fef441441f854e2dbe54df0202",
+    "selected_for": []
+  },
+  {
+    "file": "18 15_ - 153-й дубль.flac",
+    "take": 153,
+    "duration": 4.980375,
+    "transcript": "от этого зависит судьба всего корабля я вас прошу блять",
+    "sha256": "b7dbb92a65c3ea7d38bdbf5b3083588baf49b2f536942214dd729691d190a57f",
+    "selected_for": []
+  },
+  {
+    "file": "18 15_ - 154-й дубль.flac",
+    "take": 154,
+    "duration": 35.444375,
+    "transcript": "от этого зависит судьба всего корабля я повторять дважды не стану возвращайтесь к цели сколько можно то в конце концов вернитесь вы к цели ну конечно конечно решил что самый умный знаешь сколько я таких видал миллионы и все считают себя самыми умными а если я пойду против правил ну конечно конечно решил зайти за карту поздравляю теперь у тебя вообще не будет карты вот так вот",
+    "sha256": "256f5f33c9916f129c97d4754767359b33ac6da95e82483a6e8c21ec38429e5a",
+    "selected_for": []
+  },
+  {
+    "file": "18 17_ - 155-й дубль.flac",
+    "take": 155,
+    "duration": 11.5936875,
+    "transcript": "Оператор на связи база. В 800 метрах к востоку застрял марсоход, а к району идет пылевая буря. Забираем его и ведем на точку посадки.",
+    "sha256": "3c104b928abc76da5e85127e7f900c357e56339e661bc85c499afad1979bcec3",
+    "selected_for": []
+  },
+  {
+    "file": "18 18_ - 156-й дубль.flac",
+    "take": 156,
+    "duration": 0.7136875,
+    "transcript": "",
+    "sha256": "4e6785713c1436398d78c2a2ec30f2260f24771a3424849971378a3fcc9a205a",
+    "selected_for": []
+  },
+  {
+    "file": "18 18_ - 157-й дубль.flac",
+    "take": 157,
+    "duration": 10.591,
+    "transcript": "Оператор, на связи база. В 800 метрах к востоку застрял марсоход, а к району идет пылевая буря.",
+    "sha256": "c058ca773acf750e01573356b32f496c1cd685da46621562dfd24471b0138083",
+    "selected_for": []
+  },
+  {
+    "file": "18 20_ - 158-й дубль.flac",
+    "take": 158,
+    "duration": 4.1696875,
+    "transcript": "Оператор, на связи база.",
+    "sha256": "1df4acb9ba462f5cb99a4de456e43fc2a0d04a2a0ebe84bb1b893f9b94f8b08c",
+    "selected_for": []
+  },
+  {
+    "file": "18 20_ - 159-й дубль.flac",
+    "take": 159,
+    "duration": 11.9776875,
+    "transcript": "Оператор, на связи база. В 800 метрах к востоку застрял марсоход, а к району идет пылевая буря. Забираем его и ведем на точку посадки.",
+    "sha256": "06c3125ddcdd827ca55f078986eca4b6040ee1cda9b90a3678e954fd17a06b44",
+    "selected_for": [
+      "S0-03"
+    ]
+  },
+  {
+    "file": "18 21_ - 160-й дубль.flac",
+    "take": 160,
+    "duration": 3.9776875,
+    "transcript": "Взлет разрешаю. Удачи!",
+    "sha256": "2e71e71dcd20bb27a68b41d541ce5a38652a87c764163f8cdf9e1db4f3249129",
+    "selected_for": []
+  },
+  {
+    "file": "18 21_ - 161-й дубль.flac",
+    "take": 161,
+    "duration": 4.1056875,
+    "transcript": "Взлет разрешаю. Удачи!",
+    "sha256": "ebc6e257ea65e6ab247622ba2d36a470a4fffe933184cdfc7e1e1a03879ec0b0",
+    "selected_for": []
+  },
+  {
+    "file": "18 21_ - 162-й дубль.flac",
+    "take": 162,
+    "duration": 3.4656875,
+    "transcript": "Взлет разрешаю. Удачи.",
+    "sha256": "63c9f41c99d6ed877e9cd89b74b388eed626fbfc513198a4d7f4c605149438e2",
+    "selected_for": []
+  },
+  {
+    "file": "18 21_ - 163-й дубль.flac",
+    "take": 163,
+    "duration": 2.6336875,
+    "transcript": "Взлет разрешаю.",
+    "sha256": "39a2b68f5f527da6996cc0070becc70fc3fbb10113e1030f62de40c1d85e808b",
+    "selected_for": []
+  },
+  {
+    "file": "18 21_ - 164-й дубль.flac",
+    "take": 164,
+    "duration": 4.703,
+    "transcript": "Понял, сейчас, секунду. Взлет разрешаю. Удачи.",
+    "sha256": "25693bd5f4780367d9deb821199224e84df98488c30c9f78cd461bbedc4a4903",
+    "selected_for": [
+      "S0-05"
+    ]
+  },
+  {
+    "file": "18 21_ - 165-й дубль.flac",
+    "take": 165,
+    "duration": 6.068375,
+    "transcript": "Наблюдаем маркер на востоке. Держим курс на него.",
+    "sha256": "bf10639af335a275b775374b0c41191a8a2392d70d111df406ef44c5d09bc4b8",
+    "selected_for": []
+  },
+  {
+    "file": "18 22_ - 166-й дубль.flac",
+    "take": 166,
+    "duration": 0.671,
+    "transcript": "ты прав.",
+    "sha256": "8c6d9fd17f08e06195907e8e84cba5db83ff94ebe72762990802815d1f73d73a",
+    "selected_for": []
+  },
+  {
+    "file": "18 22_ - 167-й дубль.flac",
+    "take": 167,
+    "duration": 5.5776875,
+    "transcript": "Наблюдаем маркер на востоке. Держим курс на него.",
+    "sha256": "565668e709ac090e5489e855e1501d625d93ec48867e65ed3ae07ad18f497ca7",
+    "selected_for": []
+  },
+  {
+    "file": "18 22_ - 168-й дубль.flac",
+    "take": 168,
+    "duration": 4.788375,
+    "transcript": "Наблюдаем маркер на востоке. Держим курс на него.",
+    "sha256": "57b829c5d64f7cee64683c1890c525eef9335dc8a35ee3ae2a511b143601f5db",
+    "selected_for": [
+      "S1-06"
+    ]
+  },
+  {
+    "file": "18 23_ - 169-й дубль.flac",
+    "take": 169,
+    "duration": 2.292375,
+    "transcript": "Срочно, еще раз",
+    "sha256": "8da071e1db80481ee3133fcb71b7aedeae59d82ee88eba454f3af63fdafbd4cb",
+    "selected_for": []
+  },
+  {
+    "file": "18 23_ - 170-й дубль.flac",
+    "take": 170,
+    "duration": 4.916375,
+    "transcript": "Срочно забираем груз и уходим к каньону.",
+    "sha256": "65c6261c1915c32ec51491fd6f1e8c644d5bd3a7b7cace04124c9e625c809c9e",
+    "selected_for": []
+  },
+  {
+    "file": "18 23_ - 171-й дубль.flac",
+    "take": 171,
+    "duration": 4.063,
+    "transcript": "Срочно забираем груз и уходим к каньону.",
+    "sha256": "ba379f75dfa8f15afe8339243d4a65481e46ba17025a307534d5c675ef157289",
+    "selected_for": []
+  },
+  {
+    "file": "18 23_ - 172-й дубль.flac",
+    "take": 172,
+    "duration": 4.127,
+    "transcript": "Срочно забираем груз и уходим к каньону.",
+    "sha256": "298c25e4f30b144eca0bf55cc36f5e9d49c96453882f6495f1a6ab434ce35afa",
+    "selected_for": [
+      "S2-02"
+    ]
+  },
+  {
+    "file": "18 23_ - 173-й дубль.flac",
+    "take": 173,
+    "duration": 4.0416875,
+    "transcript": "Минута до бури. Надо торопиться.",
+    "sha256": "4b0c339e2a07b54a39f9e0c4432920a78b418019a90222b36d4d3d0e0fbb7f5a",
+    "selected_for": []
+  },
+  {
+    "file": "18 23_ - 174-й дубль.flac",
+    "take": 174,
+    "duration": 4.1696875,
+    "transcript": "Минута до бури. Надо торопиться.",
+    "sha256": "c0af758ad780d677f6fce25648b6c2ba1baa8ee669956f56e11d138d5ea40eaa",
+    "selected_for": []
+  },
+  {
+    "file": "18 23_ - 175-й дубль.flac",
+    "take": 175,
+    "duration": 3.935,
+    "transcript": "Минута до бури. Надо торопиться.",
+    "sha256": "1f7d584f7747d05fa5819f3840d69f88e19627108551a2c360f5788cd9e4e61f",
+    "selected_for": [
+      "S2-11"
+    ]
+  },
+  {
+    "file": "18 24_ - 176-й дубль.flac",
+    "take": 176,
+    "duration": 4.3616875,
+    "transcript": "Есть груз. Теперь уходим к каньону.",
+    "sha256": "70128485252a6913113c53aeef6104a0e39fcb7a464cf5e9f85b5c5102c95206",
+    "selected_for": []
+  },
+  {
+    "file": "18 24_ - 177-й дубль.flac",
+    "take": 177,
+    "duration": 3.956375,
+    "transcript": "Есть груз. Теперь уходим к каньону.",
+    "sha256": "795fac3a52d1d8455e36d702aa3ce2e365078921efb5e3dd99fc05b8c848f5ca",
+    "selected_for": [
+      "S3-03"
+    ]
+  },
+  {
+    "file": "18 24_ - 178-й дубль.flac",
+    "take": 178,
+    "duration": 3.7856875,
+    "transcript": "До каньона осталось совсем недолго. Немного, блин.",
+    "sha256": "c9689975866c1fc9edc60f76d26694fc2608f770949b090a12caa9da8b5cfc09",
+    "selected_for": []
+  },
+  {
+    "file": "18 24_ - 179-й дубль.flac",
+    "take": 179,
+    "duration": 3.828375,
+    "transcript": "До каньона осталось совсем немного.",
+    "sha256": "a0c3aadcb6a1da6afe308944a0efec990573e153f4472b5516a6ec66244640f7",
+    "selected_for": []
+  },
+  {
+    "file": "18 24_ - 180-й дубль.flac",
+    "take": 180,
+    "duration": 3.423,
+    "transcript": "До каньона осталось совсем немного.",
+    "sha256": "72f516750258b1f99b10aa17423803167e24f749e70b1bf8feaa6c46c96ec081",
+    "selected_for": [
+      "S3-08"
+    ]
+  },
+  {
+    "file": "18 24_ - 181-й дубль.flac",
+    "take": 181,
+    "duration": 2.996375,
+    "transcript": "Ныряем в каньон.",
+    "sha256": "b73814785e6774a0a80d948dce8279b6dfbd561112dded35de04e5d17862cea7",
+    "selected_for": []
+  },
+  {
+    "file": "18 25_ - 182-й дубль.flac",
+    "take": 182,
+    "duration": 2.676375,
+    "transcript": "Ныряем в каньон.",
+    "sha256": "ab9431df63acf978460d442627affb45464fd0f0f287d3d3b769b685e88fdb6d",
+    "selected_for": [
+      "S4-01"
+    ]
+  },
+  {
+    "file": "18 25_ - 183-й дубль.flac",
+    "take": 183,
+    "duration": 4.020375,
+    "transcript": "Видим лавовую трубку. Это единственное укрытие лавы.",
+    "sha256": "c398da3b970ac408aa1f46f7512ee463ac88bc1d1be90de77667e2a3c84c6ceb",
+    "selected_for": []
+  },
+  {
+    "file": "18 25_ - 184-й дубль.flac",
+    "take": 184,
+    "duration": 2.463,
+    "transcript": "Видим лавовую трубку.",
+    "sha256": "e766c1b6cc725f10b008611a6f1e7f74118d31b5ba1a6c7bc366b3746df03e43",
+    "selected_for": []
+  },
+  {
+    "file": "18 25_ - 185-й дубль.flac",
+    "take": 185,
+    "duration": 5.236375,
+    "transcript": "Видим лавовую трубку. Это единственное укрытие.",
+    "sha256": "48e4c300b35fb27e91b8390c7d40072e81b2402facd6184ca24223042ec76f7c",
+    "selected_for": []
+  },
+  {
+    "file": "18 25_ - 186-й дубль.flac",
+    "take": 186,
+    "duration": 0.692375,
+    "transcript": "Сейчас, подожди.",
+    "sha256": "54912a36594e734ae0deaae21251d56ac4ff9a32c4d0a2c5612fea13b39572e3",
+    "selected_for": []
+  },
+  {
+    "file": "18 25_ - 187-й дубль.flac",
+    "take": 187,
+    "duration": 5.3856875,
+    "transcript": "Видим лавовую трубку. Это единственное укрытие.",
+    "sha256": "74065a38e9d82d27fc6c70f49d3885a0cfb3cae1c1e5dfba6f035b4d0bc8e1d1",
+    "selected_for": []
+  },
+  {
+    "file": "18 25_ - 188-й дубль.flac",
+    "take": 188,
+    "duration": 4.276375,
+    "transcript": "Видим лавовую трубку. Это единственное укрытие.",
+    "sha256": "8f65be12934a47a6ab84ae2142477219b53d44f7f2f251bfd15ca109e27fbe91",
+    "selected_for": [
+      "S4-05"
+    ]
+  },
+  {
+    "file": "18 26_ - 189-й дубль.flac",
+    "take": 189,
+    "duration": 4.767,
+    "transcript": "Держимся середины. Выход через 200 метров.",
+    "sha256": "b485795f68b495bd2f18be0b847d42a0f3e85b357824a1d798caa8674abda912",
+    "selected_for": []
+  },
+  {
+    "file": "18 26_ - 190-й дубль.flac",
+    "take": 190,
+    "duration": 4.7456875,
+    "transcript": "Держимся середины. Выход через 200 метров.",
+    "sha256": "92940045cb672078be63d1c78bbb34fe782c6dd289bb412c07c9955bef3b64d8",
+    "selected_for": [
+      "S5-02"
+    ]
+  },
+  {
+    "file": "18 26_ - 191-й дубль.flac",
+    "take": 191,
+    "duration": 3.4016875,
+    "transcript": "Видим птичку на радаре.",
+    "sha256": "f1e0672b7579175b064f0520dc0c565d495369c9fc87e0bf88e41181b61f2534",
+    "selected_for": []
+  },
+  {
+    "file": "18 26_ - 192-й дубль.flac",
+    "take": 192,
+    "duration": 5.5136875,
+    "transcript": "Видим птичку на радаре. Площадка прямо по курсу.",
+    "sha256": "4c860480d6832bd080206622224a3e45ff51df747a474653b83c568d50706ec5",
+    "selected_for": []
+  },
+  {
+    "file": "18 26_ - 193-й дубль.flac",
+    "take": 193,
+    "duration": 5.236375,
+    "transcript": "Видим птичку на радаре. Площадка прямо по курсу.",
+    "sha256": "db9d16167cf0e64ddde0685aedba4186332abf25da84e222116b4fa7b649aa19",
+    "selected_for": [
+      "S6-02"
+    ]
+  },
+  {
+    "file": "18 27_ - 194-й дубль.flac",
+    "take": 194,
+    "duration": 5.5776875,
+    "transcript": "Это рекорд смены. Записываю тебя в лучшие пилоты базы.",
+    "sha256": "752bdbd99b9657107f74c075c8b8b52c7f7a6129b1654ce4938fe0511d105235",
+    "selected_for": []
+  },
+  {
+    "file": "18 27_ - 195-й дубль.flac",
+    "take": 195,
+    "duration": 5.7696875,
+    "transcript": "Это рекорд смены. Записываю тебя в лучшие пилоты базы.",
+    "sha256": "d4eb83877db89e5823211deb66336d0017e261d9eb9c5b1d975b833e51b2a3ad",
+    "selected_for": []
+  },
+  {
+    "file": "18 27_ - 196-й дубль.flac",
+    "take": 196,
+    "duration": 5.044375,
+    "transcript": "Это рекорд смены. Записываю тебя в лучшие пилоты базы.",
+    "sha256": "55b152a4a8f636d0e33b9508cee8f002c7fe3e737678eac9d77de23a3153072f",
+    "selected_for": [
+      "S6-09"
+    ]
+  },
+  {
+    "file": "18 27_ - 197-й дубль.flac",
+    "take": 197,
+    "duration": 6.111,
+    "transcript": "Дрон потерян. Ничего, оператор, запускаем резервный.",
+    "sha256": "ceff16a022d5a15eae1e188b3ed8bb114fb5be23f5da306d7d93f7ba894f3c53",
+    "selected_for": []
+  },
+  {
+    "file": "18 28_ - 198-й дубль.flac",
+    "take": 198,
+    "duration": 4.8736875,
+    "transcript": "Мы потеряли дрон. Не падай духом, у нас есть еще.",
+    "sha256": "7227e4aea1d6ff56f17cc63f7de7e1455efe0e5da728c3bfdb73a99aa49928a3",
+    "selected_for": []
+  },
+  {
+    "file": "18 28_ - 199-й дубль.flac",
+    "take": 199,
+    "duration": 4.660375,
+    "transcript": "Ты потерял дрон Ничего, с новичками бываем Бывает",
+    "sha256": "d6b97cf43262b035c36cc91d2425a58776ac0e2a56bda297051db0ed15268eb7",
+    "selected_for": []
+  },
+  {
+    "file": "18 28_ - 200-й дубль.flac",
+    "take": 200,
+    "duration": 5.7056875,
+    "transcript": "Ты потерял дрон. Ничего, с новичками бывает. Запускаем следующий.",
+    "sha256": "de84799ee52b1ad3b910ed3076c954f0ac1107392dc2672e5d5624fbc1a1c69a",
+    "selected_for": [
+      "EV-07"
+    ]
+  },
+  {
+    "file": "18 28_ - 201-й дубль.flac",
+    "take": 201,
+    "duration": 6.324375,
+    "transcript": "Буря накрыла маршрут. Возвращайся. Попробуем еще раз.",
+    "sha256": "45f4ea132ba98709aadb204dd2864be51ae5cc65d4718bac82764fd649fcaaf6",
+    "selected_for": []
+  },
+  {
+    "file": "18 28_ - 202-й дубль.flac",
+    "take": 202,
+    "duration": 3.3376875,
+    "transcript": "Буря накрыла маршрут. Надо еще раз.",
+    "sha256": "eccea7bb843d0539a8c204da75a79ab576d0708bdc8cb396b171616034f84754",
+    "selected_for": []
+  },
+  {
+    "file": "18 28_ - 203-й дубль.flac",
+    "take": 203,
+    "duration": 6.196375,
+    "transcript": "Буря накрыла маршрут. Возвращайся. Попробуем еще раз.",
+    "sha256": "e15cbc0df9d93c009f646249ba51587b0404a3d40272e0f62b07445c036f3589",
+    "selected_for": []
+  },
+  {
+    "file": "18 29_ - 204-й дубль.flac",
+    "take": 204,
+    "duration": 6.324375,
+    "transcript": "Буря накрыла маршрут. Возвращайся. Попробуем еще раз.",
+    "sha256": "b0f63e526b6b6842d01ae7edc05e690ca3f99c36db38b609be12f3ce3b027f95",
+    "selected_for": [
+      "EV-09"
+    ]
+  },
+  {
+    "file": "18 30_ - 205-й дубль.flac",
+    "take": 205,
+    "duration": 3.892375,
+    "transcript": "Да, оператор, я в тебе разочарован",
+    "sha256": "2e67a742235664f11d39c57930f1670f6af3b93ff761d9884820a40dee4211f6",
+    "selected_for": []
+  }
+]
