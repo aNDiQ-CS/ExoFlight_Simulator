@@ -21,6 +21,42 @@ namespace ExoFlight.EditorTools
             new Vector3(579.51f, 10.04f, 870f), new Vector3(586f, 15f, 885f),
             new Vector3(600f, 23f, 900f), new Vector3(614f, 31f, 915f), Mouth
         };
+        static readonly Vector3 ExitForward = new Vector3(9f, 0f, 7f).normalized;
+        // Deliberately asymmetric, with a broad flat floor and a fractured, leaning roof.
+        static readonly Vector2[] Opening = {
+            new Vector2(-14f,-9f), new Vector2(-13f,-2.5f), new Vector2(-10.8f,4f),
+            new Vector2(-7.2f,8.4f), new Vector2(-2.5f,10.3f), new Vector2(3.2f,8.3f),
+            new Vector2(8.6f,6.1f), new Vector2(11.8f,1.7f), new Vector2(13.5f,-9f)
+        };
+
+        [MenuItem("ExoFlight/Марс: обновить скальный выход")]
+        public static void RefreshCaveOnly()
+        {
+            if (Application.isPlaying) throw new InvalidOperationException("Stop Play Mode first.");
+            var mission = Object.FindFirstObjectByType<MarsMissionDirector>();
+            if (mission == null || mission.gameObject.scene.path != MarsMissionBuilder.ScenePath)
+                throw new InvalidOperationException("Open MarsMission first.");
+            var terrain = Terrain.activeTerrain;
+            if (!AssetDatabase.GetAssetPath(terrain.terrainData).StartsWith(Folder))
+                throw new InvalidOperationException("Install the through-cave mission first.");
+            SculptTerrain(terrain.terrainData, AssetDatabase.LoadAssetAtPath<TerrainData>(Landscape + "Ares Basin Terrain.asset"),
+                mission.cargoMission.deliveryZone.transform.position.y);
+            var cave = GameObject.Find("Lava tube walls, roof and floor");
+            Mesh mesh = SaveMesh("Through cave walls and rising exit", ContinueCave(
+                AssetDatabase.LoadAssetAtPath<Mesh>(Landscape + "Lava tube walls, roof and floor.asset")));
+            cave.GetComponent<MeshFilter>().sharedMesh = mesh;
+            cave.GetComponent<MeshCollider>().sharedMesh = null;
+            cave.GetComponent<MeshCollider>().sharedMesh = mesh;
+            Transform scenery = mission.transform.Find("Cave exit and recovery station");
+            var old = scenery.Find("Weathered exit arch and ground seam");
+            if (old != null) Object.DestroyImmediate(old.gameObject);
+            MakePortal(scenery, terrain);
+            terrain.Flush(); Physics.SyncTransforms();
+            EditorUtility.SetDirty(terrain.terrainData);
+            AssetDatabase.SaveAssets();
+            EditorSceneManager.MarkSceneDirty(mission.gameObject.scene);
+            EditorSceneManager.SaveScene(mission.gameObject.scene);
+        }
 
         [MenuItem("ExoFlight/Марс: сквозная пещера и площадка доставки")]
         public static void Install()
@@ -93,7 +129,8 @@ namespace ExoFlight.EditorTools
                 h = Mathf.Lerp(h, padFloor - .16f, flat);
                 // The final passage rises through an outcrop. Keep a rock cap above its buried half.
                 float alongMouth = Vector2.Dot(p - mouth, forward);
-                float ridgeEnd = 1f - Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(-15f, 13f, alongMouth));
+                float ridgeEnd = 1f - Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(0f, 32f, alongMouth));
+                float ridgeHeight = h;
                 if (ridgeEnd > 0f)
                 {
                     for (int i = 1; i < Tunnel.Length; i++)
@@ -102,12 +139,13 @@ namespace ExoFlight.EditorTools
                         Vector2 b = new Vector2(Tunnel[i].x, Tunnel[i].z);
                         float t = Mathf.Clamp01(Vector2.Dot(p - a, b - a) / (b - a).sqrMagnitude);
                         float d = Vector2.Distance(p, Vector2.Lerp(a, b, t));
-                        float blend = 1f - Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(11f, 23f, d));
-                        float roof = Mathf.Lerp(Tunnel[i - 1].y, Tunnel[i].y, t) + 12f;
-                        h = Mathf.Lerp(h, Mathf.Max(h, roof), blend * ridgeEnd);
+                        float blend = 1f - Mathf.SmoothStep(0f, 1f, d / 43f);
+                        float relief = 7f * Mathf.PerlinNoise(p.x * .045f, p.y * .045f);
+                        float roof = Mathf.Lerp(Tunnel[i - 1].y, Tunnel[i].y, t) + 20f + relief;
+                        ridgeHeight = Mathf.Max(ridgeHeight, Mathf.Lerp(h, Mathf.Max(h, roof), blend * ridgeEnd));
                     }
                 }
-                heights[z, x] = h / data.size.y;
+                heights[z, x] = ridgeHeight / data.size.y;
             }
             data.SetHeights(0, 0, heights);
             int hn = original.holesResolution;
@@ -117,7 +155,7 @@ namespace ExoFlight.EditorTools
             {
                 Vector2 delta = new Vector2((x + .5f) * data.size.x / hn, (z + .5f) * data.size.z / hn) - mouth;
                 float along = Vector2.Dot(delta, forward), across = Mathf.Abs(Vector2.Dot(delta, right));
-                if (across * across / (21f * 21f) + (along + 3f) * (along + 3f) / (28f * 28f) < 1f) holes[z, x] = false;
+                if (across < 29f && along > -22f && along < 31f) holes[z, x] = false;
             }
             data.SetHoles(0, 0, holes);
         }
@@ -162,30 +200,33 @@ namespace ExoFlight.EditorTools
                 for (int i = 1; i < clipped.Count - 1; i++) result.Triangle(clipped[0], clipped[i], clipped[i + 1]);
             }
             Vector3 center = Tunnel[0];
+            Vector3 connectionA = Mouth - ExitForward * 27f; connectionA.y = Mouth.y - 27f * .25f;
+            Vector3 connectionB = Mouth - ExitForward * 18f; connectionB.y = Mouth.y - 18f * .25f;
+            Vector3[] passage = { Tunnel[0], Tunnel[1], Tunnel[2], connectionA, connectionB };
             var contour = edge.Values.OrderBy(p => Mathf.Atan2(p.y - center.y, p.x - center.x)).ToArray();
             if (contour.Length < 30) throw new InvalidOperationException("Cave cut contour is incomplete.");
             Vector3[] previous = contour;
             float travelled = 0f;
-            for (int leg = 0; leg < Tunnel.Length - 1; leg++)
+            for (int leg = 0; leg < passage.Length - 1; leg++)
             {
                 for (int step = 1; step <= 6; step++)
                 {
                     float t = step / 6f;
-                    Vector3 c = Vector3.Lerp(Tunnel[leg], Tunnel[leg + 1], t);
-                    Vector3 direction = Vector3.ProjectOnPlane(Tunnel[leg + 1] - Tunnel[leg], Vector3.up).normalized;
+                    Vector3 c = Vector3.Lerp(passage[leg], passage[leg + 1], t);
+                    Vector3 direction = Vector3.ProjectOnPlane(passage[leg + 1] - passage[leg], Vector3.up).normalized;
                     float angle = Vector3.SignedAngle(Vector3.forward, direction, Vector3.up);
-                    float total = (leg + t) / (Tunnel.Length - 1);
+                    float total = (leg + t) / (passage.Length - 1);
                     Quaternion orientation = Quaternion.Euler(0f, Mathf.Lerp(0f, angle, Mathf.Min(1f, total * 4f)), 0f);
                     var next = new Vector3[contour.Length];
                     for (int j = 0; j < contour.Length; j++)
                     {
                         Vector3 offset = contour[j] - center;
                         float a = Mathf.Atan2(offset.y, offset.x);
-                        float rough = 1f + .035f * Mathf.Sin(j * 1.7f + total * 11f) * Mathf.Sin(Mathf.PI * total);
+                        float rough = 1f + .025f * Mathf.Sin(a * 3f + total * 8f) * Mathf.Sin(Mathf.PI * total);
                         Vector3 rounded = Rim(a) * rough;
                         next[j] = c + orientation * Vector3.Lerp(offset, rounded, Mathf.SmoothStep(0f, 1f, Mathf.Min(1f, total * 2.5f)));
                     }
-                    float advance = Vector3.Distance(Tunnel[leg], Tunnel[leg + 1]) / 6f;
+                    float advance = Vector3.Distance(passage[leg], passage[leg + 1]) / 6f;
                     for (int j = 0; j < contour.Length; j++)
                     {
                         int k = (j + 1) % contour.Length;
@@ -196,54 +237,136 @@ namespace ExoFlight.EditorTools
                     previous = next;
                 }
             }
-            return result.Mesh("Through cave walls and rising exit");
+            return result.Mesh("Through cave walls and rising exit", true);
         }
 
         static void MakePortal(Transform parent, Terrain terrain)
         {
-            // A continuous annulus joins the vertical tunnel mouth to the actual heightfield.
-            // Its outer footprint covers the terrain hole, including the square cell corners.
-            const int slices = 128, bands = 7;
-            Vector3 forward = new Vector3(9f, 0f, 7f).normalized;
-            Vector3 right = Vector3.Cross(Vector3.up, forward);
-            var draft = new MeshDraft();
-            var rings = new Vector3[bands + 1, slices];
-            for (int i = 0; i <= bands; i++) for (int j = 0; j < slices; j++)
-            {
-                float a = j * Mathf.PI * 2f / slices;
-                Vector3 rim = Rim(a);
-                Vector3 inner = Mouth + right * rim.x + Vector3.up * rim.y;
-                Vector3 outer = Mouth + right * (Mathf.Cos(a) * 23f) + forward * (-3f - Mathf.Sin(a) * 31f);
-                outer.y = terrain.SampleHeight(outer) + terrain.transform.position.y + .06f;
-                float t = i / (float)bands;
-                Vector3 point = Vector3.Lerp(inner, outer, t);
-                float fracture = (Mathf.PerlinNoise(j * .23f, i * .67f) - .5f) * 1.1f * Mathf.Sin(Mathf.PI * t);
-                point += (forward * .6f + Vector3.up * .5f) * fracture;
-                if (i >= bands - 1) point.y = Mathf.Max(point.y, terrain.SampleHeight(point) + .06f);
-                rings[i,j] = point;
-            }
-            for (int i = 0; i < bands; i++) for (int j = 0; j < slices; j++)
-            {
-                int k = (j + 1) % slices;
-                draft.Quad(rings[i,j], rings[i+1,j], rings[i+1,k], rings[i,k],
-                    new Vector2(j * .08f, i * .5f), new Vector2((j+1) * .08f, (i+1) * .5f), true);
-            }
+            // Subtract the passage from a solid piece of the hillside, like the original entrance.
+            // This creates one continuous cliff, overhang and floor, rather than a raised circular lip.
+            Mesh outcrop = ExtractOutcrop(terrain);
             var material = MaterialCopy("Weathered exit rock", "Entrance regolith");
             material.CopyPropertiesFromMaterial(AssetDatabase.LoadAssetAtPath<Material>(Landscape + "Entrance regolith.mat"));
             material.SetTexture("_BaseMap", AssetDatabase.LoadAssetAtPath<Texture2D>(Landscape + "Ochre dust Albedo.png"));
             material.SetTexture("_BumpMap", AssetDatabase.LoadAssetAtPath<Texture2D>(Landscape + "Ochre dust Normal.png"));
             material.SetColor("_BaseColor", Color.white);
             material.SetTextureScale("_BaseMap", Vector2.one);
-            material.SetFloat("_BumpScale", .45f);
+            material.SetFloat("_BumpScale", .18f);
             material.EnableKeyword("_NORMALMAP");
             material.SetFloat("_Cull", 0f);
             MeshObject("Weathered exit arch and ground seam", parent,
-                SaveMesh("Exit rock joined to terrain", draft.Mesh("Exit rock joined to terrain", true)), material, true);
+                SaveMesh("Exit rock joined to terrain", outcrop), material, true);
             EditorUtility.SetDirty(material);
         }
 
-        static Vector3 Rim(float a) => new Vector3(Mathf.Cos(a) * 11f * (1f + .07f * Mathf.Sin(a * 3f) + .04f * Mathf.Cos(a * 7f)),
-            Mathf.Sin(a) * 9.8f * (1f + .06f * Mathf.Cos(a * 4f)), 0f);
+        static Vector3 Rim(float a)
+        {
+            Vector2 ray = new Vector2(Mathf.Cos(a), Mathf.Sin(a));
+            float distance = float.PositiveInfinity;
+            for (int i = 0; i < Opening.Length; i++)
+            {
+                Vector2 p = Opening[i], edge = Opening[(i + 1) % Opening.Length] - p;
+                float cross = ray.x * edge.y - ray.y * edge.x;
+                if (Mathf.Abs(cross) < .0001f) continue;
+                float t = (p.x * edge.y - p.y * edge.x) / cross;
+                float u = (p.x * ray.y - p.y * ray.x) / cross;
+                if (t > 0f && u >= 0f && u <= 1f) distance = Mathf.Min(distance, t);
+            }
+            return new Vector3(ray.x * distance, ray.y * distance, 0f);
+        }
+
+        static float OpeningDistance(Vector2 p)
+        {
+            float squared = float.PositiveInfinity; bool inside = false;
+            for (int i = 0, j = Opening.Length - 1; i < Opening.Length; j = i++)
+            {
+                Vector2 a = Opening[j], b = Opening[i], edge = b-a;
+                Vector2 closest = a + edge * Mathf.Clamp01(Vector2.Dot(p-a,edge)/edge.sqrMagnitude);
+                squared = Mathf.Min(squared,(p-closest).sqrMagnitude);
+                if ((a.y>p.y)!=(b.y>p.y) && p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x) inside=!inside;
+            }
+            return Mathf.Sqrt(squared) * (inside ? -1f : 1f);
+        }
+
+        static Mesh ExtractOutcrop(Terrain terrain)
+        {
+            const int nx=52, ny=48, nz=48;
+            const float xmin=-33f, xmax=33f, ymin=12f, ymax=80f, zmin=-27f, zmax=36f;
+            Vector3 right=Vector3.Cross(Vector3.up,ExitForward);
+            Func<Vector3,float> field = p =>
+            {
+                Vector3 delta=p-Mouth;
+                float x=Vector3.Dot(delta,right), z=Vector3.Dot(delta,ExitForward);
+                float centerY=Mouth.y+Mathf.Min(0f,z)*.25f;
+                float rockVariation=Mathf.SmoothStep(0f,1f,Mathf.InverseLerp(-19f,-8f,z));
+                float warp=(Mathf.PerlinNoise(x*.19f+17f,z*.15f+35f)-.5f)*.65f*rockVariation;
+                float cavity=OpeningDistance(new Vector2(x,p.y-centerY))+warp;
+                // A small overlap covers terrain tessellation error at the cut's perimeter.
+                float ground=terrain.SampleHeight(p)+terrain.transform.position.y+.3f;
+                return Mathf.Max(p.y-ground,-cavity);
+            };
+            Func<Vector3,Vector3> gradient = p => new Vector3(
+                field(p+Vector3.right*.12f)-field(p-Vector3.right*.12f),
+                field(p+Vector3.up*.12f)-field(p-Vector3.up*.12f),
+                field(p+Vector3.forward*.12f)-field(p-Vector3.forward*.12f)).normalized;
+            int Index(int x,int y,int z) => (z*(ny+1)+y)*(nx+1)+x;
+            var positions=new Vector3[(nx+1)*(ny+1)*(nz+1)]; var values=new float[positions.Length];
+            for(int z=0;z<=nz;z++) for(int y=0;y<=ny;y++) for(int x=0;x<=nx;x++)
+            {
+                int i=Index(x,y,z);
+                Vector3 p=Mouth+right*Mathf.Lerp(xmin,xmax,x/(float)nx)+ExitForward*Mathf.Lerp(zmin,zmax,z/(float)nz);
+                p.y=Mathf.Lerp(ymin,ymax,y/(float)ny); positions[i]=p; values[i]=field(p);
+            }
+            int[,] tetra={{0,5,1,6},{0,1,2,6},{0,2,3,6},{0,3,7,6},{0,7,4,6},{0,4,5,6}};
+            int[,] edges={{0,1},{0,2},{0,3},{1,2},{1,3},{2,3}};
+            var draft=new MeshDraft(); var cube=new int[8];var indices=new int[4];
+            var points=new List<Vector3>(4);
+            for(int z=0;z<nz;z++) for(int y=0;y<ny;y++) for(int x=0;x<nx;x++)
+            {
+                cube[0]=Index(x,y,z);cube[1]=Index(x+1,y,z);cube[2]=Index(x+1,y+1,z);cube[3]=Index(x,y+1,z);
+                cube[4]=Index(x,y,z+1);cube[5]=Index(x+1,y,z+1);cube[6]=Index(x+1,y+1,z+1);cube[7]=Index(x,y+1,z+1);
+                bool first=values[cube[0]]<0f;
+                if(cube.All(i=>(values[i]<0f)==first)) continue;
+                for(int t=0;t<6;t++)
+                {
+                    for(int k=0;k<4;k++) indices[k]=cube[tetra[t,k]];
+                    points.Clear();
+                    for(int e=0;e<6;e++)
+                    {
+                        int a=indices[edges[e,0]],b=indices[edges[e,1]];
+                        if((values[a]<0f)==(values[b]<0f)) continue;
+                        Vector3 p=Vector3.Lerp(positions[a],positions[b],values[a]/(values[a]-values[b]));
+                        if(!points.Any(q=>(p-q).sqrMagnitude<.000001f)) points.Add(p);
+                    }
+                    if(points.Count<3) continue;
+                    Vector3 center=Vector3.zero;foreach(var p in points) center+=p;center/=points.Count;
+                    Vector3 normal=gradient(center);
+                    Vector3 axis=Vector3.Cross(normal,Mathf.Abs(normal.y)<.9f?Vector3.up:Vector3.right).normalized;
+                    Vector3 other=Vector3.Cross(normal,axis);
+                    Vector3 origin=center;
+                    points.Sort((a,b)=>Mathf.Atan2(Vector3.Dot(a-origin,other),Vector3.Dot(a-origin,axis))
+                        .CompareTo(Mathf.Atan2(Vector3.Dot(b-origin,other),Vector3.Dot(b-origin,axis))));
+                    // One continuous wrap avoids visible triangular texture-chart boundaries.
+                    float Angle(Vector3 p) {
+                        Vector3 d=p-Mouth; float z=Vector3.Dot(d,ExitForward);
+                        return Mathf.Atan2(p.y-Mouth.y-Mathf.Min(0f,z)*.25f,Vector3.Dot(d,right));
+                    }
+                    float referenceAngle=Angle(center);
+                    Vector2 Surface(Vector3 p) {
+                        float angle=referenceAngle+Mathf.DeltaAngle(referenceAngle*Mathf.Rad2Deg,Angle(p)*Mathf.Rad2Deg)*Mathf.Deg2Rad;
+                        return new Vector2(angle*(4f/Mathf.PI),Vector3.Dot(p-Mouth,ExitForward)*.065f);
+                    }
+                    Vertex Make(Vector3 p) => new Vertex {p=p,n=gradient(p),uv=Surface(p)};
+                    for(int k=1;k<points.Count-1;k++)
+                    {
+                        Vertex a=Make(points[0]),b=Make(points[k]),c=Make(points[k+1]);
+                        if(Vector3.Dot(Vector3.Cross(b.p-a.p,c.p-a.p),normal)<0f) draft.Triangle(a,c,b);
+                        else draft.Triangle(a,b,c);
+                    }
+                }
+            }
+            return draft.Mesh("Exit rock joined to terrain");
+        }
 
         static void BuildLandingPad(MarsMissionDirector mission, Transform scenery, Vector3 floor)
         {
@@ -348,7 +471,12 @@ namespace ExoFlight.EditorTools
             string path = Folder + name + ".asset";
             var saved = AssetDatabase.LoadAssetAtPath<Mesh>(path);
             if (saved == null) { AssetDatabase.CreateAsset(mesh, path); return mesh; }
-            EditorUtility.CopySerialized(mesh, saved); Object.DestroyImmediate(mesh); EditorUtility.SetDirty(saved); return saved;
+            // CopySerialized alone leaves an existing mesh's GPU buffers stale in the open scene.
+            saved.Clear(); saved.indexFormat = mesh.indexFormat;
+            saved.vertices = mesh.vertices; saved.normals = mesh.normals; saved.uv = mesh.uv;
+            saved.triangles = mesh.triangles; saved.tangents = mesh.tangents; saved.bounds = mesh.bounds;
+            saved.UploadMeshData(false);
+            Object.DestroyImmediate(mesh); EditorUtility.SetDirty(saved); return saved;
         }
         static GameObject MeshObject(string name, Transform parent, Mesh mesh, Material material, bool collider)
         {
