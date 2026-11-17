@@ -31,26 +31,28 @@ Material:
     m_Floats:
     - _DustContrast: 0.615
     - _Exposure: 1.73
-    - _GradientPower: 0.578
+    - _GradientPower: 0.1
     - _HaloGlow: 0.9
-    - _HazeHeight: 0.418
-    - _HazeStrength: 0.777
+    - _HazeHeight: 0.725
+    - _HazeStrength: 1
     - _HorizonHeight: 0
     - _Hue: 0
     - _Rotation: 0
+    - _Saturation: 0.748
     - _Storm: 0
     - _SunDisc: 8
     - _SunGlow: 2.5
     - _SunGlowPower: 30
     - _SunSize: 0.00035
     - _UseGradient: 0
+    - _Value: 0.597
     m_Colors:
     - _DustColor: {r: 0.6037736, g: 0.24560265, b: 0.13955145, a: 1}
-    - _HazeColor: {r: 0.7830189, g: 0.3163073, b: 0.19575472, a: 1}
+    - _HazeColor: {r: 0.7264151, g: 0.1720868, b: 0.10622107, a: 1}
     - _HorizonColor: {r: 1, g: 0.5012143, b: 0.27843142, a: 1}
     - _SunColor: {r: 0.45, g: 0.7, b: 1, a: 1}
     - _SunDir: {r: 0.3, g: 0.12, b: 1, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
-    - _ZenithColor: {r: 0.32, g: 0.26, b: 0.22, a: 1}
+    - _ZenithColor: {r: 0.8113208, g: 0.40712363, b: 0.15690637, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

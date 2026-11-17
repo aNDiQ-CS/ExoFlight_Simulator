@@ -7,8 +7,12 @@ Shader "ExoFlight/Skybox HDRI"
         [NoScaleOffset] _MainTex ("HDRI (equirect 2:1)", 2D) = "grey" {}
         _UseGradient ("No HDRI: use gradient", Range(0,1)) = 1
         _Rotation ("Rotation (deg)", Range(0,360)) = 0
-        _Exposure ("Exposure", Range(0,8)) = 1
+
+        [Header(HSV)]
         _Hue ("Hue shift (deg)", Range(-180,180)) = 0
+        _Saturation ("Saturation", Range(0,2)) = 1
+        _Value ("Value / brightness", Range(0,2)) = 1
+        _Exposure ("Exposure (all modes)", Range(0,8)) = 1
         [HDR] _Tint ("Tint", Color) = (1,1,1,1)
 
         [Header(Atmosphere)]
@@ -55,6 +59,8 @@ Shader "ExoFlight/Skybox HDRI"
             float _Rotation;
             float _Exposure;
             float _Hue;
+            float _Saturation;
+            float _Value;
             float4 _Tint;
             float4 _HazeColor;
             float _HazeStrength;
@@ -114,6 +120,15 @@ Shader "ExoFlight/Skybox HDRI"
                 return c * co + cross(axis, c) * s + axis * dot(axis, c) * (1.0 - co);
             }
 
+            // hue/saturation/value on the HDRI only: hue rotates, saturation scales chroma, value scales brightness
+            float3 HsvAdjust(float3 c)
+            {
+                c = HueShift(c, _Hue);
+                float lum = dot(c, float3(0.2126, 0.7152, 0.0722));
+                c = lerp(float3(lum, lum, lum), c, _Saturation);
+                return c * _Value;
+            }
+
             float3 MarsGradient(float3 d)
             {
                 float h = saturate((d.y - _HorizonHeight) * 1.5 + 0.5);
@@ -147,7 +162,7 @@ Shader "ExoFlight/Skybox HDRI"
                 float3 dir = RotateY(normalize(i.dir), _Rotation);
 
                 float3 col;
-                float3 tex = HueShift(tex2D(_MainTex, DirToEquirect(dir)).rgb, _Hue) * _Exposure;
+                float3 tex = HsvAdjust(tex2D(_MainTex, DirToEquirect(dir)).rgb) * _Exposure;
                 float3 grad = MarsGradient(dir) * _Exposure;
                 col = lerp(tex, grad, saturate(_UseGradient));
 
