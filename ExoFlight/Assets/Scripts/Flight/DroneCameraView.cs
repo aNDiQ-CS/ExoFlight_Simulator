@@ -19,10 +19,13 @@ namespace ExoFlight.Flight
         KeyboardDroneInput input;
         Camera view;
         Vector3 fpvPosition;
+        DroneVrView vrView;
+        bool Tracking => vrView != null ? vrView.TrackedActive : UnityEngine.XR.XRSettings.isDeviceActive;
 
         void Awake()
         {
             input = GetComponent<KeyboardDroneInput>();
+            vrView = GetComponent<DroneVrView>();
             view = input.fpvCamera;
             if (view != null) fpvPosition = view.transform.localPosition;
         }
@@ -31,7 +34,7 @@ namespace ExoFlight.Flight
         void Update()
         {
             if (Application.isFocused && Keyboard.current != null) ReadKeyboard(Keyboard.current);
-            if (Application.isFocused && allowDesktopLook && !thirdPerson && !UnityEngine.XR.XRSettings.isDeviceActive)
+            if (Application.isFocused && allowDesktopLook && !thirdPerson && !Tracking)
                 ReadMouseLook(Mouse.current, Time.unscaledDeltaTime);
             else PreviewLook = Vector2.zero;
         }
@@ -47,11 +50,11 @@ namespace ExoFlight.Flight
         }
         public void ReadKeyboard(Keyboard keyboard)
         {
-            if (keyboard.vKey.wasPressedThisFrame) SetThirdPerson(!thirdPerson);
+            if (!Tracking && keyboard.vKey.wasPressedThisFrame) SetThirdPerson(!thirdPerson);
         }
         public void SetThirdPerson(bool value)
         {
-            thirdPerson = value;
+            thirdPerson = value && !Tracking;
             ApplyView();
         }
         void LateUpdate() => ApplyView();
@@ -59,10 +62,11 @@ namespace ExoFlight.Flight
         void ApplyView()
         {
             if (view == null) return;
+            if (Tracking) { thirdPerson = false; return; }
             if (!thirdPerson)
             {
                 // A tracked headset owns its pose. Desktop preview must not overwrite it.
-                if (UnityEngine.XR.XRSettings.isDeviceActive) return;
+                if (Tracking) return;
                 view.transform.localPosition = fpvPosition;
                 view.transform.localRotation = Quaternion.Euler(-input.cameraTilt + PreviewLook.y, PreviewLook.x, 0f);
                 view.fieldOfView = input.fieldOfView;

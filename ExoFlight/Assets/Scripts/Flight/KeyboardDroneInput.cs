@@ -20,6 +20,12 @@ namespace ExoFlight.Flight
         public float Throttle => sticks.Throttle;
         public bool ExternalControlActive { get; set; }
         public bool CameraControlledExternally { get; set; }
+        int suppressFrame = -1;
+        public void SuppressCurrentFrame() => suppressFrame = Time.frameCount;
+        public static bool HasStickInput(Keyboard keyboard) => keyboard != null
+            && (keyboard.wKey.isPressed || keyboard.sKey.isPressed || keyboard.aKey.isPressed || keyboard.dKey.isPressed
+            || keyboard.upArrowKey.isPressed || keyboard.downArrowKey.isPressed
+            || keyboard.leftArrowKey.isPressed || keyboard.rightArrowKey.isPressed);
 
         void Awake()
         {
@@ -41,6 +47,7 @@ namespace ExoFlight.Flight
 
         void Update()
         {
+            if (Time.frameCount == suppressFrame) return;
             var keyboard = Keyboard.current;
             if (keyboard == null || !Application.isFocused) return;
             if (keyboard.escapeKey.wasPressedThisFrame)
@@ -67,6 +74,7 @@ namespace ExoFlight.Flight
         /// <summary>Separate sampling entry point also exercised by the integration checks.</summary>
         public void ReadKeyboard(Keyboard keyboard, float dt)
         {
+            if (Time.frameCount == suppressFrame) return;
             if (keyboard.rKey.wasPressedThisFrame)
             {
                 ResetInput();

@@ -1,0 +1,36 @@
+PASS | 36 checks | PASS: 71 unique voice IDs and filenames
+PASS: All 9 route zones ordered and wired
+PASS: Real rover payload: 10.6 kg, inherited WalkerCargo
+PASS: Rover visible with collider and one dynamic body
+PASS: UI hidden before task, world space
+PASS: Delivery gated before route
+PASS: Missing audio did not block briefing
+PASS: Early final-zone entry rejected
+PASS: First real capsule overlap advanced route
+PASS: 1.5 second physical hover picked up rover
+PASS: Rigid attachment without rope
+PASS: Cargo mass counted once
+PASS: Payload increases hover demand, sufficient thrust
+PASS: Accepted spatial UI active during transport
+PASS: Entire task panel fits in desktop camera
+PASS: Panel occupies less than 6 percent of viewport
+PASS: Pickup voice follows attachment
+PASS: Lost load returns to pickup and announces loss
+PASS: Recovery zone follows fallen rover
+PASS: Dropped rover can be physically picked up again
+PASS: Cannot deliver before canyon and cave
+PASS: Route gate 2 fired once
+PASS: Route gate 3 fired once
+PASS: Route gate 4 fired once
+PASS: Route gate 5 fired once
+PASS: Headlight on inside cave
+PASS: Route gate 6 fired once
+PASS: Route gate 7 fired once
+PASS: Route gate 8 fired once
+PASS: Route gate 9 fired once
+PASS: Return through same cave leads to landing
+PASS: Rover released, landed and deployed on actual pad
+PASS: Mass removed after release
+PASS: Final voice waits for real landing and motors off
+PASS: Spatial panel hidden after mission
+PASS: R resets route, cargo, voice and UI

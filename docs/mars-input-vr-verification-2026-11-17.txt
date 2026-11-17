@@ -1,0 +1,21 @@
+PASS
+Virtual devices only; real TX12 calibration and HMD comfort not tested.
+PASS Verified transmitter selected
+PASS Only RC writes manual flight input
+PASS Signed raw throttle -1 maps to zero (actual 0, stick (0.00, -1.00))
+PASS Throttle +1 maps to full; high-throttle arming rejected
+PASS Low-then-high AUX arms at zero throttle
+PASS Raw throttle midpoint maps to 50 percent
+PASS Both control sticks reach the flight controller
+PASS Disconnect clears retained axes and AUX
+PASS Disconnect disarms and returns to keyboard
+PASS Autopilot exclusively owns the motors
+PASS Emergency stop disarms and releases input ownership
+PASS Tracked HMD activates the pose driver
+PASS HMD head translation is preserved
+PASS HMD head rotation is preserved
+PASS Desktop third-person mode cannot overwrite VR view
+PASS VR origin keeps a level horizon during body tilt
+PASS Body rotation does not erase the tracked head pose
+PASS HMD removal restores desktop camera ownership
+PASS Desktop first-person camera returns to its seat

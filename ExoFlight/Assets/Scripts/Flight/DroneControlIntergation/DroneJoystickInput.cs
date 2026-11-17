@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.LowLevel;
+[DefaultExecutionOrder(-250)]
 public class DroneJoystickInput : MonoBehaviour
 {
 
@@ -39,12 +40,23 @@ public class DroneJoystickInput : MonoBehaviour
     [SerializeField] private bool invertYaw = false;
     [SerializeField] private bool invertPitch = false;
     [SerializeField] private bool invertRoll = false;
+    [Tooltip("Raw throttle endpoints from Input Debugger. Most USB RC axes use -1..1.")]
+    public Vector2 throttleRange = new Vector2(-1f, 1f);
+    [Tooltip("Enable only after verifying the four channel paths and inversions on the actual transmitter.")]
+    public bool mappingVerified;
 
     [Tooltip("Мёртвая зона по центру стика (0..1), чтобы убрать дрейф на yaw/pitch/roll.")]
     [Range(0f, 0.2f)]
     [SerializeField] private float deadzone = 0.03f;
 
     public InputDevice Device { get; private set; }
+    public bool IsReady => mappingVerified && Device != null && Device.enabled
+        && HasAxis(throttlePath) && HasAxis(yawPath) && HasAxis(pitchPath) && HasAxis(rollPath)
+        && Mathf.Abs(throttleRange.y - throttleRange.x) > .001f;
+    public bool HasAux(int index) => index >= 0 && index < auxPaths.Count && HasAxis(auxPaths[index]);
+    bool HasAxis(string path) => Device != null && !string.IsNullOrEmpty(path)
+        && Device.TryGetChildControl<AxisControl>(path) != null;
+    void ClearValues() { Throttle = Yaw = Pitch = Roll = 0f; _auxValues.Clear(); }
 
     /// Throttle обычно НЕ центрируется (0..1, газ "от себя"), поэтому
     /// для него дедзона и инверсия применяются отдельно, без обнуления центра.
@@ -74,6 +86,7 @@ public class DroneJoystickInput : MonoBehaviour
     {
         InputSystem.onDeviceChange -= OnDeviceChange;
         Device = null;
+        ClearValues();
     }
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -94,8 +107,12 @@ public class DroneJoystickInput : MonoBehaviour
 
             case InputDeviceChange.Removed:
             case InputDeviceChange.Disconnected:
+            case InputDeviceChange.Disabled:
                 if (Device == device)
+                {
                     Device = null;
+                    ClearValues();
+                }
                 break;
         }
     }
@@ -104,7 +121,7 @@ public class DroneJoystickInput : MonoBehaviour
     {
         foreach (var d in InputSystem.devices)
         {
-            if (isCandidate(d) && MatchesFilter(d))
+            if (d.enabled && isCandidate(d) && MatchesFilter(d))
             {
                 Device = d;
                 Debug.Log($"[DroneJoystickInput] Найдено: {d.displayName} " +
@@ -127,6 +144,7 @@ public class DroneJoystickInput : MonoBehaviour
         if (Device == null)
         {
             TryBindExistingDevice();
+            ClearValues();
             return;
         }
 
@@ -135,7 +153,9 @@ public class DroneJoystickInput : MonoBehaviour
             LogRawValues();
         }
 
-        Throttle = ReadAxis(throttlePath, invertThrottle, applyDeadzone: false);
+        if (!IsReady) { ClearValues(); return; }
+        Throttle = Mathf.InverseLerp(throttleRange.x, throttleRange.y, ReadAxis(throttlePath, false, false));
+        if (invertThrottle) Throttle = 1f - Throttle;
         Yaw = ReadAxis(yawPath, invertYaw, applyDeadzone: true);
         Pitch = ReadAxis(pitchPath, invertPitch, applyDeadzone: true);
         Roll = ReadAxis(rollPath, invertRoll, applyDeadzone: true);

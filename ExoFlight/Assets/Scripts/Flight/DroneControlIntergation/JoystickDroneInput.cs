@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace ExoFlight.Flight
 {
+    [DefaultExecutionOrder(-150)]
     [DisallowMultipleComponent, RequireComponent(typeof(DroneFlightController))]
     public sealed class JoystickDroneInput : MonoBehaviour
     {
@@ -40,6 +41,7 @@ namespace ExoFlight.Flight
         private bool prevArm;
         private bool prevMode;
         private bool prevReset;
+        private bool armLowSeen;
 
         public float Throttle { get; private set; }
 
@@ -57,6 +59,7 @@ namespace ExoFlight.Flight
 
         void OnEnable()
         {
+            prevArm = prevMode = prevReset = armLowSeen = false;
             if (checkpoint != null) checkpoint.Respawned += OnRespawned;
         }
 
@@ -68,7 +71,14 @@ namespace ExoFlight.Flight
 
         void FixedUpdate()
         {
-            if (joystick == null || drone == null) return;
+            if (drone == null) return;
+            if (joystick == null || !joystick.IsReady)
+            {
+                Throttle = 0f;
+                drone.SetArmed(false);
+                armLowSeen = false;
+                return;
+            }
 
             // --- Читаем оси ---
             float throttle = Mathf.Clamp01(joystick.Throttle);
@@ -77,12 +87,14 @@ namespace ExoFlight.Flight
             float roll = Mathf.Clamp(joystick.Roll, -1f, 1f);
 
             Throttle = throttle;
+            drone.SetInput(new FlightControlInput(throttle, pitch, yaw, roll));
 
             // --- Arm / Disarm (по фронту тумблера) ---
             bool armSwitch = joystick.GetAux(armChannel) > switchThreshold;
-            if (armSwitch && !prevArm)
+            if (!armSwitch) armLowSeen = true;
+            if (joystick.HasAux(armChannel) && armSwitch && !prevArm && armLowSeen)
             {
-                if (throttle <= armThrottleLimit)
+                if (throttle <= Mathf.Min(.02f, armThrottleLimit))
                 {
                     drone.SetArmed(true);
                     Debug.Log("[Joystick] ARMED");
@@ -122,12 +134,27 @@ namespace ExoFlight.Flight
             prevReset = resetSwitch;
 
             // --- Передаём управление ---
-            drone.SetInput(new FlightControlInput(throttle, pitch, yaw, roll));
+            if (drone.Armed) drone.SetInput(new FlightControlInput(throttle, pitch, yaw, roll));
+        }
+
+        void Update()
+        {
+            // With a USB transmitter exposing only four axes, the operator can still arm/reset.
+            var keys = UnityEngine.InputSystem.Keyboard.current;
+            if (!Application.isFocused || keys == null || joystick == null || !joystick.IsReady) return;
+            if (keys.escapeKey.wasPressedThisFrame) drone.SetArmed(false);
+            else if (keys.rKey.wasPressedThisFrame) { drone.ResetFlight(); checkpoint?.Respawn(); }
+            else if (!joystick.HasAux(armChannel) && keys.spaceKey.wasPressedThisFrame)
+            {
+                if (drone.Armed) drone.SetArmed(false);
+                else if (joystick.Throttle <= .02f) { drone.SetInput(default); drone.SetArmed(true); }
+            }
         }
 
         void LateUpdate()
         {
-            if (fpvCamera == null) return;
+            if (fpvCamera == null || UnityEngine.XR.XRSettings.isDeviceActive
+                || (TryGetComponent<DroneCameraView>(out var cameraView) && cameraView.enabled)) return;
             fpvCamera.transform.localRotation = Quaternion.Euler(-cameraTilt, 0f, 0f);
             fpvCamera.fieldOfView = fieldOfView;
         }

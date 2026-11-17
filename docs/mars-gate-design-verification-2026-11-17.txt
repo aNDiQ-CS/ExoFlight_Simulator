@@ -1,0 +1,87 @@
+PASS
+PASS All route captions removed, including takeoff and distances
+PASS Only the active gate and one upcoming gate are visible
+PASS Shared frame, trim and light meshes are assigned
+PASS Gate artwork has no physics colliders
+PASS Outbound visual gates are substantially fewer than flight waypoints
+PASS Loaded-route visual gates are fewer than flight waypoints
+PASS Pickup/delivery endpoint is retained: 0
+PASS Ordered presentation indices: 0/1
+PASS Terrain/cave clearance for shortcut: 0/1
+PASS Ordered presentation indices: 0/2
+PASS Terrain/cave clearance for shortcut: 0/2
+PASS Ordered presentation indices: 0/3
+PASS Terrain/cave clearance for shortcut: 0/3
+PASS Ordered presentation indices: 0/4
+PASS Terrain/cave clearance for shortcut: 0/4
+PASS Ordered presentation indices: 0/5
+PASS Terrain/cave clearance for shortcut: 0/5
+PASS Ordered presentation indices: 0/6
+PASS Terrain/cave clearance for shortcut: 0/6
+PASS Ordered presentation indices: 0/7
+PASS Terrain/cave clearance for shortcut: 0/7
+PASS Ordered presentation indices: 0/8
+PASS Terrain/cave clearance for shortcut: 0/8
+PASS Ordered presentation indices: 0/9
+PASS Terrain/cave clearance for shortcut: 0/9
+PASS Ordered presentation indices: 0/10
+PASS Terrain/cave clearance for shortcut: 0/10
+PASS Ordered presentation indices: 0/11
+PASS Terrain/cave clearance for shortcut: 0/11
+PASS Ordered presentation indices: 0/12
+PASS Terrain/cave clearance for shortcut: 0/12
+PASS Ordered presentation indices: 0/13
+PASS Terrain/cave clearance for shortcut: 0/13
+PASS Ordered presentation indices: 0/14
+PASS Terrain/cave clearance for shortcut: 0/14
+PASS Ordered presentation indices: 0/15
+PASS Terrain/cave clearance for shortcut: 0/15
+PASS Ordered presentation indices: 0/16
+PASS Ordered presentation indices: 0/17
+PASS Story gate remains a visible navigation point: 0
+MEASURE route 0: 55 flight points -> 18 visible-gate positions; mean spacing 30,9 m
+PASS Pickup/delivery endpoint is retained: 1
+PASS Ordered presentation indices: 1/1
+PASS Ordered presentation indices: 1/2
+PASS Terrain/cave clearance for shortcut: 1/2
+PASS Ordered presentation indices: 1/3
+PASS Terrain/cave clearance for shortcut: 1/3
+PASS Ordered presentation indices: 1/4
+PASS Terrain/cave clearance for shortcut: 1/4
+PASS Ordered presentation indices: 1/5
+PASS Terrain/cave clearance for shortcut: 1/5
+PASS Ordered presentation indices: 1/6
+PASS Terrain/cave clearance for shortcut: 1/6
+PASS Ordered presentation indices: 1/7
+PASS Ordered presentation indices: 1/8
+PASS Ordered presentation indices: 1/9
+PASS Ordered presentation indices: 1/10
+PASS Ordered presentation indices: 1/11
+PASS Ordered presentation indices: 1/12
+PASS Ordered presentation indices: 1/13
+PASS Terrain/cave clearance for shortcut: 1/13
+PASS Ordered presentation indices: 1/14
+PASS Terrain/cave clearance for shortcut: 1/14
+PASS Ordered presentation indices: 1/15
+PASS Ordered presentation indices: 1/16
+PASS Ordered presentation indices: 1/17
+PASS Ordered presentation indices: 1/18
+PASS Ordered presentation indices: 1/19
+PASS Ordered presentation indices: 1/20
+PASS Terrain/cave clearance for shortcut: 1/20
+PASS Ordered presentation indices: 1/21
+PASS Terrain/cave clearance for shortcut: 1/21
+PASS Ordered presentation indices: 1/22
+PASS Ordered presentation indices: 1/23
+PASS Ordered presentation indices: 1/24
+PASS Ordered presentation indices: 1/25
+PASS Story gate remains a visible navigation point: 1
+PASS Story gate remains a visible navigation point: 2
+PASS Story gate remains a visible navigation point: 3
+PASS Story gate remains a visible navigation point: 4
+PASS Story gate remains a visible navigation point: 5
+PASS Story gate remains a visible navigation point: 6
+PASS Story gate remains a visible navigation point: 7
+PASS Story gate remains a visible navigation point: 8
+MEASURE route 1: 38 flight points -> 26 visible-gate positions; mean spacing 28,2 m
+PASS Sparse navigation waits at the real story gate and cannot skip mission progression

@@ -16,6 +16,11 @@ namespace ExoFlight.Cargo
         [Min(.1f)] public float holdSeconds = 1.5f;
         [Min(.1f)] public float settleSeconds = .5f;
         [Min(1f)] public float landingTimeout = 15f;
+        [Tooltip("An enclosing mission may gate pickup and delivery by route progress.")]
+        public bool pickupAllowed = true;
+        public bool deliveryAllowed = true;
+        public bool recoverLostCargo;
+        public UnityEvent lost = new UnityEvent();
         public UnityEvent pickedUp = new UnityEvent();
         public UnityEvent released = new UnityEvent();
         public UnityEvent completed = new UnityEvent();
@@ -57,7 +62,7 @@ namespace ExoFlight.Cargo
             }
             if (state == CargoMissionState.AwaitingPickup)
             {
-                if (!Hold(pickupZone.IsHovering(carrier) && carrier.CanAttach(cargo), dt)) return;
+                if (!Hold(pickupAllowed && pickupZone.IsHovering(carrier) && carrier.CanAttach(cargo), dt)) return;
                 if (!carrier.TryAttach(cargo)) { holdProgress = 0f; return; }
                 state = CargoMissionState.Transporting;
                 holdProgress = 0f;
@@ -66,8 +71,18 @@ namespace ExoFlight.Cargo
             }
             else if (state == CargoMissionState.Transporting)
             {
-                if (carrier.CurrentCargo != cargo) { Fail("Крепление груза потеряно. R — повторить миссию."); return; }
-                if (!Hold(deliveryZone.IsHovering(carrier) && deliveryZone.ContainsCargoFootprint(cargo), dt)) return;
+                if (carrier.CurrentCargo != cargo)
+                {
+                    if (recoverLostCargo)
+                    {
+                        state = CargoMissionState.AwaitingPickup;
+                        holdProgress = 0f;
+                        lost.Invoke();
+                    }
+                    else Fail("Крепление груза потеряно. R — повторить миссию.");
+                    return;
+                }
+                if (!Hold(deliveryAllowed && deliveryZone.IsHovering(carrier) && deliveryZone.ContainsCargoFootprint(cargo), dt)) return;
                 carrier.Release();
                 state = CargoMissionState.AwaitingLanding;
                 holdProgress = landingTime = settledTime = 0f;

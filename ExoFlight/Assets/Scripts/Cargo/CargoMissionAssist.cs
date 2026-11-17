@@ -16,6 +16,11 @@ namespace ExoFlight.Cargo
         [Min(.2f)] public float maximumSpeed = 2f;
         [Min(.5f)] public float positionGain = 1.5f;
         [Min(.5f)] public float velocityGain = 4f;
+        [Header("Optional authored route; empty keeps the original small demo")]
+        public Transform[] routeBeforePickup;
+        public Transform[] routeAfterPickup;
+        public Transform routeLanding;
+        [HideInInspector] public bool routePlaybackReady = true;
         [SerializeField] bool active;
         [SerializeField] bool holdingPosition;
         [SerializeField] string stage = "Off — press P in Game";
@@ -34,6 +39,8 @@ namespace ExoFlight.Cargo
         Quaternion heading;
         float cruiseY;
         int leg;
+        int routeIndex;
+        bool routeCarrying;
 
         void Awake()
         {
@@ -111,6 +118,9 @@ namespace ExoFlight.Cargo
                 ? ZoneCenter(zone).y : drone.Body.position.y;
             target = new Vector3(drone.Body.position.x, demonstration ? cruiseY : holdY, drone.Body.position.z);
             leg = 0;
+            routeIndex = 0;
+            routeCarrying = false;
+            if (demonstration && HasRoute) target = routeBeforePickup[0].position;
             active = true;
             stage = demonstration ? "Takeoff" : "Holding position — H: manual";
             Cursor.lockState = CursorLockMode.Locked;
@@ -166,6 +176,7 @@ namespace ExoFlight.Cargo
 
         void AdvanceRoute()
         {
+            if (HasRoute) { AdvanceAuthoredRoute(); return; }
             bool reached = Vector3.Distance(drone.Body.position, target) < .12f
                 && drone.Body.linearVelocity.magnitude < .2f;
             Vector3 pickup = ZoneCenter(mission.pickupZone);
@@ -192,6 +203,32 @@ namespace ExoFlight.Cargo
                 stage = leg == 3 ? "Lifting cargo" : leg == 4 ? "Carrying cargo" : "Holding for release";
             }
             else stage = mission.State == CargoMissionState.Completed ? "Delivered — P: manual, R: restart" : "Waiting for landing";
+        }
+
+        bool HasRoute => routeBeforePickup != null && routeBeforePickup.Length > 0
+            && routeAfterPickup != null && routeAfterPickup.Length > 0;
+
+        void AdvanceAuthoredRoute()
+        {
+            if (mission.State == CargoMissionState.Completed && routeLanding != null)
+            {
+                target = routeLanding.position;
+                stage = "Landing after delivery";
+                if (Vector3.Distance(drone.Body.position, target) < .25f && drone.Body.linearVelocity.magnitude < .4f)
+                    StopAssist(true);
+                return;
+            }
+            if (mission.State == CargoMissionState.AwaitingLanding) { stage = "Waiting for cargo touchdown"; return; }
+            bool carrying = mission.State == CargoMissionState.Transporting;
+            if (carrying != routeCarrying) { routeCarrying = carrying; routeIndex = 0; }
+            var route = carrying ? routeAfterPickup : routeBeforePickup;
+            target = route[Mathf.Min(routeIndex, route.Length - 1)].position;
+            if (routePlaybackReady && Vector3.Distance(drone.Body.position, target) < .6f
+                && drone.Body.linearVelocity.magnitude < 1f && routeIndex < route.Length - 1)
+                target = route[++routeIndex].position;
+            Vector3 forward = Vector3.ProjectOnPlane(target - drone.Body.position, Vector3.up);
+            if (forward.sqrMagnitude > 1f) heading = Quaternion.LookRotation(forward.normalized, Vector3.up);
+            stage = (carrying ? "Mars route with rover " : "Mars route to rover ") + (routeIndex + 1) + "/" + route.Length;
         }
 
         static Vector3 ZoneCenter(CargoHoverZone zone) => zone.transform.TransformPoint(zone.Volume.center);

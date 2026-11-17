@@ -1,0 +1,10 @@
+Unity 6000.4.9f1 — Mars voice import integration check, 2026-11-16
+
+PASS: Imported a disposable 0.3 s / 48 kHz mono WAV as vo_s0_01_ai.wav.
+PASS: After automatic asset processing, S0-01 referenced that AudioClip (duration 0.3 s), without assigning a clip on the scene trigger.
+PASS: The manual Rebind command also resolved the same canonical filename.
+PASS: Removed the disposable WAV from Assets; automatic processing left zero assigned clips in the library.
+PASS: Audio folder contains only README.md and its Unity metadata; no generated recording is shipped as real voiceover.
+
+An early import overlapped script compilation. The importer now schedules binding on EditorApplication.update after imports/compilation and on domain reload; the subsequent automatic import test passed.
+Real actor recordings are not supplied. This verifies filename binding and removal, not their artistic quality, volume or speech timing.

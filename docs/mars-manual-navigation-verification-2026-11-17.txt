@@ -1,0 +1,34 @@
+PASS
+Real keyboard events, Update/FixedUpdate, physical body and FPV camera. Per-axis fixtures reset pose only before each case.
+PASS Space arms through the real keyboard Update
+PASS W increases collective throttle
+PASS Throttle stays where the stick left it
+PASS Arrow changes the actual aircraft attitude: phase 3
+PASS Manual FPV visibly follows body pitch/roll: phase 3
+PASS Released arrow returns its stick to center: phase 4
+PASS Angle mode levels the body: phase 4
+PASS Arrow changes the actual aircraft attitude: phase 5
+PASS Manual FPV visibly follows body pitch/roll: phase 5
+PASS Released arrow returns its stick to center: phase 6
+PASS Angle mode levels the body: phase 6
+PASS Arrow changes the actual aircraft attitude: phase 7
+PASS Manual FPV visibly follows body pitch/roll: phase 7
+PASS Released arrow returns its stick to center: phase 8
+PASS Angle mode levels the body: phase 8
+PASS Arrow changes the actual aircraft attitude: phase 9
+PASS Manual FPV visibly follows body pitch/roll: phase 9
+PASS Released arrow returns its stick to center: phase 10
+PASS Angle mode levels the body: phase 10
+PASS A/D turns aircraft heading: phase 11
+PASS A/D turns aircraft heading: phase 12
+PASS Neutral sticks do not erase translational inertia
+PASS Position hold owns input and stabilizes the desktop camera
+PASS Arrow automatically takes over from autopilot
+PASS Takeover keeps motors armed and retains collective
+PASS Manual aircraft and FPV camera respond after takeover
+PASS Space stops autopilot without rearming in the same frame
+PASS R resets the player and clears retained commands
+PASS Three spatial route markers are installed
+PASS Visible checkpoint has no collision or gameplay trigger
+PASS Passing a navigation point highlights the next one
+PASS Navigation waits at an unaccepted story gate; it cannot complete triggers itself

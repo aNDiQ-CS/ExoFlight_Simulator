@@ -8,6 +8,8 @@ namespace ExoFlight.Cargo.UI
     public sealed class CargoOnboardDisplay : MonoBehaviour
     {
         public CargoDeliveryMission mission;
+        public Transform routeTarget;
+        public string routeInstruction;
         public Transform assembly;
         public Canvas displayCanvas;
         public CanvasGroup visibility;
@@ -105,7 +107,7 @@ namespace ExoFlight.Cargo.UI
             instruction.text = landing ? "Проверяем приземление на площадке"
                 : pickup && !InZone(mission.pickupZone) ? "Вернитесь в область подбора"
                 : pickup || deliveryArea ? (progress > 0f ? "Удерживайте позицию" : "Зависните над площадкой")
-                : "Следуйте к площадке доставки";
+                : !string.IsNullOrEmpty(routeInstruction) ? routeInstruction : "Следуйте к площадке доставки";
             if (!landing && (pickup || deliveryArea))
             {
                 metric.text = Mathf.Max(0f, mission.holdSeconds - mission.HoldProgress).ToString("F1");
@@ -114,7 +116,7 @@ namespace ExoFlight.Cargo.UI
             else if (landing) { metric.text = "03"; metricUnit.text = "ПОСАДКА"; progress = 1f; }
             else
             {
-                Vector3 delta = mission.deliveryZone.Volume.bounds.center - mission.carrier.transform.position;
+                Vector3 delta = (routeTarget != null ? routeTarget.position : mission.deliveryZone.Volume.bounds.center) - mission.carrier.transform.position;
                 metric.text = Vector3.ProjectOnPlane(delta, Vector3.up).magnitude.ToString("F0");
                 metricUnit.text = "МЕТРОВ";
             }

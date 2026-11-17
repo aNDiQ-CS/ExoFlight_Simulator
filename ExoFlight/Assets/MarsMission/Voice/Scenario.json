@@ -1,0 +1,714 @@
+{
+  "cues": [
+    {
+      "id": "S0-01",
+      "stage": "0. Подготовка",
+      "condition": "При загрузке миссии",
+      "speaker": "Бортовой ИИ",
+      "text": "Бортовой ИИ на связи. Системы в норме, заряд — сто процентов.",
+      "fileName": "vo_s0_01_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 4.3
+    },
+    {
+      "id": "S0-02",
+      "stage": "0. Подготовка",
+      "condition": "Перед первым взлётом игрока",
+      "speaker": "Бортовой ИИ",
+      "text": "Если закружится голова — скажите оператору, полёт сразу остановят.",
+      "fileName": "vo_s0_02_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 3.5
+    },
+    {
+      "id": "S0-03",
+      "stage": "0. Подготовка",
+      "condition": "Брифинг, после приветствия ИИ",
+      "speaker": "Командир",
+      "text": "Оператор, на связи, база. В восьмистах метрах к востоку застрял марсоход, а к району идёт пылевая буря. Забираем его и ведём на точку посадки.",
+      "fileName": "vo_s0_03_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 10.4
+    },
+    {
+      "id": "S0-04",
+      "stage": "0. Подготовка",
+      "condition": "Обратный отсчёт",
+      "speaker": "Бортовой ИИ",
+      "text": "Взлёт через три… два… один…",
+      "fileName": "vo_s0_04_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.2
+    },
+    {
+      "id": "S0-05",
+      "stage": "0. Подготовка",
+      "condition": "После отсчёта",
+      "speaker": "Командир",
+      "text": "Взлёт разрешаю. Удачи.",
+      "fileName": "vo_s0_05_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 1.3
+    },
+    {
+      "id": "S1-01",
+      "stage": "1. Старт",
+      "condition": "Через 2 с после взлёта",
+      "speaker": "Бортовой ИИ",
+      "text": "Гравитация здесь — тридцать восемь процентов земной, но воздух почти не держит. Газ добавляйте плавно.",
+      "fileName": "vo_s1_01_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 6.1
+    },
+    {
+      "id": "S1-02",
+      "stage": "1. Старт",
+      "condition": "Игрок не взлетает 10 с",
+      "speaker": "Бортовой ИИ",
+      "text": "Левый стик вверх — набор высоты.",
+      "fileName": "vo_s1_02_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.2
+    },
+    {
+      "id": "S1-03",
+      "stage": "1. Старт",
+      "condition": "Игрок висит на месте 10 с",
+      "speaker": "Бортовой ИИ",
+      "text": "Правый стик наклоняет дрон. Куда наклоните — туда и полетите.",
+      "fileName": "vo_s1_03_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 3.9
+    },
+    {
+      "id": "S1-04",
+      "stage": "1. Старт",
+      "condition": "Игрок не поворачивал 20 с",
+      "speaker": "Бортовой ИИ",
+      "text": "Левый стик влево и вправо — разворот на месте.",
+      "fileName": "vo_s1_04_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 3.5
+    },
+    {
+      "id": "S1-05",
+      "stage": "1. Старт",
+      "condition": "Зависание стабильно 3 с",
+      "speaker": "Бортовой ИИ",
+      "text": "Зависание стабильное. Хорошо получается.",
+      "fileName": "vo_s1_05_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "S1-06",
+      "stage": "1. Старт",
+      "condition": "Появился маркер марсохода",
+      "speaker": "Командир",
+      "text": "Наблюдаем маркер на востоке. Держим курс на него.",
+      "fileName": "vo_s1_06_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 3.5
+    },
+    {
+      "id": "S1-07",
+      "stage": "1. Старт",
+      "condition": "Быстрое снижение у земли",
+      "speaker": "Бортовой ИИ",
+      "text": "Снижаетесь слишком быстро. Добавьте газ.",
+      "fileName": "vo_s1_07_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.2
+    },
+    {
+      "id": "S1-08",
+      "stage": "1. Старт",
+      "condition": "Игрок ушёл от маршрута на 20 с",
+      "speaker": "Бортовой ИИ",
+      "text": "Вы уходите в сторону. Марсоход на востоке.",
+      "fileName": "vo_s1_08_cmd.wav",
+      "demo": false,
+      "estimatedSeconds": 3.0
+    },
+    {
+      "id": "S2-01",
+      "stage": "2. К марсоходу",
+      "condition": "Вход в зону этапа",
+      "speaker": "Бортовой ИИ",
+      "text": "Фиксирую фронт пылевой бури на северо-западе. Скорость ветра растёт.",
+      "fileName": "vo_s2_01_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 3.9
+    },
+    {
+      "id": "S2-02",
+      "stage": "2. К марсоходу",
+      "condition": "После предыдущей реплики",
+      "speaker": "Командир",
+      "text": "Срочно, забираем груз и уходим к каньону.",
+      "fileName": "vo_s2_02_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 3.0
+    },
+    {
+      "id": "S2-03",
+      "stage": "2. К марсоходу",
+      "condition": "Первый порыв ветра",
+      "speaker": "Бортовой ИИ",
+      "text": "Боковой порыв. Держите курс.",
+      "fileName": "vo_s2_03_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "S2-04",
+      "stage": "2. К марсоходу",
+      "condition": "До марсохода 50 м",
+      "speaker": "Бортовой ИИ",
+      "text": "Марсоход в пятидесяти метрах. Снижайтесь и зависните над ним.",
+      "fileName": "vo_s2_04_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 3.9
+    },
+    {
+      "id": "S2-05",
+      "stage": "2. К марсоходу",
+      "condition": "Наведение: дрон правее цели",
+      "speaker": "Бортовой ИИ",
+      "text": "Чуть левее.",
+      "fileName": "vo_s2_05_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.9
+    },
+    {
+      "id": "S2-06",
+      "stage": "2. К марсоходу",
+      "condition": "Наведение: дрон левее цели",
+      "speaker": "Бортовой ИИ",
+      "text": "Чуть правее.",
+      "fileName": "vo_s2_06_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.9
+    },
+    {
+      "id": "S2-07",
+      "stage": "2. К марсоходу",
+      "condition": "Наведение: дрон позади цели",
+      "speaker": "Бортовой ИИ",
+      "text": "Чуть вперёд.",
+      "fileName": "vo_s2_07_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.9
+    },
+    {
+      "id": "S2-08",
+      "stage": "2. К марсоходу",
+      "condition": "Наведение: дрон дальше цели",
+      "speaker": "Бортовой ИИ",
+      "text": "Чуть назад.",
+      "fileName": "vo_s2_08_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.9
+    },
+    {
+      "id": "S2-09",
+      "stage": "2. К марсоходу",
+      "condition": "Наведение: дрон слишком высоко",
+      "speaker": "Бортовой ИИ",
+      "text": "Ниже.",
+      "fileName": "vo_s2_09_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.4
+    },
+    {
+      "id": "S2-10",
+      "stage": "2. К марсоходу",
+      "condition": "Наведение: дрон над целью",
+      "speaker": "Бортовой ИИ",
+      "text": "Держите… Держите…",
+      "fileName": "vo_s2_10_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.9
+    },
+    {
+      "id": "S2-11",
+      "stage": "2. К марсоходу",
+      "condition": "До бури осталась минута",
+      "speaker": "Командир",
+      "text": "Минута до бури. Надо торопиться.",
+      "fileName": "vo_s2_11_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 2.2
+    },
+    {
+      "id": "S3-01",
+      "stage": "3. Подбор груза",
+      "condition": "Захват груза",
+      "speaker": "Бортовой ИИ",
+      "text": "Захват подтверждаю. Масса плюс десять и шесть десятых килограмма.",
+      "fileName": "vo_s3_01_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 3.9
+    },
+    {
+      "id": "S3-02",
+      "stage": "3. Подбор груза",
+      "condition": "Через 2 с после захвата",
+      "speaker": "Бортовой ИИ",
+      "text": "Расход энергии вырос в полтора раза. Набирайте высоту плавно.",
+      "fileName": "vo_s3_02_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 3.9
+    },
+    {
+      "id": "S3-03",
+      "stage": "3. Подбор груза",
+      "condition": "После реплик ИИ о захвате",
+      "speaker": "Командир",
+      "text": "Есть груз! Теперь уходим к каньону.",
+      "fileName": "vo_s3_03_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 2.6
+    },
+    {
+      "id": "S3-04",
+      "stage": "3. Подбор груза",
+      "condition": "Буря накрыла, видимость падает",
+      "speaker": "Бортовой ИИ",
+      "text": "Видимость падает. Маяки базы не видно, перехожу на инерциальную навигацию.",
+      "fileName": "vo_s3_04_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 4.3
+    },
+    {
+      "id": "S3-05",
+      "stage": "3. Подбор груза",
+      "condition": "Сильный порыв справа",
+      "speaker": "Бортовой ИИ",
+      "text": "Сильный порыв справа!",
+      "fileName": "vo_s3_05_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 1.3
+    },
+    {
+      "id": "S3-06",
+      "stage": "3. Подбор груза",
+      "condition": "Сильный порыв слева",
+      "speaker": "Бортовой ИИ",
+      "text": "Сильный порыв слева!",
+      "fileName": "vo_s3_06_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 1.3
+    },
+    {
+      "id": "S3-07",
+      "stage": "3. Подбор груза",
+      "condition": "Груз раскачивается",
+      "speaker": "Бортовой ИИ",
+      "text": "Груз раскачивается. Не дёргайте стики.",
+      "fileName": "vo_s3_07_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 2.2
+    },
+    {
+      "id": "S3-08",
+      "stage": "3. Подбор груза",
+      "condition": "30 с в буре без других реплик",
+      "speaker": "Командир",
+      "text": "До каньона осталось совсем немного.",
+      "fileName": "vo_s3_08_cmd.wav",
+      "demo": false,
+      "estimatedSeconds": 2.2
+    },
+    {
+      "id": "S3-09",
+      "stage": "3. Подбор груза",
+      "condition": "Груз сорвался",
+      "speaker": "Бортовой ИИ",
+      "text": "Груз потерян! Вернитесь и подберите его.",
+      "fileName": "vo_s3_09_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.6
+    },
+    {
+      "id": "S4-01",
+      "stage": "4. Каньон",
+      "condition": "Подлёт к каньону",
+      "speaker": "Командир",
+      "text": "Ныряем в каньон!",
+      "fileName": "vo_s4_01_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 1.3
+    },
+    {
+      "id": "S4-02",
+      "stage": "4. Каньон",
+      "condition": "Вход в каньон",
+      "speaker": "Бортовой ИИ",
+      "text": "Ветер ослаб. Воздух здесь плотнее — тяга немного выросла.",
+      "fileName": "vo_s4_02_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 3.5
+    },
+    {
+      "id": "S4-03",
+      "stage": "4. Каньон",
+      "condition": "Через 10 с в каньоне",
+      "speaker": "Бортовой ИИ",
+      "text": "За бортом минус восемьдесят. Подогрев батареи забирает заряд.",
+      "fileName": "vo_s4_03_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 3.5
+    },
+    {
+      "id": "S4-04",
+      "stage": "4. Каньон",
+      "condition": "Середина каньона",
+      "speaker": "Бортовой ИИ",
+      "text": "Радиационный фон растёт — вспышка на Солнце. Рекомендую укрытие.",
+      "fileName": "vo_s4_04_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 3.5
+    },
+    {
+      "id": "S4-05",
+      "stage": "4. Каньон",
+      "condition": "После реплики о радиации",
+      "speaker": "Командир",
+      "text": "Видим лавовую трубку. Это единственное укрытие.",
+      "fileName": "vo_s4_05_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 2.6
+    },
+    {
+      "id": "S4-06",
+      "stage": "4. Каньон",
+      "condition": "Дрон близко к стене",
+      "speaker": "Бортовой ИИ",
+      "text": "Стена близко!",
+      "fileName": "vo_s4_06_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.9
+    },
+    {
+      "id": "S4-07",
+      "stage": "4. Каньон",
+      "condition": "Дрон близко к скале",
+      "speaker": "Бортовой ИИ",
+      "text": "Осторожно, скала!",
+      "fileName": "vo_s4_07_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 0.9
+    },
+    {
+      "id": "S4-08",
+      "stage": "4. Каньон",
+      "condition": "Игрок задерживается в каньоне 20 с",
+      "speaker": "Бортовой ИИ",
+      "text": "Радиация растёт. Не задерживайтесь.",
+      "fileName": "vo_s4_08_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "S5-01",
+      "stage": "5. Пещера",
+      "condition": "Вход в пещеру",
+      "speaker": "Бортовой ИИ",
+      "text": "Связь с базой потеряна. Включаю фары.",
+      "fileName": "vo_s5_01_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.6
+    },
+    {
+      "id": "S5-02",
+      "stage": "5. Пещера",
+      "condition": "Через 5 с в пещере",
+      "speaker": "Командир",
+      "text": "…держимся середины… выход через двести метров…",
+      "fileName": "vo_s5_02_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 2.6
+    },
+    {
+      "id": "S5-03",
+      "stage": "5. Пещера",
+      "condition": "Тоннель сужается",
+      "speaker": "Бортовой ИИ",
+      "text": "Тоннель сужается. Снизьте скорость.",
+      "fileName": "vo_s5_03_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "S5-04",
+      "stage": "5. Пещера",
+      "condition": "Середина пещеры",
+      "speaker": "Бортовой ИИ",
+      "text": "Странно. Датчики фиксируют поток воздуха из глубины тоннеля.",
+      "fileName": "vo_s5_04_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 3.5
+    },
+    {
+      "id": "S5-05",
+      "stage": "5. Пещера",
+      "condition": "Перед развилкой",
+      "speaker": "Бортовой ИИ",
+      "text": "Впереди развилка. К выходу ведёт правый проход.",
+      "fileName": "vo_s5_05_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 3.0
+    },
+    {
+      "id": "S5-06",
+      "stage": "5. Пещера",
+      "condition": "Виден выход",
+      "speaker": "Бортовой ИИ",
+      "text": "Вижу свет. Выход прямо по курсу.",
+      "fileName": "vo_s5_06_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.6
+    },
+    {
+      "id": "S6-01",
+      "stage": "6. Финиш",
+      "condition": "Выход из пещеры",
+      "speaker": "Бортовой ИИ",
+      "text": "Связь восстановлена. Буря позади.",
+      "fileName": "vo_s6_01_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "S6-02",
+      "stage": "6. Финиш",
+      "condition": "После восстановления связи",
+      "speaker": "Командир",
+      "text": "Видим птичку на радаре. Площадка прямо по курсу.",
+      "fileName": "vo_s6_02_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 3.5
+    },
+    {
+      "id": "S6-03",
+      "stage": "6. Финиш",
+      "condition": "Высота 10 м над площадкой",
+      "speaker": "Бортовой ИИ",
+      "text": "Высота десять метров.",
+      "fileName": "vo_s6_03_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 1.3
+    },
+    {
+      "id": "S6-04",
+      "stage": "6. Финиш",
+      "condition": "Высота 5 м",
+      "speaker": "Бортовой ИИ",
+      "text": "Пять.",
+      "fileName": "vo_s6_04_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.4
+    },
+    {
+      "id": "S6-05",
+      "stage": "6. Финиш",
+      "condition": "Высота 2 м",
+      "speaker": "Бортовой ИИ",
+      "text": "Два.",
+      "fileName": "vo_s6_05_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.4
+    },
+    {
+      "id": "S6-06",
+      "stage": "6. Финиш",
+      "condition": "Касание",
+      "speaker": "Бортовой ИИ",
+      "text": "Касание.",
+      "fileName": "vo_s6_06_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.4
+    },
+    {
+      "id": "S6-07",
+      "stage": "6. Финиш",
+      "condition": "После касания",
+      "speaker": "Бортовой ИИ",
+      "text": "Груз отцеплен. Двигатели выключены.",
+      "fileName": "vo_s6_07_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "S6-08",
+      "stage": "6. Финиш",
+      "condition": "Миссия выполнена",
+      "speaker": "Бортовой ИИ",
+      "text": "Марсоход на месте. Отличная работа, оператор.",
+      "fileName": "vo_s6_08_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 2.6
+    },
+    {
+      "id": "S6-09",
+      "stage": "6. Финиш",
+      "condition": "Новый рекорд площадки",
+      "speaker": "Командир",
+      "text": "Это рекорд смены! Записываю тебя в лучшие пилоты базы.",
+      "fileName": "vo_s6_09_cmd.wav",
+      "demo": false,
+      "estimatedSeconds": 3.9
+    },
+    {
+      "id": "EV-01",
+      "stage": "Любой этап",
+      "condition": "Заряд 30 %",
+      "speaker": "Бортовой ИИ",
+      "text": "Заряд тридцать процентов.",
+      "fileName": "vo_ev_01_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 1.3
+    },
+    {
+      "id": "EV-02",
+      "stage": "Любой этап",
+      "condition": "Заряд 15 %",
+      "speaker": "Бортовой ИИ",
+      "text": "Заряд пятнадцать процентов. Выбирайте кратчайший путь.",
+      "fileName": "vo_ev_02_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.6
+    },
+    {
+      "id": "EV-03",
+      "stage": "Любой этап",
+      "condition": "Заряд 5 %",
+      "speaker": "Бортовой ИИ",
+      "text": "Критический заряд! Немедленно на посадку.",
+      "fileName": "vo_ev_03_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.2
+    },
+    {
+      "id": "EV-04",
+      "stage": "Любой этап",
+      "condition": "Удар без повреждений",
+      "speaker": "Бортовой ИИ",
+      "text": "Удар корпусом. Повреждений нет.",
+      "fileName": "vo_ev_04_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "EV-05",
+      "stage": "Любой этап",
+      "condition": "Повреждён винт",
+      "speaker": "Бортовой ИИ",
+      "text": "Повреждение винта. Тяга снижена.",
+      "fileName": "vo_ev_05_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "EV-06",
+      "stage": "Любой этап",
+      "condition": "Крушение",
+      "speaker": "Бортовой ИИ",
+      "text": "Аппарат потерян.",
+      "fileName": "vo_ev_06_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 0.9
+    },
+    {
+      "id": "EV-07",
+      "stage": "Любой этап",
+      "condition": "После крушения, перезапуск",
+      "speaker": "Командир",
+      "text": "Дрон потерян. Ничего, оператор, — запускаем резервный. Можно записать несколько похожих реплик",
+      "fileName": "vo_ev_07_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 4.8
+    },
+    {
+      "id": "EV-08",
+      "stage": "Любой этап",
+      "condition": "Перезапуск с контрольной точки",
+      "speaker": "Бортовой ИИ",
+      "text": "Восстановление с последней точки маршрута.",
+      "fileName": "vo_ev_08_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.2
+    },
+    {
+      "id": "EV-09",
+      "stage": "Любой этап",
+      "condition": "Время вышло",
+      "speaker": "Командир",
+      "text": "Буря накрыла маршрут. Возвращайся, попробуем ещё раз.",
+      "fileName": "vo_ev_09_cmd.wav",
+      "demo": true,
+      "estimatedSeconds": 3.0
+    },
+    {
+      "id": "EV-10",
+      "stage": "Любой этап",
+      "condition": "Слишком большой крен (режим новичка)",
+      "speaker": "Бортовой ИИ",
+      "text": "Крен слишком большой. Выравниваю.",
+      "fileName": "vo_ev_10_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "EV-11",
+      "stage": "Любой этап",
+      "condition": "Потолок высоты",
+      "speaker": "Бортовой ИИ",
+      "text": "Выше подниматься нельзя: там слишком сильный ветер.",
+      "fileName": "vo_ev_11_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 3.0
+    },
+    {
+      "id": "EV-12",
+      "stage": "Любой этап",
+      "condition": "Игрок летит от цели 10 с",
+      "speaker": "Бортовой ИИ",
+      "text": "Вы удаляетесь от цели.",
+      "fileName": "vo_ev_12_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 1.7
+    },
+    {
+      "id": "EV-13",
+      "stage": "Любой этап",
+      "condition": "Миссия провалена",
+      "speaker": "Бортовой ИИ",
+      "text": "Миссия не выполнена.",
+      "fileName": "vo_ev_13_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 1.3
+    },
+    {
+      "id": "AR-01",
+      "stage": "Арена",
+      "condition": "За 30 с до конца сессии",
+      "speaker": "Бортовой ИИ",
+      "text": "Время сессии заканчивается. Заходите на посадку.",
+      "fileName": "vo_ar_01_ai.wav",
+      "demo": true,
+      "estimatedSeconds": 2.6
+    },
+    {
+      "id": "AR-02",
+      "stage": "Арена",
+      "condition": "Экран результатов",
+      "speaker": "Бортовой ИИ",
+      "text": "Итоги полёта на экране.",
+      "fileName": "vo_ar_02_ai.wav",
+      "demo": false,
+      "estimatedSeconds": 1.7
+    }
+  ]
+}

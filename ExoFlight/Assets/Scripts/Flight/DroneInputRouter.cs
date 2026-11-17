@@ -14,7 +14,7 @@ namespace ExoFlight.Flight
     [RequireComponent(typeof(DroneFlightController))]
     public sealed class DroneInputRouter : MonoBehaviour
     {
-        public enum Source { Keyboard = 0, Joystick = 1 }
+        public enum Source { Keyboard = 0, Joystick = 1, Autopilot = 2 }
 
         [Header("Ссылки (находятся сами, если пусто)")]
         [SerializeField] private DroneFlightController drone;
@@ -38,7 +38,7 @@ namespace ExoFlight.Flight
         public Source Current { get; private set; } = Source.Keyboard;
 
         public bool JoystickAvailable =>
-            joystickReader != null && joystickReader.Device != null && joystickFlight != null;
+            joystickReader != null && joystickReader.IsReady && joystickFlight != null;
 
         private bool manual;
         private bool applied;
@@ -64,11 +64,20 @@ namespace ExoFlight.Flight
 
         private void Update()
         {
+            if (Current == Source.Autopilot) return;
+            // A manual selection must not suppress the disconnect failsafe.
+            if (Current == Source.Joystick && !JoystickAvailable)
+            {
+                drone.SetArmed(false);
+                manual = false;
+                Apply(Source.Keyboard, "пульт отключён или каналы недоступны");
+                return;
+            }
             var kb = Keyboard.current;
             if (kb != null && kb[toggleKey].wasPressedThisFrame)
             {
                 manual = true;
-                Apply(Current == Source.Keyboard ? Source.Joystick : Source.Keyboard,
+                Apply(Current == Source.Keyboard && JoystickAvailable ? Source.Joystick : Source.Keyboard,
                     "клавиша " + toggleKeyName);
                 return;
             }
@@ -79,9 +88,24 @@ namespace ExoFlight.Flight
             if (!applied || want != Current) Apply(want, "состояние устройств");
         }
 
+        public void AcquireAutopilot() => Apply(Source.Autopilot, "автопилот");
+
+        public void ReleaseAutopilot(bool disarm)
+        {
+            float throttle = drone.Armed && !disarm ? drone.Input.Throttle : 0f;
+            if (disarm) drone.SetArmed(false);
+            // A physical RC throttle may be anywhere. Hand off in flight to the keyboard
+            // with retained collective; select an RC transmitter explicitly after landing.
+            manual = true;
+            Apply(Source.Keyboard, "автопилот завершён");
+            keyboard.ResumeManualControl(throttle);
+            keyboard.SuppressCurrentFrame();
+        }
+
         /// <summary>Снять ручной выбор и вернуться к автоматике.</summary>
         public void UseAutomaticSource()
         {
+            if (Current == Source.Autopilot) return;
             manual = false;
             Apply(Preferred(), "автоматически");
         }
@@ -112,7 +136,7 @@ namespace ExoFlight.Flight
             if (changed && logSwitches)
             {
                 Debug.Log("[Input] управление: " +
-                          (source == Source.Keyboard ? "клавиатура" : "джойстик") +
+                          source +
                           " (" + why + ") — " + toggleKeyName + " переключает");
             }
         }
