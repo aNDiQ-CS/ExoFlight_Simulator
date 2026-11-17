@@ -8,7 +8,13 @@ Shader "ExoFlight/Skybox HDRI"
         _UseGradient ("No HDRI: use gradient", Range(0,1)) = 1
         _Rotation ("Rotation (deg)", Range(0,360)) = 0
         _Exposure ("Exposure", Range(0,8)) = 1
+        _Hue ("Hue shift (deg)", Range(-180,180)) = 0
         [HDR] _Tint ("Tint", Color) = (1,1,1,1)
+
+        [Header(Atmosphere)]
+        [HDR] _HazeColor ("Horizon haze", Color) = (0.71,0.44,0.30,1)
+        _HazeStrength ("Haze strength", Range(0,1)) = 0.7
+        _HazeHeight ("Haze height (dir.y)", Range(0.02,1)) = 0.22
 
         [Header(Mars gradient)]
         [HDR] _HorizonColor ("Horizon", Color) = (1.0,0.55,0.28,1)
@@ -48,7 +54,11 @@ Shader "ExoFlight/Skybox HDRI"
             float _UseGradient;
             float _Rotation;
             float _Exposure;
+            float _Hue;
             float4 _Tint;
+            float4 _HazeColor;
+            float _HazeStrength;
+            float _HazeHeight;
 
             float4 _HorizonColor;
             float4 _ZenithColor;
@@ -94,6 +104,16 @@ Shader "ExoFlight/Skybox HDRI"
                 return float2(u, v);
             }
 
+            // rotation around the grey axis = hue shift, keeps luminance and saturation
+            float3 HueShift(float3 c, float degrees)
+            {
+                float a = radians(degrees);
+                float s = sin(a);
+                float co = cos(a);
+                float3 axis = float3(0.57735027, 0.57735027, 0.57735027);
+                return c * co + cross(axis, c) * s + axis * dot(axis, c) * (1.0 - co);
+            }
+
             float3 MarsGradient(float3 d)
             {
                 float h = saturate((d.y - _HorizonHeight) * 1.5 + 0.5);
@@ -127,7 +147,7 @@ Shader "ExoFlight/Skybox HDRI"
                 float3 dir = RotateY(normalize(i.dir), _Rotation);
 
                 float3 col;
-                float3 tex = tex2D(_MainTex, DirToEquirect(dir)).rgb * _Exposure;
+                float3 tex = HueShift(tex2D(_MainTex, DirToEquirect(dir)).rgb, _Hue) * _Exposure;
                 float3 grad = MarsGradient(dir) * _Exposure;
                 col = lerp(tex, grad, saturate(_UseGradient));
 
@@ -135,6 +155,10 @@ Shader "ExoFlight/Skybox HDRI"
                 float lum = dot(col, float3(0.299, 0.587, 0.114));
                 float3 dust = _DustColor.rgb * lerp(1.0, lum, _DustContrast) * _Exposure;
                 col = lerp(col, dust, saturate(_Storm));
+
+                // dust haze sitting on the horizon: dissolves the level edge into the sky
+                float haze = pow(saturate(1.0 - abs(dir.y) / max(_HazeHeight, 0.001)), 2.0);
+                col = lerp(col, _HazeColor.rgb, saturate(haze * _HazeStrength));
 
                 return float4(col * _Tint.rgb, 1.0);
             }
