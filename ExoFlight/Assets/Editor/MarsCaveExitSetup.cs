@@ -408,16 +408,6 @@ namespace ExoFlight.EditorTools
                 Box("Recessed approach lamp", zone.transform, corner * .94f + Vector3.up * .035f, new Vector3(.6f,.08f,.3f), hardware);
                 Box("Light strip", zone.transform, corner * .94f + Vector3.up * .085f, new Vector3(.42f,.025f,.1f), lamp);
             }
-            // A small service cabinet establishes scale without blocking either landing bay.
-            var equipment = Child(scenery, "Recovery station service cabinet");
-            equipment.position = floor + new Vector3(15.5f, -.13f, 5.5f);
-            Box("Dust plinth", equipment, Vector3.up * .15f, new Vector3(2.5f,.3f,1.8f), hardware, true);
-            Box("Cabinet", equipment, Vector3.up * .9f, new Vector3(1.8f,1.3f,1.1f), hardware, true);
-            Box("Status slit", equipment, new Vector3(0f,1.15f,-.57f), new Vector3(.7f,.06f,.03f), lamp);
-            for (int i = 0; i < 5; i++) Box("Vent", equipment, new Vector3(0f,.65f+i*.08f,-.57f), new Vector3(1.1f,.025f,.035f), mat);
-            var solar = Box("Small service solar panel", equipment, new Vector3(0f,1.75f,.15f), new Vector3(2.4f,.08f,1.7f),
-                AssetDatabase.LoadAssetAtPath<Material>(Landscape + "FPV carbon fiber.mat"));
-            solar.transform.localRotation = Quaternion.Euler(22f, 0f, 0f);
             mission.landingPoint.position = floor;
             mission.assist.routeLanding.position = floor + new Vector3(6.3f,.45f,0f);
             EditorUtility.SetDirty(mat);

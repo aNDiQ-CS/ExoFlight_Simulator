@@ -62,10 +62,29 @@ for tet in [[0,1,2,6],[0,2,3,6],[0,3,7,6],[0,7,4,6],[0,4,5,6],[0,5,1,6]]:
    v[bad]=v[bad,::-1];n[bad]=n[bad,::-1];w[bad]=w[bad,::-1];allv.append(v.reshape(-1,3));alln.append(n.reshape(-1,3));allw.append(w.ravel())
 v=np.concatenate(allv);n=np.concatenate(alln);w=np.concatenate(allw);_,first,inv=np.unique(np.round(v,5),axis=0,return_index=True,return_inverse=True)
 f=inv.reshape(-1,3);f=f[(f[:,0]!=f[:,1])&(f[:,1]!=f[:,2])&(f[:,2]!=f[:,0])]
+# Terrain renders neighbouring tiles at a camera-dependent LOD. An exact butt
+# joint at the hole edge can show the sky even with identical source heights.
+# Extend each actual boundary edge outwards and down under the uncut terrain.
+v,n,w=v[first],n[first],w[first]
+edges=np.sort(np.concatenate((f[:,[0,1]],f[:,[1,2]],f[:,[2,0]])),axis=1)
+edges,count=np.unique(edges,axis=0,return_counts=True);boundary=edges[count==1]
+for l,r,b,t in pads:
+ planes=[(0,l*dx,-1),(0,r*dx,1),(2,b*dz,-1),(2,t*dz,1)]
+ q=v[boundary]
+ inside=(q[:,:,0].min(1)>=l*dx-.001)&(q[:,:,0].max(1)<=r*dx+.001)&(q[:,:,2].min(1)>=b*dz-.001)&(q[:,:,2].max(1)<=t*dz+.001)
+ on=np.logical_or.reduce([np.max(abs(q[:,:,k]-pos),axis=1)<.001 for k,pos,_ in planes])
+ e=boundary[inside&on]; ids=np.unique(e);last=ids
+ for width,depth in [(1.5,.45),(5,2.2),(11,8),(14,15)]:
+  points=v[ids].copy()
+  for k,pos,sign in planes:points[abs(v[ids,k]-pos)<.001,k]+=sign*width
+  points[:,1]=map_coordinates(H,[points[:,2]/dz,points[:,0]/dx],order=1)-depth
+  new=np.arange(len(v),len(v)+len(ids));a,b1=last[np.searchsorted(ids,e)].T;c,d1=new[np.searchsorted(ids,e)].T
+  quads=np.r_[np.stack([a,b1,c],1),np.stack([b1,d1,c],1)]
+  v=np.r_[v,points];n=np.r_[n,n[ids]];w=np.r_[w,np.ones(len(ids))]
+  facev=v[quads];wrong=np.cross(facev[:,1]-facev[:,0],facev[:,2]-facev[:,0])[:,1]<0
+  quads[wrong]=quads[wrong,::-1];f=np.r_[f,quads];last=new
 with open(sys.argv[2],'wb') as o:
- o.write(struct.pack('<ii',len(first),f.size))
- for buf in (v[first],n[first],w[first]):o.write(buf.astype('<f4').tobytes())
+ o.write(struct.pack('<ii',len(v),f.size))
+ for buf in (v,n,w):o.write(buf.astype('<f4').tobytes())
  o.write(f.astype('<i4').tobytes())
-print(len(first),'vertices',len(f),'triangles')
-
-
+print(len(v),'vertices',len(f),'triangles')

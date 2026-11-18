@@ -36,7 +36,7 @@ namespace ExoFlight.Missions.Mars
         public int VisibleCount { get; private set; }
         Vector3 previousPosition;
         int[] outboundGates, loadedGates;
-        bool landing;
+        const float PlatformClearance = 26f;
         MaterialPropertyBlock accentProperties;
 
         void Awake()
@@ -53,7 +53,7 @@ namespace ExoFlight.Missions.Mars
         void ResetRoute()
         {
             CurrentIndex = Mathf.Min(2, pilot.outbound.Length - 1);
-            ShowingLoadedRoute = landing = false;
+            ShowingLoadedRoute = false;
             previousPosition = mission.drone.transform.position;
         }
         int[] MapGates(Transform[] route, int first, int end)
@@ -89,13 +89,10 @@ namespace ExoFlight.Missions.Mars
                 CurrentIndex = hasCargoRoute ? 0 : Mathf.Min(2, pilot.outbound.Length - 1);
                 previousPosition = position;
             }
-            landing = state == CargoMissionState.Completed;
-            if (landing)
+            if (state == CargoMissionState.Completed)
             {
                 CurrentTarget = pilot.landing.position + Vector3.up * 1.5f;
-                Show(0, CurrentTarget, Vector3.forward);
-                for (int i = 1; i < markers.Length; i++) markers[i].root.gameObject.SetActive(false);
-                VisibleCount = 1;
+                Hide();
                 previousPosition = position;
                 return;
             }
@@ -121,6 +118,7 @@ namespace ExoFlight.Missions.Mars
             for (int slot = 0; slot < markers.Length; slot++)
             {
                 bool visible = slot < previewCount && ordinal + slot < presentation.Length;
+                if (visible) visible = !NearPlatform(route[presentation[ordinal + slot]].position);
                 markers[slot].root.gameObject.SetActive(visible);
                 if (!visible) continue;
                 int index = presentation[ordinal + slot];
@@ -130,6 +128,17 @@ namespace ExoFlight.Missions.Mars
                 VisibleCount++;
             }
             previousPosition = position;
+        }
+        bool NearPlatform(Vector3 point)
+        {
+            var cargo = mission.cargoMission;
+            return WithinClearance(point, cargo.pickupZone.transform.position)
+                || WithinClearance(point, cargo.deliveryZone.transform.position);
+        }
+        static bool WithinClearance(Vector3 point, Vector3 pad)
+        {
+            float x = point.x - pad.x, z = point.z - pad.z;
+            return x * x + z * z <= PlatformClearance * PlatformClearance;
         }
         static int OrdinalAtOrAfter(int[] indices, int value)
         {
