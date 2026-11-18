@@ -50,8 +50,8 @@ namespace ExoFlight.EditorTools
             Transform scenery = mission.transform.Find("Cave exit and recovery station");
             var old = scenery.Find("Weathered exit arch and ground seam");
             if (old != null) Object.DestroyImmediate(old.gameObject);
-            MakePortal(scenery, terrain);
-            terrain.Flush(); Physics.SyncTransforms();
+
+            MarsFieldFinish.Apply(); terrain.Flush(); Physics.SyncTransforms();
             EditorUtility.SetDirty(terrain.terrainData);
             AssetDatabase.SaveAssets();
             EditorSceneManager.MarkSceneDirty(mission.gameObject.scene);
@@ -91,10 +91,10 @@ namespace ExoFlight.EditorTools
 
             Transform scenery = Child(mission.transform, "Cave exit and recovery station");
             ClearChildren(scenery);
-            MakePortal(scenery, terrain);
+
             Vector3 landingFloor = new Vector3(Pad.x, floor, Pad.z);
             BuildLandingPad(mission, scenery, landingFloor);
-            BuildRoute(mission, landingFloor);
+            BuildRoute(mission, landingFloor); MarsFieldFinish.Apply();
             Physics.SyncTransforms();
             terrain.Flush();
             EditorUtility.SetDirty(data);
@@ -111,6 +111,12 @@ namespace ExoFlight.EditorTools
                 EditorSceneManager.SaveScene(mission.gameObject.scene);
             }
             Debug.Log("[Mars cave exit] Through route installed. Delivery floor " + landingFloor);
+        }
+
+        internal static void RestoreMissionLandform(TerrainData d)
+        {
+            var mission = Object.FindFirstObjectByType<MarsMissionDirector>();
+            SculptTerrain(d, AssetDatabase.LoadAssetAtPath<TerrainData>(Landscape + "Ares Basin Terrain.asset"), mission.cargoMission.deliveryZone.transform.position.y);
         }
 
         static void SculptTerrain(TerrainData data, TerrainData original, float padFloor)
@@ -538,3 +544,5 @@ namespace ExoFlight.EditorTools
         }
     }
 }
+
+

@@ -1,0 +1,5 @@
+Aerial Ground Rock, Poly Haven. CC0. https://polyhaven.com/a/aerial_ground_rock
+1K diffuse remapped to a basalt/dust palette; OpenGL normal map.
+Aerial Sand and Rock Face 03, Poly Haven, CC0. Diffuse recolored; OpenGL normal maps.
+https://polyhaven.com/a/aerial_sand
+https://polyhaven.com/a/rock_face_03
