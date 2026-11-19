@@ -139,7 +139,11 @@ namespace ExoFlight.EditorTools
                         drone.Body.rotation = Quaternion.Euler(15f, 40f, -18f);
                         break;
                     case 8:
-                        Assert(Vector3.Angle(vr.viewOrigin.up, Vector3.up) < .01f, "VR origin keeps a level horizon during body tilt");
+                        Assert(Quaternion.Angle(vr.viewOrigin.rotation, drone.transform.rotation) < .1f, "FPV mount follows aircraft attitude");
+                        var eye = vr.poseDriver.transform;
+                        var expected = Quaternion.Euler(-drone.GetComponent<KeyboardDroneInput>().cameraTilt,0,0);
+                        Assert(vr.fixedHeadsetFeed && Quaternion.Angle(eye.rotation, vr.viewOrigin.rotation * expected) < .1f
+                            && Vector3.Distance(eye.position,vr.viewOrigin.position) < .001f, "Simulated head rotation and translation do not move the displayed FPV pose");
                         Assert(Quaternion.Angle(vr.poseDriver.transform.localRotation, headRotation) < .1f, "Body rotation does not erase the tracked head pose");
                         InputSystem.RemoveDevice(hmd); hmd = null;
                         break;

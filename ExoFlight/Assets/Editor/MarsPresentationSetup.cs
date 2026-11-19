@@ -79,6 +79,8 @@ namespace ExoFlight.EditorTools
                 vr.poseDriver = input.fpvCamera.gameObject.AddComponent<TrackedPoseDriver>();
                 vr.poseDriver.enabled = false;
             }
+            vr.fixedHeadsetFeed = true;
+            EditorUtility.SetDirty(vr);
             // The reader defaults to unverified. Re-running setup must preserve a user's later calibration.
             // The panel shares the gimballed instrument mount, never the tracked camera transform.
             if (mission.display != null && mission.display.transform.parent != vr.viewOrigin)

@@ -52,6 +52,9 @@ namespace ExoFlight.Missions.Mars
             var kb = Keyboard.current;
             if (Application.isFocused && kb != null)
             {
+                // Operator shortcut for four-axis transmitters without a mode switch.
+                if (!Active && router.Current == DroneInputRouter.Source.Joystick && kb.fKey.wasPressedThisFrame)
+                    drone.SetMode(drone.mode == DroneFlightMode.Acro ? DroneFlightMode.Angle : DroneFlightMode.Acro);
                 if (kb.pKey.wasPressedThisFrame) { if (Active) Stop(false); else BeginMission(); }
                 else if (kb.hKey.wasPressedThisFrame) { if (Holding) Stop(false); else HoldPosition(); }
                 else if (Active && kb.rKey.wasPressedThisFrame) { Stop(true); checkpoint.Respawn(); }

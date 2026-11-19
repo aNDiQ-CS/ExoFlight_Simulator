@@ -71,7 +71,7 @@ namespace ExoFlight.EditorTools
             var environment = CopyEnvironment(drone.environment);
             drone.profile = profile;
             drone.environment = environment;
-            drone.mode = DroneFlightMode.Angle;
+            drone.mode = DroneFlightMode.Acro;
             drone.windAtRotors = true;
             // Enlarge the existing four-rotor geometry consistently with the cargo profile.
             foreach (Transform child in drone.transform)
@@ -182,7 +182,7 @@ namespace ExoFlight.EditorTools
             profile = Object.Instantiate(source);
             profile.name = "Mars cargo quadcopter";
             profile.mass = 8f; profile.armLength = 1.5f; profile.propellerDiameter = 1.5f;
-            profile.maximumRpm = 3600f; profile.idleRpm = 400f;
+            profile.maximumRpm = 5850f; profile.idleRpm = 400f;
             profile.principalInertia = new Vector3(6f, 10f, 6f);
             profile.rotorInertia = .004f;
             profile.dragArea = new Vector3(1.4f, 2.8f, 1.4f);
@@ -198,7 +198,7 @@ namespace ExoFlight.EditorTools
             environment = Object.Instantiate(source);
             environment.name = "Mars mission atmosphere";
             environment.windProfile = null; environment.windVelocity = Vector3.zero;
-            environment.airDensity = .016f; environment.gravity = new Vector3(0f, -3.71f, 0f);
+            environment.airDensity = .016f; environment.gravity = new Vector3(0f, -9.81f, 0f);
             AssetDatabase.CreateAsset(environment, path);
             return environment;
         }

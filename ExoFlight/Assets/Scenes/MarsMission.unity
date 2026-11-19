@@ -45752,7 +45752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Flight.DroneFlightController
   profile: {fileID: 11400000, guid: 61a1240eedfead340ae7a0b931980f7f, type: 2}
   environment: {fileID: 11400000, guid: c2581cbc68174c3499510c77fd7fb614, type: 2}
-  mode: 1
+  mode: 0
   rotorVisuals:
   - {fileID: 6082515503341492778}
   - {fileID: 3434536044136155070}
@@ -45967,6 +45967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Flight.DroneVrView
   viewOrigin: {fileID: 1266752070}
   poseDriver: {fileID: 1151012759}
+  fixedHeadsetFeed: 1
   seatOffset: {x: 0, y: 0.46, z: 2.3}
 --- !u!114 &1067213973
 MonoBehaviour:

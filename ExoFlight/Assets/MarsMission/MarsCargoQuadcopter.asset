@@ -17,7 +17,7 @@ MonoBehaviour:
   principalInertia: {x: 6, y: 10, z: 6}
   armLength: 1.5
   propellerDiameter: 1.5
-  maximumRpm: 3600
+  maximumRpm: 5850
   idleRpm: 400
   rotorInertia: 0.004
   thrustCoefficient: 0.1
