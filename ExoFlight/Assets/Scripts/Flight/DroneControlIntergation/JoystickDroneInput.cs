@@ -29,6 +29,22 @@ namespace ExoFlight.Flight
         [Range(0f, 0.1f)]
         [SerializeField] private float armThrottleLimit = 0.05f;
 
+        [Tooltip("Газ считается «в нуле» с этим допуском. Пульт может не доходить ровно до 0 " +
+            "из-за триммера или калибровки канала.")]
+        [Range(0f, 0.3f)]
+        [SerializeField] private float armLowThreshold = 0.12f;
+
+        [Header("Пуск без AUX-тумблера")]
+        [Tooltip("Если AUX для Arm не настроен, моторы включаются сами: газ внизу — холостой ход, " +
+            "подъём газа — взлёт. Так пульт работает без тумблеров и без клавиатуры в шлеме.")]
+        [SerializeField] private bool autoArmFromThrottle = true;
+        [Tooltip("Порог газа, после которого происходит ARM.")]
+        [Range(0.01f, 0.4f)]
+        [SerializeField] private float autoArmThrottle = 0.15f;
+        [Tooltip("Сколько держать газ внизу после полёта, чтобы выключить моторы.")]
+        [Range(0.5f, 5f)]
+        [SerializeField] private float disarmHoldSeconds = 2f;
+
         [Header("Камера (как в KeyboardDroneInput)")]
         public Camera fpvCamera;
         [Range(-10f, 45f)] public float cameraTilt = 10f;
@@ -42,6 +58,10 @@ namespace ExoFlight.Flight
         private bool prevMode;
         private bool prevReset;
         private bool armLowSeen;
+        private bool armAtIdle;
+        private bool blockIdleArm;
+        private bool wasAirborne;
+        private float lowHold;
 
         public float Throttle { get; private set; }
 
@@ -59,7 +79,8 @@ namespace ExoFlight.Flight
 
         void OnEnable()
         {
-            prevArm = prevMode = prevReset = armLowSeen = false;
+            prevArm = prevMode = prevReset = armLowSeen = armAtIdle = blockIdleArm = wasAirborne = false;
+            lowHold = 0f;
             if (checkpoint != null) checkpoint.Respawned += OnRespawned;
         }
 
@@ -76,7 +97,8 @@ namespace ExoFlight.Flight
             {
                 Throttle = 0f;
                 drone.SetArmed(false);
-                armLowSeen = false;
+                armLowSeen = armAtIdle = blockIdleArm = wasAirborne = false;
+                lowHold = 0f;
                 return;
             }
 
@@ -89,25 +111,57 @@ namespace ExoFlight.Flight
             Throttle = throttle;
             drone.SetInput(new FlightControlInput(throttle, pitch, yaw, roll));
 
-            // --- Arm / Disarm (по фронту тумблера) ---
-            bool armSwitch = joystick.GetAux(armChannel) > switchThreshold;
+            // Tolerance comes from the physical stick and the channel trim, not from a hard 0.02.
+            float armLow = Mathf.Max(armThrottleLimit, armLowThreshold);
+
+            // --- Arm / Disarm ---
+            bool hasArmAux = joystick.HasAux(armChannel);
+            bool armSwitch = hasArmAux && joystick.GetAux(armChannel) > switchThreshold;
             if (!armSwitch) armLowSeen = true;
-            if (joystick.HasAux(armChannel) && armSwitch && !prevArm && armLowSeen)
+            if (hasArmAux && armSwitch && !prevArm && armLowSeen)
             {
-                if (throttle <= Mathf.Min(.02f, armThrottleLimit))
-                {
-                    drone.SetArmed(true);
-                    Debug.Log("[Joystick] ARMED");
-                }
-                else
-                {
-                    Debug.LogWarning("[Joystick] Arm отклонён: газ не в нуле.");
-                }
+                if (throttle <= armLow) Arm("тумблер AUX");
+                else Debug.LogWarning("[Joystick] Arm отклонён: газ не в нуле.");
             }
-            else if (!armSwitch && prevArm)
+            else if (hasArmAux && !armSwitch && prevArm)
             {
                 drone.SetArmed(false);
                 Debug.Log("[Joystick] DISARMED");
+            }
+            else if (!hasArmAux && autoArmFromThrottle)
+            {
+                // No AUX switch and no keyboard in a headset: motors idle as soon as the
+                // transmitter is ready with the stick down, and raising the stick takes off.
+                // Holding the stick down after a flight disarms, so the motors can be stopped.
+                if (drone.Armed)
+                {
+                    armAtIdle = false;
+                    if (drone.Body != null && drone.Body.linearVelocity.sqrMagnitude > 1f) wasAirborne = true;
+                    if (wasAirborne && throttle <= armLow)
+                    {
+                        lowHold += Time.fixedDeltaTime;
+                        if (lowHold >= disarmHoldSeconds)
+                        {
+                            drone.SetArmed(false);
+                            armAtIdle = true;
+                            blockIdleArm = true;
+                            wasAirborne = false;
+                            lowHold = 0f;
+                            Debug.Log("[Joystick] DISARMED (газ внизу)");
+                        }
+                    }
+                    else lowHold = 0f;
+                }
+                else
+                {
+                    if (throttle > autoArmThrottle) blockIdleArm = false;
+                    if (throttle <= armLow && !blockIdleArm) armAtIdle = true;
+                    if (armAtIdle && !blockIdleArm)
+                    {
+                        if (throttle <= armLow) Arm("газ внизу — холостой ход");
+                        else if (throttle > autoArmThrottle) Arm("подъём газа");
+                    }
+                }
             }
             prevArm = armSwitch;
 
@@ -137,6 +191,15 @@ namespace ExoFlight.Flight
             if (drone.Armed) drone.SetInput(new FlightControlInput(throttle, pitch, yaw, roll));
         }
 
+        /// <summary>Arm at neutral input: SetArmed refuses to engage while collective is above zero.</summary>
+        void Arm(string reason)
+        {
+            if (drone == null || drone.Armed) return;
+            drone.SetInput(default);
+            drone.SetArmed(true);
+            if (drone.Armed) Debug.Log("[Joystick] ARMED (" + reason + ")");
+        }
+
         void Update()
         {
             // With a USB transmitter exposing only four axes, the operator can still arm/reset.
@@ -147,7 +210,7 @@ namespace ExoFlight.Flight
             else if (!joystick.HasAux(armChannel) && keys.spaceKey.wasPressedThisFrame)
             {
                 if (drone.Armed) drone.SetArmed(false);
-                else if (joystick.Throttle <= .02f) { drone.SetInput(default); drone.SetArmed(true); }
+                else if (joystick.Throttle <= Mathf.Max(armThrottleLimit, armLowThreshold)) Arm("Space");
             }
         }
 
@@ -162,6 +225,8 @@ namespace ExoFlight.Flight
         void OnRespawned()
         {
             drone.SetArmed(false);
+            wasAirborne = false;
+            lowHold = 0f;
         }
     }
 }

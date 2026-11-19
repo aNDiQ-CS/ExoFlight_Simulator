@@ -148,6 +148,9 @@ MonoBehaviour:
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 0
+  filter:
+    m_OverrideState: 1
+    m_Value: 0
   downscale:
     m_OverrideState: 1
     m_Value: 0
@@ -307,6 +310,7 @@ MonoBehaviour:
   - {fileID: 1563326871748030085}
   - {fileID: -5386571787587349074}
   - {fileID: 2609520313565454508}
+  - {fileID: 833479666804880673}
 --- !u!114 &14229295411216620
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -382,6 +386,22 @@ MonoBehaviour:
   clamp:
     m_OverrideState: 1
     m_Value: 0.05
+--- !u!114 &833479666804880673
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de719a4b6ac18c141b015e0f5f381b37, type: 3}
+  m_Name: EnterVolumeEffectVolume
+  m_EditorClassIdentifier: Assembly-CSharp::ExoFlight.Volumes.EnterVolumeEffectVolume
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &919598218924102584
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -11,6 +11,9 @@ namespace ExoFlight.Flight
         public Transform viewOrigin;
         public TrackedPoseDriver poseDriver;
         public Vector3 seatOffset = new Vector3(0f, .46f, 2.3f);
+        [Tooltip("Место игрока жёстко следует ориентации дрона: рыскание, тангаж и крен. " +
+            "Выключите, чтобы горизонт в шлеме оставался горизонтальным.")]
+        public bool attachToAircraftAttitude = true;
         DroneInputRouter router;
         float levelBlend;
         public bool HorizonStabilized => TrackedActive || (router != null && router.Current == DroneInputRouter.Source.Autopilot);
@@ -24,7 +27,7 @@ namespace ExoFlight.Flight
         void Awake()
         {
             router = GetComponent<DroneInputRouter>();
-            levelBlend = HorizonStabilized ? 1f : 0f;
+            levelBlend = Stabilized ? 1f : 0f;
             if (poseDriver == null) return;
             // Embedded actions are enabled/disabled with the pose driver, including a late HMD connection.
             poseDriver.positionInput = new InputActionProperty(new InputAction("Head position", InputActionType.Value,
@@ -41,15 +44,18 @@ namespace ExoFlight.Flight
         {
             if (poseDriver != null && poseDriver.enabled != TrackedActive) poseDriver.enabled = TrackedActive;
         }
+        /// <summary>Horizon stays level only when the pilot did not ask for a coupled view.</summary>
+        bool Stabilized => !attachToAircraftAttitude && HorizonStabilized;
+
         void LateUpdate()
         {
             if (viewOrigin == null) return;
             Vector3 forward = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
             if (forward.sqrMagnitude < .001f) forward = Vector3.forward;
             Quaternion yaw = Quaternion.LookRotation(forward.normalized, Vector3.up);
-            // Manual desktop FPV must expose pitch/roll. Keep the comfort gimbal in VR
-            // and autopilot only; blend when handing the aircraft back to the pilot.
-            levelBlend = TrackedActive ? 1f : Mathf.MoveTowards(levelBlend, HorizonStabilized ? 1f : 0f,
+            // levelBlend 0 = полная ориентация дрона (тангаж/крен/рыскание),
+            // 1 = только рыскание, горизонт горизонтален.
+            levelBlend = Mathf.MoveTowards(levelBlend, Stabilized ? 1f : 0f,
                 Time.unscaledDeltaTime / .2f);
             Quaternion mount = Quaternion.Slerp(transform.rotation, yaw, levelBlend);
             viewOrigin.SetPositionAndRotation(transform.position + mount * seatOffset, mount);

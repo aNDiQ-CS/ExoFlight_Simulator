@@ -1982,8 +1982,11 @@ MonoBehaviour:
   auxPaths: []
   invertThrottle: 0
   invertYaw: 0
-  invertPitch: 0
+  invertPitch: 1
   invertRoll: 0
+  throttleRange: {x: -1, y: 1}
+  mappingVerified: 1
+  trustMappingInPlayerBuild: 1
   deadzone: 0.03
 --- !u!114 &565731900935740707
 MonoBehaviour:
