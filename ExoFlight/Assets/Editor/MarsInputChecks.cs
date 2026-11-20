@@ -9,6 +9,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.XR;
+using TouchController = UnityEngine.XR.OpenXR.Features.Interactions.OculusTouchControllerProfile.OculusTouchController;
+using ExoFlight.Triggers;
 using Object = UnityEngine.Object;
 
 namespace ExoFlight.EditorTools
@@ -24,8 +26,11 @@ namespace ExoFlight.EditorTools
         static Gamepad gamepad;
         static XRHMD hmd;
         static MarsInputCheckPump pump;
-        static string savedReader;
+        static TouchController left, right;
+        static PlayerCheckpoint checkpoint;
+        static int restarts;
         static float since;
+        static float takeoffTime, takeoffHeight;
         static int phase;
         static readonly List<string> lines = new List<string>();
         public static bool Running { get; private set; }
@@ -36,51 +41,45 @@ namespace ExoFlight.EditorTools
         public static void Run()
         {
             if (!Application.isPlaying || Running) throw new InvalidOperationException("Enter Play Mode first.");
-            if (InputSystem.devices.Any(d => d is Gamepad || d is Joystick || d is XRHMD))
+            if (InputSystem.devices.Any(d => d is Gamepad || d is Joystick || d is XRHMD || d is XRController))
                 throw new InvalidOperationException("Disconnect physical RC/HMD devices for isolated virtual-device tests.");
+            EditorWindow.GetWindow(typeof(EditorWindow).Assembly.GetType("UnityEditor.GameView")).Focus();
             pilot = Object.FindFirstObjectByType<DroneMissionAutopilot>();
             drone = pilot.mission.drone;
-            pilot.Stop(true);
-            drone.GetComponent<ExoFlight.Triggers.PlayerCheckpoint>().Respawn();
             reader = drone.GetComponent<DroneJoystickInput>();
             router = drone.GetComponent<DroneInputRouter>();
             vr = drone.GetComponent<DroneVrView>();
-            savedReader = EditorJsonUtility.ToJson(reader);
-            var so = new SerializedObject(reader);
-            so.FindProperty("throttlePath").stringValue = "leftStick/y";
-            so.FindProperty("yawPath").stringValue = "leftStick/x";
-            so.FindProperty("pitchPath").stringValue = "rightStick/y";
-            so.FindProperty("rollPath").stringValue = "rightStick/x";
-            so.FindProperty("deviceNameFilter").stringValue = "";
-            var aux = so.FindProperty("auxPaths"); aux.arraySize = 3;
-            aux.GetArrayElementAtIndex(0).stringValue = "rightTrigger";
-            aux.GetArrayElementAtIndex(1).stringValue = "leftTrigger";
-            aux.GetArrayElementAtIndex(2).stringValue = "buttonSouth";
-            so.ApplyModifiedPropertiesWithoutUndo();
-            reader.mappingVerified = true;
-            reader.throttleRange = new Vector2(-1f, 1f);
-            gamepad = InputSystem.AddDevice<Gamepad>("PresentationTestRC");
-            router.UseAutomaticSource();
-            SetPad(new Vector2(0f, -1f), Vector2.zero, 0f);
-            lines.Clear(); phase = 0; since = Time.unscaledTime;
+            checkpoint = drone.GetComponent<PlayerCheckpoint>();
+            checkpoint.Respawned += CountRestart;
+            restarts = 0;
+            lines.Clear(); phase = -1; since = Time.unscaledTime;
             Running = true; Result = "Running";
             pump = drone.gameObject.AddComponent<MarsInputCheckPump>();
         }
+        static void CountRestart() => restarts++;
         static void Assert(bool value, string text)
         {
             if (!value) throw new Exception(text);
             lines.Add("PASS " + text);
         }
-        static void SetPad(Vector2 left, Vector2 right, float arm)
+        static void SetPad(Vector2 left, Vector2 right)
         {
             using (StateEvent.From(gamepad, out var evt))
             {
                 gamepad.leftStick.WriteValueIntoEvent(left, evt);
                 gamepad.rightStick.WriteValueIntoEvent(right, evt);
-                gamepad.rightTrigger.WriteValueIntoEvent(arm, evt);
                 InputSystem.QueueEvent(evt);
             }
-            InputSystem.Update();
+        }
+        static void SetButtons(TouchController hand, bool primary = false, bool secondary = false, bool stick = false)
+        {
+            using (StateEvent.From(hand, out var evt))
+            {
+                hand.primaryButton.WriteValueIntoEvent(primary ? 1f : 0f, evt);
+                hand.secondaryButton.WriteValueIntoEvent(secondary ? 1f : 0f, evt);
+                hand.thumbstickClicked.WriteValueIntoEvent(stick ? 1f : 0f, evt);
+                InputSystem.QueueEvent(evt);
+            }
         }
         public static void Tick()
         {
@@ -92,33 +91,57 @@ namespace ExoFlight.EditorTools
             {
                 switch (phase++)
                 {
+                    case -1:
+                        // Let Game View finish its focus reset before connecting virtual hardware.
+                        gamepad = InputSystem.AddDevice<Gamepad>("PresentationTestRC");
+                        left = InputSystem.AddDevice<TouchController>();
+                        right = InputSystem.AddDevice<TouchController>();
+                        InputSystem.SetDeviceUsage(left, UnityEngine.InputSystem.CommonUsages.LeftHand);
+                        InputSystem.SetDeviceUsage(right, UnityEngine.InputSystem.CommonUsages.RightHand);
+                        SetPad(Vector2.zero, Vector2.right);
+                        break;
                     case 0:
+                        Assert(!pilot.autoStart && !pilot.Active && drone.mode == DroneFlightMode.Acro && restarts == 0, "Fresh mission starts in manual Acro");
                         Assert(reader.IsReady && router.Current == DroneInputRouter.Source.Joystick, "Verified transmitter selected");
                         Assert(!drone.GetComponent<KeyboardDroneInput>().enabled && drone.GetComponent<JoystickDroneInput>().enabled, "Only RC writes manual flight input");
-                        Assert(reader.Throttle < .001f, "Signed raw throttle -1 maps to zero (actual " + reader.Throttle
-                            + ", stick " + gamepad.leftStick.ReadValue() + ")");
-                        SetPad(new Vector2(0f, 1f), Vector2.zero, 1f); break;
+                        Assert(reader.Throttle > .999f && !drone.Armed, $"Connecting at full throttle does not arm (throttle {reader.Throttle:F2}, armed {drone.Armed})");
+                        SetPad(Vector2.zero, Vector2.left);
+                        SetButtons(left, primary: true, secondary: true, stick: true);
+                        SetButtons(right, stick: true);
+                        break;
                     case 1:
-                        Assert(reader.Throttle > .999f && !drone.Armed, "Throttle +1 maps to full; high-throttle arming rejected");
-                        SetPad(new Vector2(0f, -1f), Vector2.zero, 0f); break;
+                        Assert(reader.Throttle < .001f && drone.Armed, "Low throttle arms using the scene mapping without AUX");
+                        Assert(!pilot.Active && restarts == 0, "Thumbstick clicks and left-hand X/Y leave manual flight alone");
+                        takeoffHeight = drone.Body.position.y;
+                        takeoffTime = Time.time;
+                        SetPad(Vector2.zero, new Vector2(.65f, 0f));
+                        break;
                     case 2:
-                        SetPad(new Vector2(0f, -1f), Vector2.zero, 1f); break;
+                        if (Time.time - takeoffTime < 1f) { phase--; break; }
+                        Assert(drone.Body.position.y > takeoffHeight + 1f && !pilot.Active && drone.mode == DroneFlightMode.Acro,
+                            $"Manual RC takeoff in Acro rises {drone.Body.position.y - takeoffHeight:F2} m");
+                        SetPad(new Vector2(.45f, -.5f), new Vector2(0f, .5f)); break;
                     case 3:
-                        Assert(drone.Armed, "Low-then-high AUX arms at zero throttle");
-                        SetPad(Vector2.zero, new Vector2(.5f, -.5f), 1f); break;
+                        Assert(Mathf.Abs(drone.Input.Throttle - .5f) < .01f && drone.Input.Yaw > .2f &&
+                            drone.Input.Pitch > .2f && drone.Input.Roll > .2f, "TX12 scene mapping sends all four axes to manual Acro");
+                        SetButtons(right, secondary: true); break;
                     case 4:
-                        Assert(Mathf.Abs(reader.Throttle - .5f) < .01f, "Raw throttle midpoint maps to 50 percent");
-                        Assert(drone.Input.Roll > .2f && drone.Input.Pitch < -.2f, "Both control sticks reach the flight controller");
-                        InputSystem.RemoveDevice(gamepad); gamepad = null; break;
+                        Assert(restarts == 1 && !pilot.Active && drone.mode == DroneFlightMode.Acro &&
+                            router.Current == DroneInputRouter.Source.Joystick, "Right B restarts manual flight once in Acro");
+                        Assert(Vector3.Distance(drone.Body.position, checkpoint.Position) < 1f && pilot.mission.NextZoneIndex == 0,
+                            "B returns aircraft and mission to the launch point");
+                        SetButtons(right); break;
                     case 5:
-                        Assert(reader.Device == null && reader.Throttle == 0f && reader.Roll == 0f && reader.GetAux(0) == 0f, "Disconnect clears retained axes and AUX");
-                        Assert(!drone.Armed && router.Current == DroneInputRouter.Source.Keyboard, "Disconnect disarms and returns to keyboard");
-                        pilot.HoldPosition(); break;
+                        SetButtons(right, primary: true); break;
                     case 6:
-                        Assert(router.Current == DroneInputRouter.Source.Autopilot && !drone.GetComponent<KeyboardDroneInput>().enabled
-                            && !drone.GetComponent<JoystickDroneInput>().enabled && drone.Armed, "Autopilot exclusively owns the motors");
-                        pilot.Stop(true);
-                        Assert(!drone.Armed && router.Current == DroneInputRouter.Source.Keyboard, "Emergency stop disarms and releases input ownership");
+                        Assert(pilot.Active && !pilot.Holding && restarts == 2 && router.Current == DroneInputRouter.Source.Autopilot,
+                            "Right A explicitly starts the full mission once");
+                        SetButtons(right, secondary: true);
+                        SetPad(Vector2.zero, Vector2.left); break;
+                    case 7:
+                        Assert(restarts == 3 && !pilot.Active && drone.mode == DroneFlightMode.Acro && drone.Armed &&
+                            router.Current == DroneInputRouter.Source.Joystick, "B during autopilot restores manual Acro and the transmitter");
+                        SetPad(new Vector2(-.45f, .5f), new Vector2(.65f, -.5f));
                         hmd = InputSystem.AddDevice<XRHMD>("PresentationTestHMD");
                         using (StateEvent.From(hmd, out var evt))
                         {
@@ -128,9 +151,10 @@ namespace ExoFlight.EditorTools
                             hmd.centerEyeRotation.WriteValueIntoEvent(headRotation, evt);
                             InputSystem.QueueEvent(evt);
                         }
-                        InputSystem.Update();
                         break;
-                    case 7:
+                    case 8:
+                        Assert(drone.Input.Throttle > .55f && drone.Input.Yaw < -.2f && drone.Input.Pitch < -.2f &&
+                            drone.Input.Roll < -.2f && restarts == 3, $"RC after restart: throttle {drone.Input.Throttle:F2}, yaw {drone.Input.Yaw:F2}, pitch {drone.Input.Pitch:F2}, roll {drone.Input.Roll:F2}, restarts {restarts}");
                         Assert(vr.TrackedActive && vr.poseDriver.enabled, "Tracked HMD activates the pose driver");
                         Assert(Vector3.Distance(vr.poseDriver.transform.localPosition, headPosition) < .001f, "HMD head translation is preserved");
                         Assert(Quaternion.Angle(vr.poseDriver.transform.localRotation, headRotation) < .1f, "HMD head rotation is preserved");
@@ -138,12 +162,17 @@ namespace ExoFlight.EditorTools
                         Assert(!drone.GetComponent<DroneCameraView>().ThirdPerson, "Desktop third-person mode cannot overwrite VR view");
                         drone.Body.rotation = Quaternion.Euler(15f, 40f, -18f);
                         break;
-                    case 8:
-                        Assert(Vector3.Angle(vr.viewOrigin.up, Vector3.up) < .01f, "VR origin keeps a level horizon during body tilt");
-                        Assert(Quaternion.Angle(vr.poseDriver.transform.localRotation, headRotation) < .1f, "Body rotation does not erase the tracked head pose");
-                        InputSystem.RemoveDevice(hmd); hmd = null;
-                        break;
                     case 9:
+                        var eye = vr.poseDriver.transform;
+                        Assert(Vector3.Distance(vr.viewOrigin.position, eye.position) < .005f, "Head movement leaves the camera at the FPV seat");
+                        var tilt = Quaternion.Euler(-drone.GetComponent<KeyboardDroneInput>().cameraTilt, 0f, 0f);
+                        Assert(Quaternion.Angle(vr.viewOrigin.rotation * tilt, eye.rotation) < .1f, "Head rotation leaves the view aligned to the drone camera");
+                        InputSystem.RemoveDevice(hmd); hmd = null;
+                        InputSystem.RemoveDevice(gamepad); gamepad = null;
+                        break;
+                    case 10:
+                        Assert(reader.Device == null && reader.Throttle == 0f && !drone.Armed && router.Current == DroneInputRouter.Source.Keyboard,
+                            "Disconnect clears commands, disarms and releases the transmitter");
                         Assert(!vr.TrackedActive && !vr.poseDriver.enabled, "HMD removal restores desktop camera ownership");
                         Assert(Vector3.Distance(vr.poseDriver.transform.localPosition, Vector3.zero) < .001f, "Desktop first-person camera returns to its seat");
                         End("PASS"); break;
@@ -157,8 +186,10 @@ namespace ExoFlight.EditorTools
             if (pump != null) Object.Destroy(pump);
             if (gamepad != null) InputSystem.RemoveDevice(gamepad);
             if (hmd != null) InputSystem.RemoveDevice(hmd);
+            if (left != null) InputSystem.RemoveDevice(left);
+            if (right != null) InputSystem.RemoveDevice(right);
+            checkpoint.Respawned -= CountRestart;
             gamepad = null; hmd = null;
-            if (reader != null) EditorJsonUtility.FromJsonOverwrite(savedReader, reader);
             if (pilot != null) pilot.Stop(true);
             if (router != null) router.UseAutomaticSource();
             if (drone != null) drone.GetComponent<ExoFlight.Triggers.PlayerCheckpoint>().Respawn();

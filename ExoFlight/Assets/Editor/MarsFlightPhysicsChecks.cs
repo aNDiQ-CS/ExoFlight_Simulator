@@ -64,15 +64,15 @@ namespace ExoFlight.EditorTools
                         peak = Mathf.Max(peak, Vector3.Angle(d.Body.rotation * Vector3.up, Vector3.up));
                     }
                 };
-                reset(); d.SetArmed(false); advance(1f, default);
-                check(Mathf.Abs(d.Body.linearVelocity.y + 3.71f) < .03f, "Free fall matches Mars gravity 3.71 m/s2");
+                reset(); d.SetArmed(false); advance(.01f, default);
+                check(Mathf.Abs(d.Body.linearVelocity.y / .01f + 9.81f) < .01f, "Free fall from rest matches 9.81 m/s2");
                 reset();
                 advance(2f, new FlightControlInput(d.HoverThrottle, 0f, 0f, 0f));
                 d.Body.linearVelocity = Vector3.zero;
                 float height = d.Body.position.y;
                 advance(3f, new FlightControlInput(d.HoverThrottle, 0f, 0f, 0f));
                 check(Mathf.Abs(d.Body.position.y - height) < .03f, "Unloaded computed hover balances weight without extra forces");
-                check(Mathf.Abs(d.TotalThrust - 8f * 3.71f) < .03f, "Four rotors produce 29.68 N in unloaded hover");
+                check(Mathf.Abs(d.TotalThrust - 8f * 9.81f) < .03f, "Four rotors produce 78.48 N in unloaded hover");
                 foreach (var command in new[] { new Vector2(.5f, 0f), new Vector2(-.5f, 0f), new Vector2(0f, .5f), new Vector2(0f, -.5f) })
                 {
                     reset(); advance(2.5f, new FlightControlInput(d.HoverThrottle, command.x, 0f, command.y));
@@ -110,7 +110,7 @@ namespace ExoFlight.EditorTools
                 height = d.Body.position.y;
                 advance(3f, new FlightControlInput(d.HoverThrottle, 0f, 0f, 0f));
                 report.Add($"MEASURE hover empty {bareHover:F4}, loaded {d.HoverThrottle:F4}, loaded thrust {d.TotalThrust:F3} N");
-                check(Mathf.Abs(d.Body.position.y - height) < .05f && Mathf.Abs(d.TotalThrust - 18.6f * 3.71f) < .05f,
+                check(Mathf.Abs(d.Body.position.y - height) < .05f && Mathf.Abs(d.TotalThrust - 18.6f * 9.81f) < .05f,
                     "Loaded hover balances combined weight with motor thrust");
                 reset(); advance(4f, new FlightControlInput(d.HoverThrottle, .5f, 0f, 0f));
                 float loadedAngle = -Mathf.Asin((d.Body.rotation * Vector3.forward).y) * Mathf.Rad2Deg;
@@ -128,7 +128,7 @@ namespace ExoFlight.EditorTools
                 Object.DestroyImmediate(profile); Object.DestroyImmediate(air);
                 SceneManager.UnloadSceneAsync(scene);
                 Result = result + "\n" + string.Join("\n", report);
-                File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/mars-physics-verification-2026-11-17.txt")), Result);
+                File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/mars-physics-verification-" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt")), Result);
             }
             Debug.Log("[Mars physics checks] " + result);
         }

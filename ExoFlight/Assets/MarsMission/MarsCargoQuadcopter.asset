@@ -20,8 +20,8 @@ MonoBehaviour:
   maximumRpm: 3600
   idleRpm: 400
   rotorInertia: 0.004
-  thrustCoefficient: 0.1
-  torqueCoefficient: 0.008
+  thrustCoefficient: 0.26442
+  torqueCoefficient: 0.0211536
   spinUpTime: 0.065
   spinDownTime: 0.045
   dragArea: {x: 1.4, y: 2.8, z: 1.4}

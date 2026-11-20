@@ -37,15 +37,23 @@ namespace ExoFlight.Missions.Mars
         Vector3 velocityIntegral, acceleration, takeoff;
         float settleTime;
         int phase;
-        bool vrPressed;
+        InputAction metaAutopilot, metaRestart;
+        bool returnToRadio;
 
         void Awake()
         {
             drone = GetComponent<DroneFlightController>();
             router = GetComponent<DroneInputRouter>();
             checkpoint = GetComponent<PlayerCheckpoint>();
+            metaAutopilot = new InputAction("Autopilot", InputActionType.Button, "<XRController>{RightHand}/primaryButton");
+            metaRestart = new InputAction("Restart", InputActionType.Button, "<XRController>{RightHand}/secondaryButton");
         }
-        void OnEnable() { if (checkpoint != null) checkpoint.Respawned += OnRespawn; }
+        void OnEnable()
+        {
+            if (checkpoint != null) checkpoint.Respawned += OnRespawn;
+            metaAutopilot.Enable();
+            metaRestart.Enable();
+        }
         void Start() { if (autoStart) BeginMission(); }
         void Update()
         {
@@ -59,11 +67,13 @@ namespace ExoFlight.Missions.Mars
                 // A manual stick command is an explicit takeover, not an ignored keypress.
                 else if (Active && KeyboardDroneInput.HasStickInput(kb)) Stop(false);
             }
-            // Right controller primary button starts the same full mission in a headset.
-            var right = UnityEngine.XR.InputDevices.GetDeviceAtXRNode(UnityEngine.XR.XRNode.RightHand);
-            bool pressed = right.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool down) && down;
-            if (pressed && !vrPressed) { if (Active) HoldPosition(); else BeginMission(); }
-            vrPressed = pressed;
+            if (metaRestart.WasPressedThisFrame())
+            {
+                checkpoint.Respawn();
+                drone.SetMode(DroneFlightMode.Acro);
+                router.UseAutomaticSource();
+            }
+            else if (!Active && metaAutopilot.WasPressedThisFrame()) BeginMission();
             if (Active && mission.Stage == MarsMissionStage.Failed) Stop(true);
         }
 
@@ -96,6 +106,7 @@ namespace ExoFlight.Missions.Mars
         void Acquire()
         {
             manualMode = drone.mode;
+            returnToRadio = router.Current == DroneInputRouter.Source.Joystick;
             router.AcquireAutopilot();
             drone.SetMode(DroneFlightMode.Angle);
             velocityIntegral = acceleration = Vector3.zero;
@@ -114,13 +125,21 @@ namespace ExoFlight.Missions.Mars
             Active = Holding = false;
             drone.SetMode(manualMode);
             router.ReleaseAutopilot(disarm);
+            if (disarm && returnToRadio) router.UseAutomaticSource();
             Status = disarm ? "Stopped" : "Manual control";
         }
         void OnRespawn() => Stop(true);
         void OnDisable()
         {
+            metaAutopilot.Disable();
+            metaRestart.Disable();
             Stop(true);
             if (checkpoint != null) checkpoint.Respawned -= OnRespawn;
+        }
+        void OnDestroy()
+        {
+            metaAutopilot.Dispose();
+            metaRestart.Dispose();
         }
         void OnApplicationPause(bool paused) { if (paused) Stop(true); }
 

@@ -14,6 +14,11 @@ namespace ExoFlight.Flight
         [Tooltip("Место игрока жёстко следует ориентации дрона: рыскание, тангаж и крен. " +
             "Выключите, чтобы горизонт в шлеме оставался горизонтальным.")]
         public bool attachToAircraftAttitude = true;
+        [Tooltip("Show the aircraft camera in the headset, independent of head movement.")]
+        public bool fixedHeadsetFeed;
+        Transform compensation;
+        Quaternion feedRotation;
+        Vector3 feedPosition;
         DroneInputRouter router;
         float levelBlend;
         public bool HorizonStabilized => TrackedActive || (router != null && router.Current == DroneInputRouter.Source.Autopilot);
@@ -29,6 +34,15 @@ namespace ExoFlight.Flight
             router = GetComponent<DroneInputRouter>();
             levelBlend = Stabilized ? 1f : 0f;
             if (poseDriver == null) return;
+            if (fixedHeadsetFeed)
+            {
+                var eye = poseDriver.transform;
+                feedPosition = eye.localPosition;
+                feedRotation = Quaternion.Euler(-GetComponent<KeyboardDroneInput>().cameraTilt, 0f, 0f);
+                compensation = new GameObject("Fixed FPV mount").transform;
+                compensation.SetParent(eye.parent, false);
+                eye.SetParent(compensation, false);
+            }
             // Embedded actions are enabled/disabled with the pose driver, including a late HMD connection.
             poseDriver.positionInput = new InputActionProperty(new InputAction("Head position", InputActionType.Value,
                 "<XRHMD>/centerEyePosition", expectedControlType: "Vector3"));
@@ -39,6 +53,18 @@ namespace ExoFlight.Flight
             poseDriver.trackingType = TrackedPoseDriver.TrackingType.RotationAndPosition;
             poseDriver.updateType = TrackedPoseDriver.UpdateType.UpdateAndBeforeRender;
             poseDriver.enabled = TrackedActive;
+        }
+        void OnEnable() => Application.onBeforeRender += LockFeed;
+
+        // Run after Input System's before-render pose update, retaining stereo eye separation.
+        [BeforeRenderOrder(10000)]
+        void LockFeed()
+        {
+            if (compensation == null) return;
+            if (!TrackedActive) { compensation.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); return; }
+            var eye = poseDriver.transform;
+            var inverse = feedRotation * Quaternion.Inverse(eye.localRotation);
+            compensation.SetLocalPositionAndRotation(feedPosition - inverse * eye.localPosition, inverse);
         }
         void Update()
         {
@@ -59,7 +85,13 @@ namespace ExoFlight.Flight
                 Time.unscaledDeltaTime / .2f);
             Quaternion mount = Quaternion.Slerp(transform.rotation, yaw, levelBlend);
             viewOrigin.SetPositionAndRotation(transform.position + mount * seatOffset, mount);
+            LockFeed();
         }
-        void OnDisable() { if (poseDriver != null) poseDriver.enabled = false; }
+        void OnDisable()
+        {
+            Application.onBeforeRender -= LockFeed;
+            if (compensation != null) compensation.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            if (poseDriver != null) poseDriver.enabled = false;
+        }
     }
 }

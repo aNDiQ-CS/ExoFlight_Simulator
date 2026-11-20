@@ -1,0 +1,24 @@
+PASS
+Virtual devices only; real TX12 calibration and HMD comfort not tested.
+PASS Fresh mission starts in manual Acro
+PASS Verified transmitter selected
+PASS Only RC writes manual flight input
+PASS Connecting at full throttle does not arm (throttle 1,00, armed False)
+PASS Low throttle arms using the scene mapping without AUX
+PASS Thumbstick clicks and left-hand X/Y leave manual flight alone
+PASS Manual RC takeoff in Acro rises 13,12 m
+PASS TX12 scene mapping sends all four axes to manual Acro
+PASS Right B restarts manual flight once in Acro
+PASS B returns aircraft and mission to the launch point
+PASS Right A explicitly starts the full mission once
+PASS B during autopilot restores manual Acro and the transmitter
+PASS RC after restart: throttle 0,83, yaw -0,47, pitch -0,47, roll -0,41, restarts 3
+PASS Tracked HMD activates the pose driver
+PASS HMD head translation is preserved
+PASS HMD head rotation is preserved
+PASS Desktop third-person mode cannot overwrite VR view
+PASS Head movement leaves the camera at the FPV seat
+PASS Head rotation leaves the view aligned to the drone camera
+PASS Disconnect clears commands, disarms and releases the transmitter
+PASS HMD removal restores desktop camera ownership
+PASS Desktop first-person camera returns to its seat

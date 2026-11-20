@@ -1,0 +1,26 @@
+PASS
+PASS Free fall from rest matches 9.81 m/s2
+PASS Unloaded computed hover balances weight without extra forces
+PASS Four rotors produce 78.48 N in unloaded hover
+MEASURE command (0.50, 0.00): angle 20,06, peak 21,59 deg
+PASS Pitch/roll follows commanded angle: (0.50, 0.00)
+PASS Angle mode levels after stick release: (0.50, 0.00)
+MEASURE command (-0.50, 0.00): angle -20,06, peak 21,59 deg
+PASS Pitch/roll follows commanded angle: (-0.50, 0.00)
+PASS Angle mode levels after stick release: (-0.50, 0.00)
+MEASURE command (0.00, 0.50): angle 20,06, peak 21,59 deg
+PASS Pitch/roll follows commanded angle: (0.00, 0.50)
+PASS Angle mode levels after stick release: (0.00, 0.50)
+MEASURE command (0.00, -0.50): angle -20,06, peak 21,59 deg
+PASS Pitch/roll follows commanded angle: (0.00, -0.50)
+PASS Angle mode levels after stick release: (0.00, -0.50)
+PASS Positive yaw turns right via differential motor torque
+PASS Level attitude retains momentum in thin air; no hidden velocity braking
+PASS Rover attached with the real rigid joint
+PASS Payload remains a separate body; mass is not counted twice
+PASS Cargo increases required collective throttle
+MEASURE hover empty 0,2451, loaded 0,5865, loaded thrust 182,466 N
+PASS Loaded hover balances combined weight with motor thrust
+MEASURE loaded pitch 19,85, peak 26,72 deg for 20 deg demand
+PASS Loaded aircraft reaches commanded pitch
+PASS Loaded aircraft settles after releasing the stick
