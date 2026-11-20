@@ -9,8 +9,7 @@ namespace ExoFlight.Flight
 {
     /// <summary>
     /// Крупная панель диагностики пульта прямо в шлеме: один USB-порт занят передатчиком,
-    /// поэтому logcat недоступен. Панель сама появляется после загрузки сцены, висит перед
-    /// камерой и обновляется 4 раза в секунду. F3 скрывает/показывает.
+    /// поэтому logcat недоступен. По умолчанию панель скрыта. F3 переключает её видимость.
     /// </summary>
     [DefaultExecutionOrder(500)]
     public sealed class RcDiagnosticsOverlay : MonoBehaviour
@@ -28,7 +27,7 @@ namespace ExoFlight.Flight
         DroneFlightController drone;
         float nextRefresh;
         float nextLookup;
-        bool visible = true;
+        bool visible;
         int eventCount;
         double lastEventTime = -1d;
         readonly StringBuilder sb = new StringBuilder(1024);
